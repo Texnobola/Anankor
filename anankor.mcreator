@@ -1,0 +1,52 @@
+{
+  "mod_elements": [],
+  "variable_elements": [],
+  "sound_elements": [],
+  "tag_elements": {},
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {}
+  },
+  "metadata": {
+    "files": [
+      "src/main/java/net/mcreator/anankor/network/PlayPlayerAnimationMessage.java",
+      "src/main/java/net/mcreator/anankor/mixin/LivingEntityRendererMixin.java",
+      "src/main/resources/META-INF/neoforge.mods.toml",
+      "src/main/java/net/mcreator/anankor/mixin/ItemInHandLayerMixin.java",
+      "src/main/java/net/mcreator/anankor/mixin/CameraAccessor.java",
+      "src/main/java/net/mcreator/anankor/mixin/EntityRenderDispatcherMixin.java",
+      "src/main/java/net/mcreator/anankor/AnankorMod.java",
+      "src/main/java/net/mcreator/anankor/mixin/ItemInHandRendererMixin.java",
+      "src/main/java/net/mcreator/anankor/mixin/PlayerAnimationMixin.java",
+      "src/main/java/net/mcreator/anankor/AnankorModPlayerAnimationAPI.java",
+      "src/main/java/net/mcreator/anankor/mixin/LevelRendererMixin.java",
+      "src/main/java/net/mcreator/anankor/mixin/PlayerAnimationRendererMixin.java",
+      "src/main/java/net/mcreator/anankor/mixin/EntityRendererMixin.java",
+      "src/main/resources/pack.mcmeta"
+    ]
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "anankor",
+    "modName": "Anankor",
+    "version": "0.0.1",
+    "description": "I\u0027m lazy",
+    "author": "Koderman",
+    "license": "All Rights Reserved",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "curios_api",
+      "geckolib",
+      "jei"
+    ],
+    "currentGenerator": "neoforge-26.1.2",
+    "modElementsPackage": "net.mcreator.anankor"
+  },
+  "mcreatorVersion": 202600233518
+}
