@@ -1,17 +1,109 @@
 {
-  "mod_elements": [],
-  "variable_elements": [],
+  "mod_elements": [
+    {
+      "name": "Anfluxplayertick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "anfluxplayertick",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/anankor/procedures/AnfluxplayertickProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "Testability",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "testability",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/anankor/network/TestabilityMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "ANTestFluxAbility",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "an_test_flux_ability",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/anankor/procedures/ANTestFluxAbilityProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "Burnout",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "burnout",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/anankor/potion/BurnoutMobEffect.java"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "maxflux",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "100.0"
+    },
+    {
+      "name": "flux",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "100.0"
+    },
+    {
+      "name": "burnouttimer",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "FluxRegenTimer",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    }
+  ],
   "sound_elements": [],
   "tag_elements": {},
   "tab_element_order": {},
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "key.anankor.testability": "Testability",
+      "effect.anankor.burnout": "Burnout"
+    }
   },
   "metadata": {
     "files": [
+      "src/main/java/net/mcreator/anankor/init/AnankorModKeyMappings.java",
+      "src/main/java/net/mcreator/anankor/init/AnankorModMobEffects.java",
       "src/main/java/net/mcreator/anankor/network/PlayPlayerAnimationMessage.java",
       "src/main/java/net/mcreator/anankor/mixin/LivingEntityRendererMixin.java",
       "src/main/resources/META-INF/neoforge.mods.toml",
+      "src/main/java/net/mcreator/anankor/network/NbtArrayLists.java",
       "src/main/java/net/mcreator/anankor/mixin/ItemInHandLayerMixin.java",
       "src/main/java/net/mcreator/anankor/mixin/CameraAccessor.java",
       "src/main/java/net/mcreator/anankor/mixin/EntityRenderDispatcherMixin.java",
@@ -22,7 +114,8 @@
       "src/main/java/net/mcreator/anankor/mixin/LevelRendererMixin.java",
       "src/main/java/net/mcreator/anankor/mixin/PlayerAnimationRendererMixin.java",
       "src/main/java/net/mcreator/anankor/mixin/EntityRendererMixin.java",
-      "src/main/resources/pack.mcmeta"
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/mcreator/anankor/network/AnankorModVariables.java"
     ]
   },
   "foldersRoot": {
