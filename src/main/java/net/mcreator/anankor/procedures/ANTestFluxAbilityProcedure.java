@@ -10,7 +10,7 @@ public class ANTestFluxAbilityProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux >= 20) {
+		if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux > 0) {
 			{
 				AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
 				_vars.flux = entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux - 20;
