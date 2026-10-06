@@ -71,7 +71,6 @@ public class AnankorModVariables {
 		PlayerVariables clone = new PlayerVariables();
 		clone.maxflux = original.maxflux;
 		clone.flux = original.flux;
-		clone.burnouttimer = original.burnouttimer;
 		clone.FluxRegenTimer = original.FluxRegenTimer;
 		if (!event.isWasDeath()) {
 		}
@@ -82,14 +81,12 @@ public class AnankorModVariables {
 		boolean _syncDirty = false;
 		public double maxflux = 100.0;
 		public double flux = 100.0;
-		public double burnouttimer = 0;
 		public double FluxRegenTimer = 0;
 
 		@Override
 		public void serialize(ValueOutput output) {
 			output.putDouble("maxflux", maxflux);
 			output.putDouble("flux", flux);
-			output.putDouble("burnouttimer", burnouttimer);
 			output.putDouble("FluxRegenTimer", FluxRegenTimer);
 		}
 
@@ -97,7 +94,6 @@ public class AnankorModVariables {
 		public void deserialize(ValueInput input) {
 			maxflux = input.getDoubleOr("maxflux", 0);
 			flux = input.getDoubleOr("flux", 0);
-			burnouttimer = input.getDoubleOr("burnouttimer", 0);
 			FluxRegenTimer = input.getDoubleOr("FluxRegenTimer", 0);
 		}
 

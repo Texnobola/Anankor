@@ -75,12 +75,6 @@
       "value": "100.0"
     },
     {
-      "name": "burnouttimer",
-      "type": "number",
-      "scope": "player_persistent",
-      "value": "0"
-    },
-    {
       "name": "FluxRegenTimer",
       "type": "number",
       "scope": "player_persistent",
