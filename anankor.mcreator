@@ -59,6 +59,18 @@
           "src/main/java/net/mcreator/anankor/potion/BurnoutMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "AnankorFluxHud",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "anankor_flux_hud",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/anankor/AnankorFluxHud.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
