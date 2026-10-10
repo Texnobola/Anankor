@@ -72,6 +72,7 @@ public class AnankorModVariables {
 		clone.maxflux = original.maxflux;
 		clone.flux = original.flux;
 		clone.FluxRegenTimer = original.FluxRegenTimer;
+		clone.Nature = original.Nature;
 		if (!event.isWasDeath()) {
 		}
 		event.getEntity().setData(PLAYER_VARIABLES, clone);
@@ -82,12 +83,14 @@ public class AnankorModVariables {
 		public double maxflux = 100.0;
 		public double flux = 100.0;
 		public double FluxRegenTimer = 0;
+		public String Nature = "\"\"";
 
 		@Override
 		public void serialize(ValueOutput output) {
 			output.putDouble("maxflux", maxflux);
 			output.putDouble("flux", flux);
 			output.putDouble("FluxRegenTimer", FluxRegenTimer);
+			output.putString("Nature", Nature);
 		}
 
 		@Override
@@ -95,6 +98,7 @@ public class AnankorModVariables {
 			maxflux = input.getDoubleOr("maxflux", 0);
 			flux = input.getDoubleOr("flux", 0);
 			FluxRegenTimer = input.getDoubleOr("FluxRegenTimer", 0);
+			Nature = input.getStringOr("Nature", "");
 		}
 
 		public void markSyncDirty() {
