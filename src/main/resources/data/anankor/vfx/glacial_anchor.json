@@ -1,0 +1,46 @@
+{
+  "type": "collection",
+  "duration": 30,
+  "effects": [
+    {
+      "type": "camera_shake",
+      "duration": 14,
+      "params": {
+        "intensity": 0.32,
+        "frequency": 24.0,
+        "decay": 0.82
+      }
+    },
+    {
+      "type": "vignette",
+      "duration": 28,
+      "params": {
+        "radius": 0.72,
+        "softness": 0.45,
+        "color_r": 0.55,
+        "color_g": 0.85,
+        "color_b": 1.0,
+        "opacity": 0.55
+      }
+    },
+    {
+      "type": "chromatic_aberration",
+      "duration": 22,
+      "params": {
+        "intensity": 0.4
+      }
+    },
+    {
+      "type": "pulse_ring",
+      "duration": 28,
+      "params": {
+        "radius": 6.0,
+        "thickness": 0.5,
+        "color_r": 0.45,
+        "color_g": 0.9,
+        "color_b": 1.0,
+        "opacity": 0.9
+      }
+    }
+  ]
+}

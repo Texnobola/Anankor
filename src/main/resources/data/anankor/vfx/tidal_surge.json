@@ -1,0 +1,50 @@
+{
+  "type": "collection",
+  "duration": 25,
+  "effects": [
+    {
+      "type": "camera_shake",
+      "duration": 16,
+      "params": {
+        "intensity": 0.28,
+        "frequency": 18.0,
+        "decay": 0.88
+      }
+    },
+    {
+      "type": "pulse_ring",
+      "duration": 25,
+      "params": {
+        "radius": 5.5,
+        "thickness": 0.45,
+        "color_r": 0.12,
+        "color_g": 0.58,
+        "color_b": 0.95,
+        "opacity": 0.85
+      }
+    },
+    {
+      "type": "screen_flash",
+      "duration": 10,
+      "params": {
+        "color_r": 0.15,
+        "color_g": 0.65,
+        "color_b": 1.0,
+        "opacity": 0.35
+      }
+    },
+    {
+      "type": "speed_lines",
+      "duration": 18,
+      "params": {
+        "density": 0.6,
+        "length": 0.7,
+        "speed": 1.2,
+        "opacity": 0.5,
+        "color_r": 0.2,
+        "color_g": 0.7,
+        "color_b": 1.0
+      }
+    }
+  ]
+}

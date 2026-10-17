@@ -31,12 +31,15 @@ import java.util.function.Supplier;
 
 @EventBusSubscriber
 public class AnankorModVariables {
-	public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, AnankorMod.MODID);
-	public static final Supplier<AttachmentType<PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(PlayerVariables::new).build());
+	public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister
+			.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, AnankorMod.MODID);
+	public static final Supplier<AttachmentType<PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES
+			.register("player_variables", () -> AttachmentType.serializable(PlayerVariables::new).build());
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
-		AnankorMod.addNetworkMessage(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC, PlayerVariablesSyncMessage::handleData);
+		AnankorMod.addNetworkMessage(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC,
+				PlayerVariablesSyncMessage::handleData);
 	}
 
 	@SubscribeEvent
@@ -73,6 +76,7 @@ public class AnankorModVariables {
 		clone.flux = original.flux;
 		clone.FluxRegenTimer = original.FluxRegenTimer;
 		clone.Nature = original.Nature;
+		clone.selectedTechnique = original.selectedTechnique;
 		if (!event.isWasDeath()) {
 		}
 		event.getEntity().setData(PLAYER_VARIABLES, clone);
@@ -84,6 +88,7 @@ public class AnankorModVariables {
 		public double flux = 100.0;
 		public double FluxRegenTimer = 0;
 		public String Nature = "\"\"";
+		public double selectedTechnique = 0;
 
 		@Override
 		public void serialize(ValueOutput output) {
@@ -91,6 +96,7 @@ public class AnankorModVariables {
 			output.putDouble("flux", flux);
 			output.putDouble("FluxRegenTimer", FluxRegenTimer);
 			output.putString("Nature", Nature);
+			output.putDouble("selectedTechnique", selectedTechnique);
 		}
 
 		@Override
@@ -99,6 +105,7 @@ public class AnankorModVariables {
 			flux = input.getDoubleOr("flux", 0);
 			FluxRegenTimer = input.getDoubleOr("FluxRegenTimer", 0);
 			Nature = input.getStringOr("Nature", "");
+			selectedTechnique = input.getDoubleOr("selectedTechnique", 0);
 		}
 
 		public void markSyncDirty() {
@@ -107,16 +114,20 @@ public class AnankorModVariables {
 	}
 
 	public record PlayerVariablesSyncMessage(PlayerVariables data) implements CustomPacketPayload {
-		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(AnankorMod.MODID, "player_variables_sync"));
-		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> {
-			TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, buffer.registryAccess());
-			message.data.serialize(output);
-			buffer.writeNbt(output.buildResult());
-		}, (RegistryFriendlyByteBuf buffer) -> {
-			PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new PlayerVariables());
-			message.data.deserialize(TagValueInput.create(ProblemReporter.DISCARDING, buffer.registryAccess(), buffer.readNbt()));
-			return message;
-		});
+		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(
+				Identifier.fromNamespaceAndPath(AnankorMod.MODID, "player_variables_sync"));
+		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec
+				.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> {
+					TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING,
+							buffer.registryAccess());
+					message.data.serialize(output);
+					buffer.writeNbt(output.buildResult());
+				}, (RegistryFriendlyByteBuf buffer) -> {
+					PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new PlayerVariables());
+					message.data.deserialize(TagValueInput.create(ProblemReporter.DISCARDING, buffer.registryAccess(),
+							buffer.readNbt()));
+					return message;
+				});
 
 		@Override
 		public Type<PlayerVariablesSyncMessage> type() {
@@ -126,9 +137,11 @@ public class AnankorModVariables {
 		public static void handleData(final PlayerVariablesSyncMessage message, final IPayloadContext context) {
 			if (context.flow() == PacketFlow.CLIENTBOUND && message.data != null) {
 				context.enqueueWork(() -> {
-					TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, context.player().registryAccess());
+					TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING,
+							context.player().registryAccess());
 					message.data.serialize(output);
-					context.player().getData(PLAYER_VARIABLES).deserialize(TagValueInput.create(ProblemReporter.DISCARDING, context.player().registryAccess(), output.buildResult()));
+					context.player().getData(PLAYER_VARIABLES).deserialize(TagValueInput.create(
+							ProblemReporter.DISCARDING, context.player().registryAccess(), output.buildResult()));
 				}).exceptionally(e -> {
 					context.connection().disconnect(Component.literal(e.getMessage()));
 					return null;

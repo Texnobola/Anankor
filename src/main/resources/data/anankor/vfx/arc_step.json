@@ -1,0 +1,45 @@
+{
+  "type": "collection",
+  "duration": 20,
+  "effects": [
+    {
+      "type": "camera_shake",
+      "duration": 14,
+      "params": {
+        "intensity": 0.45,
+        "frequency": 38.0,
+        "decay": 0.8
+      }
+    },
+    {
+      "type": "screen_flash",
+      "duration": 10,
+      "params": {
+        "color_r": 1.0,
+        "color_g": 0.95,
+        "color_b": 0.35,
+        "opacity": 0.65
+      }
+    },
+    {
+      "type": "speed_lines",
+      "duration": 16,
+      "params": {
+        "density": 0.85,
+        "length": 0.95,
+        "speed": 2.2,
+        "opacity": 0.75,
+        "color_r": 1.0,
+        "color_g": 0.92,
+        "color_b": 0.4
+      }
+    },
+    {
+      "type": "chromatic_aberration",
+      "duration": 15,
+      "params": {
+        "intensity": 0.55
+      }
+    }
+  ]
+}

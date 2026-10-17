@@ -1,0 +1,42 @@
+{
+  "type": "collection",
+  "duration": 60,
+  "effects": [
+    {
+      "type": "vignette",
+      "duration": 60,
+      "params": {
+        "color_r": 0.75,
+        "color_g": 0.05,
+        "color_b": 0.12,
+        "opacity": 0.8,
+        "radius": 0.55,
+        "softness": 0.45
+      }
+    },
+    {
+      "type": "color_grade",
+      "duration": 60,
+      "params": {
+        "saturation": 0.25,
+        "contrast": 1.15
+      }
+    },
+    {
+      "type": "blur",
+      "duration": 40,
+      "params": {
+        "radius": 5.0
+      }
+    },
+    {
+      "type": "camera_shake",
+      "duration": 25,
+      "params": {
+        "intensity": 0.55,
+        "frequency": 16.0,
+        "decay": 0.92
+      }
+    }
+  ]
+}

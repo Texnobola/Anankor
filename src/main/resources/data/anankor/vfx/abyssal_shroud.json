@@ -1,0 +1,47 @@
+{
+  "type": "collection",
+  "duration": 35,
+  "effects": [
+    {
+      "type": "camera_shake",
+      "duration": 18,
+      "params": {
+        "intensity": 0.35,
+        "frequency": 14.0,
+        "decay": 0.88
+      }
+    },
+    {
+      "type": "vignette",
+      "duration": 32,
+      "params": {
+        "radius": 0.65,
+        "softness": 0.5,
+        "color_r": 0.08,
+        "color_g": 0.02,
+        "color_b": 0.15,
+        "opacity": 0.8
+      }
+    },
+    {
+      "type": "vortex",
+      "duration": 25,
+      "params": {
+        "strength": 0.6,
+        "speed": 1.4,
+        "radius": 0.85,
+        "angle": 1.57
+      }
+    },
+    {
+      "type": "screen_flash",
+      "duration": 12,
+      "params": {
+        "color_r": 0.12,
+        "color_g": 0.04,
+        "color_b": 0.22,
+        "opacity": 0.65
+      }
+    }
+  ]
+}

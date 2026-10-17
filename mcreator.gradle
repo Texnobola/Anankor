@@ -50,6 +50,22 @@ dependencies {
     compileOnly("mezz.jei:jei-26.1.2-common-api:29.6.2.38")
     compileOnly("mezz.jei:jei-26.1.2-neoforge-api:29.6.2.38")
     runtimeOnly("mezz.jei:jei-26.1.2-neoforge:29.6.2.38")
+    implementation("maven.modrinth:HBhB8m4j:XSDACr6u")
 }
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
 
 

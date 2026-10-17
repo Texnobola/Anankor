@@ -59,7 +59,14 @@ public class ANTestFluxAbilityProcedure {
 			return;
 		}
 
-		INatureTechnique technique = techniques.get(0);
+		int selected = (int) vars.selectedTechnique;
+		if (selected < 0 || selected >= techniques.size()) {
+			selected = 0;
+			vars.selectedTechnique = 0;
+			vars.markSyncDirty();
+		}
+
+		INatureTechnique technique = techniques.get(selected);
 		double cost = technique.getCost();
 
 		// 3. Deduct Flux (permits overdraft into negative values to trigger Burnout
@@ -74,7 +81,7 @@ public class ANTestFluxAbilityProcedure {
 			double targetX = living.getX() + look.x * 5.0;
 			double targetY = living.getEyeY() + look.y * 5.0;
 			double targetZ = living.getZ() + look.z * 5.0;
-			NatureAbilityDispatcher.dispatchAbility(nature, 0, living, targetX, targetY, targetZ);
+			NatureAbilityDispatcher.dispatchAbility(nature, selected, living, targetX, targetY, targetZ);
 		}
 
 		if (entity instanceof ServerPlayer player) {

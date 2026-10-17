@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import net.mcreator.anankor.nature.techniques.FireTechnique;
+import net.mcreator.anankor.nature.techniques.SpaceTechnique;
+import net.mcreator.anankor.nature.techniques.WaterTechnique;
+import net.mcreator.anankor.nature.techniques.IceTechnique;
+import net.mcreator.anankor.nature.techniques.EarthTechnique;
+import net.mcreator.anankor.nature.techniques.ElectricityTechnique;
+import net.mcreator.anankor.nature.techniques.LightTechnique;
+import net.mcreator.anankor.nature.techniques.DarkTechnique;
 import net.mcreator.anankor.nature.techniques.INatureTechnique;
 import net.mcreator.anankor.nature.techniques.RawFluxTechnique;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,14 +33,40 @@ public class NatureAbilityDispatcher {
         fireTechniques.add(new FireTechnique());
         TECHNIQUES_BY_NATURE.put(NatureType.FIRE, fireTechniques);
 
-        // The remaining 7 canonical Natures (ready to add techniques as you make them)
-        TECHNIQUES_BY_NATURE.put(NatureType.WATER, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.ICE, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.EARTH, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.SPACE, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.ELECTRICITY, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.LIGHT, new ArrayList<>());
-        TECHNIQUES_BY_NATURE.put(NatureType.DARK, new ArrayList<>());
+        // Water
+        List<INatureTechnique> waterTechniques = new ArrayList<>();
+        waterTechniques.add(new WaterTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.WATER, waterTechniques);
+
+        // Ice
+        List<INatureTechnique> iceTechniques = new ArrayList<>();
+        iceTechniques.add(new IceTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.ICE, iceTechniques);
+
+        // Earth
+        List<INatureTechnique> earthTechniques = new ArrayList<>();
+        earthTechniques.add(new EarthTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.EARTH, earthTechniques);
+
+        // Space
+        List<INatureTechnique> spaceTechniques = new ArrayList<>();
+        spaceTechniques.add(new SpaceTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.SPACE, spaceTechniques);
+
+        // Electricity
+        List<INatureTechnique> electricityTechniques = new ArrayList<>();
+        electricityTechniques.add(new ElectricityTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.ELECTRICITY, electricityTechniques);
+
+        // Light
+        List<INatureTechnique> lightTechniques = new ArrayList<>();
+        lightTechniques.add(new LightTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.LIGHT, lightTechniques);
+
+        // Dark
+        List<INatureTechnique> darkTechniques = new ArrayList<>();
+        darkTechniques.add(new DarkTechnique());
+        TECHNIQUES_BY_NATURE.put(NatureType.DARK, darkTechniques);
     }
 
     public static List<INatureTechnique> getTechniques(NatureType nature) {

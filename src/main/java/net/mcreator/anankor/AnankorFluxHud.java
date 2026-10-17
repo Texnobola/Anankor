@@ -22,11 +22,15 @@ import net.mcreator.anankor.AnankorMod;
 /**
  * Anankor Flux HUD v2 (client-side, visual only).
  *
- * Reads the existing PLAYER_VARIABLES attachment (flux / maxflux), which the server
- * already syncs to the client. No gameplay logic, no new variables, no new packets.
- * Registered as a NeoForge GUI layer (RegisterGuiLayersEvent) on the client dist only.
+ * Reads the existing PLAYER_VARIABLES attachment (flux / maxflux), which the
+ * server
+ * already syncs to the client. No gameplay logic, no new variables, no new
+ * packets.
+ * Registered as a NeoForge GUI layer (RegisterGuiLayersEvent) on the client
+ * dist only.
  *
- * Everything is drawn procedurally with GuiGraphicsExtractor.fill / fillGradient / text,
+ * Everything is drawn procedurally with GuiGraphicsExtractor.fill /
+ * fillGradient / text,
  * in GUI-scaled coordinates, so it follows the Minecraft GUI Scale setting.
  */
 @EventBusSubscriber(Dist.CLIENT)
@@ -53,7 +57,8 @@ public class AnankorFluxHud {
 	private static final int BAR_DIVISIONS = 10; // one notch every 10%
 	private static final float SMALL_TEXT_SCALE = 0.75f;
 
-	// ---- Palette (kept deliberately small): charcoal / violet / cyan / crimson ----
+	// ---- Palette (kept deliberately small): charcoal / violet / cyan / crimson
+	// ----
 	private static final int PANEL_BORDER = 0xFF2A1B4A;
 	private static final int PANEL_BG = 0xE00A0812;
 	private static final int PANEL_TOP_GLOW = 0x3A3A1F7A;
@@ -91,8 +96,36 @@ public class AnankorFluxHud {
 	private static final double GLINT_PERIOD_SECONDS = 2.6;
 
 	// ---- Static text (built once) ----
-	private static final FormattedCharSequence HEADER_SEQ = Component.literal("ANANKOR").getVisualOrderText();
-	private static final FormattedCharSequence LABEL_SEQ = Component.literal("FLUX").withStyle(ChatFormatting.BOLD).getVisualOrderText();
+	private static final FormattedCharSequence LABEL_SEQ = Component.literal("FLUX").withStyle(ChatFormatting.BOLD)
+			.getVisualOrderText();
+
+	// ---- Nature Tinting Palettes ----
+	private record Palette(int hilite, int main, int dark, int deep, int cap, int ghost, int accent, int border,
+			int glow) {
+	}
+
+	private static Palette getPaletteForNature(net.mcreator.anankor.nature.NatureType nature) {
+		return switch (nature) {
+			case FIRE -> new Palette(0xFFFFD199, 0xFFFF6B22, 0xFFC93208, 0xFF771202, 0xFFFFF2D4, 0xFF551A08, 0xFFFF7B1A,
+					0xFF4A1A10, 0x3A7A2508);
+			case WATER -> new Palette(0xFFB0F4FF, 0xFF1E9CE6, 0xFF0D5E9E, 0xFF063560, 0xFFE0FAFF, 0xFF0A3355,
+					0xFF28B5FF, 0xFF0D2545, 0x3A0B4268);
+			case ICE -> new Palette(0xFFE6FBFF, 0xFF7FE5FF, 0xFF3DA3C7, 0xFF1E5B75, 0xFFFFFFFF, 0xFF204859, 0xFF9EEFFF,
+					0xFF183747, 0x3A226078);
+			case EARTH -> new Palette(0xFFE0F5A8, 0xFF8DC435, 0xFF58821B, 0xFF2E470C, 0xFFF3FFD4, 0xFF354415,
+					0xFFA9DC3E, 0xFF253314, 0x3A3A5214);
+			case SPACE -> new Palette(0xFFE8B8FF, 0xFFA53DF5, 0xFF6C1DB5, 0xFF3C0C6E, 0xFFF9E6FF, 0xFF3A125E,
+					0xFFC15CFF, 0xFF351252, 0x3A521685);
+			case ELECTRICITY -> new Palette(0xFFFFFDC2, 0xFFFFDE26, 0xFFBFA010, 0xFF6E5A04, 0xFFFFFFE8, 0xFF524408,
+					0xFFFFEA52, 0xFF3D350A, 0x3A6E5C0A);
+			case LIGHT -> new Palette(0xFFFFFFFF, 0xFFFFF2A8, 0xFFD4C065, 0xFF7A6B29, 0xFFFFFFFF, 0xFF524922,
+					0xFFFFF5B8, 0xFF3D371E, 0x3A756C2B);
+			case DARK -> new Palette(0xFF9E84BD, 0xFF56357A, 0xFF321A4F, 0xFF180A29, 0xFFD4BFF2, 0xFF241436, 0xFF7E52AF,
+					0xFF231433, 0x3A381657);
+			default -> new Palette(CYAN_HILITE, CYAN_MAIN, CYAN_DARK, CYAN_DEEP, CYAN_CAP, CYAN_GHOST, PANEL_ACCENT,
+					PANEL_BORDER, PANEL_TOP_GLOW);
+		};
+	}
 
 	// ---- Visual-only animation / cache state ----
 	private static float displayedFraction = -1.0f;
@@ -105,18 +138,23 @@ public class AnankorFluxHud {
 	private static FormattedCharSequence maxSeq = null;
 	private static int currentWidth = 0;
 	private static int maxWidth = 0;
-	private static int headerWidth = -1;
+
+	private static net.mcreator.anankor.nature.NatureType cachedNature = null;
+	private static FormattedCharSequence cachedHeaderSeq = null;
+	private static int cachedHeaderWidth = -1;
 
 	@SubscribeEvent
 	public static void registerGuiLayers(RegisterGuiLayersEvent event) {
-		// Rendered after the vanilla hotbar/health/XP/effects layers, but below chat and the tab list.
+		// Rendered after the vanilla hotbar/health/XP/effects layers, but below chat
+		// and the tab list.
 		event.registerBelow(VanillaGuiLayers.CHAT, LAYER_ID, AnankorFluxHud::render);
 	}
 
 	private static void render(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
 		Minecraft mc = Minecraft.getInstance();
 		Player player = mc.player;
-		// Modded layers are not gated by vanilla's "hide GUI" (F1) flag, so check it ourselves.
+		// Modded layers are not gated by vanilla's "hide GUI" (F1) flag, so check it
+		// ourselves.
 		if (player == null || mc.options.hideGui || player.isSpectator())
 			return;
 
@@ -136,51 +174,62 @@ public class AnankorFluxHud {
 		Font font = mc.font;
 		refreshTextCache(font, shownFlux, shownMax);
 
+		net.mcreator.anankor.nature.NatureType nature = net.mcreator.anankor.nature.NatureType.fromString(vars.Nature);
+		refreshHeaderCache(font, nature);
+
 		double seconds = now / 1.0E9;
 		boolean low = target <= LOW_FLUX_THRESHOLD;
 		float pulse = low ? 0.5f + 0.5f * (float) Math.sin(seconds * (Math.PI * 2.0) / PULSE_PERIOD_SECONDS) : 0.0f;
 
-		// Active energy palette (cyan normally, crimson when dangerously low).
-		int hilite = low ? mix(RED_HILITE, RED_CAP, pulse * 0.4f) : CYAN_HILITE;
-		int main = low ? mix(RED_MAIN, RED_HILITE, pulse * 0.22f) : CYAN_MAIN;
-		int dark = low ? RED_DARK : CYAN_DARK;
-		int deep = low ? RED_DEEP : CYAN_DEEP;
-		int cap = low ? RED_CAP : CYAN_CAP;
-		int ghostColor = low ? RED_GHOST : CYAN_GHOST;
-		int frameColor = low ? mix(PANEL_BORDER, RED_BORDER, 0.45f + 0.45f * pulse) : PANEL_BORDER;
-		int accentColor = low ? mix(PANEL_ACCENT, RED_MAIN, 0.75f) : PANEL_ACCENT;
+		// Thematic Nature palette, smoothly blending into crimson when dangerously low
+		Palette pal = getPaletteForNature(nature);
+		int hilite = low ? mix(RED_HILITE, RED_CAP, pulse * 0.4f) : pal.hilite();
+		int main = low ? mix(RED_MAIN, RED_HILITE, pulse * 0.22f) : pal.main();
+		int dark = low ? RED_DARK : pal.dark();
+		int deep = low ? RED_DEEP : pal.deep();
+		int cap = low ? RED_CAP : pal.cap();
+		int ghostColor = low ? RED_GHOST : pal.ghost();
+		int frameColor = low ? mix(pal.border(), RED_BORDER, 0.45f + 0.45f * pulse) : pal.border();
+		int accentColor = low ? mix(pal.accent(), RED_MAIN, 0.75f) : pal.accent();
+		int topGlow = low ? 0x3A5A1422 : pal.glow();
 
 		int x = MARGIN_X;
 		int y = MARGIN_Y;
 		int contentLeft = x + CONTENT_X;
 		int contentRight = x + WIDTH - CONTENT_RIGHT_PAD;
 
-		drawFrame(graphics, x, y, frameColor, accentColor);
+		drawFrame(graphics, x, y, frameColor, accentColor, topGlow);
 		drawMarker(graphics, x, y, fraction, main, hilite);
-		drawHeader(graphics, font, x, y, contentLeft, contentRight);
+		drawHeader(graphics, font, x, y, contentLeft, contentRight, accentColor);
 		drawLabels(graphics, font, y, contentLeft, contentRight, low);
-		drawBar(graphics, contentLeft, y + BAR_Y, contentRight, fraction, ghost, now, seconds, hilite, main, dark, deep, cap, ghostColor);
+		drawBar(graphics, contentLeft, y + BAR_Y, contentRight, fraction, ghost, now, seconds, hilite, main, dark, deep,
+				cap, ghostColor);
 	}
 
 	// ------------------------------------------------------------------ frame
 
-	private static void drawFrame(GuiGraphicsExtractor g, int x, int y, int borderColor, int accentColor) {
-		// Layered border: outer shape in border color, inner shape (inset 1px) in near-black.
+	private static void drawFrame(GuiGraphicsExtractor g, int x, int y, int borderColor, int accentColor, int topGlow) {
+		// Layered border: outer shape in border color, inner shape (inset 1px) in
+		// near-black.
 		chamferedRect(g, x, y, WIDTH, HEIGHT, CUT, borderColor);
 		chamferedRect(g, x + 1, y + 1, WIDTH - 2, HEIGHT - 2, CUT - 1, PANEL_BG);
 
-		// Subtle internal shading: faint violet glow at the top, shadow at the bottom.
+		// Subtle internal shading: faint glow at the top, shadow at the bottom.
 		// (Kept clear of the cut corners.)
-		g.fillGradient(x + CUT + 1, y + 2, x + WIDTH - 2, y + 11, PANEL_TOP_GLOW, 0x003A1F7A);
+		g.fillGradient(x + CUT + 1, y + 2, x + WIDTH - 2, y + 11, topGlow, 0x00000000);
 		g.fillGradient(x + 2, y + HEIGHT - 10, x + WIDTH - CUT - 1, y + HEIGHT - 2, 0x00000000, 0x66000000);
 
-		// Thin bright accent lines: top edge, a short tick on the left edge, and the bottom-right corner.
+		// Thin bright accent lines: top edge, a short tick on the left edge, and the
+		// bottom-right corner.
 		g.fill(x + CUT + 3, y, x + CUT + 3 + 34, y + 1, accentColor);
 		g.fill(x, y + CUT + 3, x + 1, y + CUT + 3 + 9, accentColor);
 		g.fill(x + WIDTH - CUT - 18, y + HEIGHT - 1, x + WIDTH - CUT, y + HEIGHT, accentColor);
 	}
 
-	/** Rectangle with the top-left and bottom-right corners cut diagonally. Uses 2*cut+1 fills. */
+	/**
+	 * Rectangle with the top-left and bottom-right corners cut diagonally. Uses
+	 * 2*cut+1 fills.
+	 */
 	private static void chamferedRect(GuiGraphicsExtractor g, int x, int y, int w, int h, int cut, int color) {
 		g.fill(x, y + cut, x + w, y + h - cut, color);
 		for (int r = 0; r < cut; r++) {
@@ -191,7 +240,10 @@ public class AnankorFluxHud {
 
 	// ----------------------------------------------------------------- marker
 
-	/** Vertical 5-segment energy indicator on the left; fills bottom-up with the Flux fraction. */
+	/**
+	 * Vertical 5-segment energy indicator on the left; fills bottom-up with the
+	 * Flux fraction.
+	 */
 	private static void drawMarker(GuiGraphicsExtractor g, int x, int y, float fraction, int main, int hilite) {
 		int left = x + MARKER_X;
 		for (int i = 0; i < MARKER_SEGMENTS; i++) {
@@ -214,27 +266,40 @@ public class AnankorFluxHud {
 
 	// ------------------------------------------------------------------- text
 
-	private static void drawHeader(GuiGraphicsExtractor g, Font font, int x, int y, int left, int right) {
-		if (headerWidth < 0)
-			headerWidth = (int) Math.ceil(font.width(HEADER_SEQ) * SMALL_TEXT_SCALE);
-
+	private static void drawHeader(GuiGraphicsExtractor g, Font font, int x, int y, int left, int right,
+			int headerColor) {
 		// Small secondary identifier, drawn at 0.75 scale.
 		g.pose().pushMatrix();
 		g.pose().translate((float) left, (float) (y + HEADER_Y));
 		g.pose().scale(SMALL_TEXT_SCALE, SMALL_TEXT_SCALE);
-		g.text(font, HEADER_SEQ, 0, 0, TEXT_HEADER, false);
+		if (cachedHeaderSeq != null) {
+			g.text(font, cachedHeaderSeq, 0, 0, headerColor, false);
+		}
 		g.pose().popMatrix();
 
 		// Thin separator running out to the right edge, closed by a small end tick.
-		g.fill(left + headerWidth + 4, y + HEADER_Y + 3, right, y + HEADER_Y + 4, SEPARATOR);
-		g.fill(right - 1, y + HEADER_Y + 1, right, y + HEADER_Y + 6, TEXT_HEADER);
+		int w = cachedHeaderWidth > 0 ? cachedHeaderWidth : 35;
+		g.fill(left + w + 4, y + HEADER_Y + 3, right, y + HEADER_Y + 4, SEPARATOR);
+		g.fill(right - 1, y + HEADER_Y + 1, right, y + HEADER_Y + 6, headerColor);
+	}
+
+	private static void refreshHeaderCache(Font font, net.mcreator.anankor.nature.NatureType nature) {
+		if (nature == cachedNature && cachedHeaderSeq != null)
+			return;
+		cachedNature = nature;
+		String title = (nature != null && nature.isAligned())
+				? "ANANKOR • " + nature.getDisplayName().toUpperCase(java.util.Locale.ROOT)
+				: "ANANKOR";
+		cachedHeaderSeq = Component.literal(title).getVisualOrderText();
+		cachedHeaderWidth = (int) Math.ceil(font.width(cachedHeaderSeq) * SMALL_TEXT_SCALE);
 	}
 
 	private static void drawLabels(GuiGraphicsExtractor g, Font font, int y, int left, int right, boolean low) {
 		int textY = y + LABEL_Y;
 		g.text(font, LABEL_SEQ, left, textY, TEXT_LABEL, true);
 
-		// "current / max": current is bright, "/ max" is dimmed so it never overpowers FLUX.
+		// "current / max": current is bright, "/ max" is dimmed so it never overpowers
+		// FLUX.
 		int maxX = right - maxWidth;
 		int currentX = maxX - currentWidth;
 		g.text(font, currentSeq, currentX, textY, low ? TEXT_CURRENT_LOW : TEXT_CURRENT, true);
@@ -254,7 +319,8 @@ public class AnankorFluxHud {
 
 	// -------------------------------------------------------------------- bar
 
-	private static void drawBar(GuiGraphicsExtractor g, int left, int top, int right, float fraction, float ghost, long now, double seconds, int hilite, int main, int dark, int deep, int cap,
+	private static void drawBar(GuiGraphicsExtractor g, int left, int top, int right, float fraction, float ghost,
+			long now, double seconds, int hilite, int main, int dark, int deep, int cap,
 			int ghostColor) {
 		int bottom = top + BAR_HEIGHT;
 
@@ -268,7 +334,8 @@ public class AnankorFluxHud {
 		int innerBottom = bottom - 1; // interior is 7px tall
 		int innerWidth = innerRight - innerLeft;
 
-		// Dark empty track with an inner shadow along the top and faint segment divisions.
+		// Dark empty track with an inner shadow along the top and faint segment
+		// divisions.
 		g.fill(innerLeft, innerTop, innerRight, innerBottom, TRACK);
 		g.fill(innerLeft, innerTop, innerRight, innerTop + 1, TRACK_SHADOW);
 		for (int i = 1; i < BAR_DIVISIONS; i++) {
@@ -314,15 +381,20 @@ public class AnankorFluxHud {
 			fillClipped(g, gx + 5, innerTop + 1, gx + 7, innerTop + 4, innerLeft, capX, glintSoft);
 		}
 
-		// Sharp terminal end-cap, with a tiny nub above the bar and a faint 1px lead-in ahead of it.
+		// Sharp terminal end-cap, with a tiny nub above the bar and a faint 1px lead-in
+		// ahead of it.
 		g.fill(capX, innerTop, fillRight, innerBottom, cap);
 		g.fill(capX, top - 1, fillRight, top, cap);
 		if (fillRight < innerRight)
 			g.fill(fillRight, innerTop + 1, fillRight + 1, innerBottom - 1, (main & 0x00FFFFFF) | 0x55000000);
 	}
 
-	/** fill() clamped horizontally to [clipLeft, clipRight); does nothing if nothing remains. */
-	private static void fillClipped(GuiGraphicsExtractor g, int x1, int y1, int x2, int y2, int clipLeft, int clipRight, int color) {
+	/**
+	 * fill() clamped horizontally to [clipLeft, clipRight); does nothing if nothing
+	 * remains.
+	 */
+	private static void fillClipped(GuiGraphicsExtractor g, int x1, int y1, int x2, int y2, int clipLeft, int clipRight,
+			int color) {
 		int l = Math.max(x1, clipLeft);
 		int r = Math.min(x2, clipRight);
 		if (r > l)
@@ -331,7 +403,10 @@ public class AnankorFluxHud {
 
 	// ---------------------------------------------------------------- helpers
 
-	/** flux / maxflux, clamped to [0, 1]. Safe against maxflux <= 0, NaN and infinity. */
+	/**
+	 * flux / maxflux, clamped to [0, 1]. Safe against maxflux <= 0, NaN and
+	 * infinity.
+	 */
 	private static float computeFraction(double flux, double maxFlux) {
 		if (!(maxFlux > 0.0) || Double.isNaN(flux) || Double.isInfinite(maxFlux))
 			return 0.0f;
@@ -343,7 +418,8 @@ public class AnankorFluxHud {
 
 	/**
 	 * Frame-rate independent exponential easing (visual only).
-	 * The main bar glides to the real value; the ghost trail follows more slowly when Flux drops.
+	 * The main bar glides to the real value; the ghost trail follows more slowly
+	 * when Flux drops.
 	 */
 	private static void step(float target, long now) {
 		if (displayedFraction < 0.0f || ghostFraction < 0.0f || lastRenderNanos == 0L) {
