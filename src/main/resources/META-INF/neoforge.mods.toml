@@ -21,14 +21,14 @@ description="I'm lazy"
 [[dependencies.anankor]]
     modId="neoforge"
     type="required"
-    versionRange="[26.1.2.109,)"
+    versionRange="[26.3,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.anankor]]
     modId="minecraft"
     type="required"
-    versionRange="[26.1.2]"
+    versionRange="[26.3, 26.4)"
     ordering="AFTER"
     side="BOTH"
 

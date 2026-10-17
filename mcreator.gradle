@@ -6,8 +6,8 @@ maven {
 }
 
 dependencies {
-  runtimeOnly "top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2"
-  compileOnly "top.theillusivec4.curios:curios-neoforge:15.0.0-beta.2+26.1.2:api"
+  runtimeOnly "top.theillusivec4.curios:curios-neoforge:17.0.0-beta.3+26.3"
+  compileOnly "top.theillusivec4.curios:curios-neoforge:17.0.0-beta.3+26.3:api"
 }
 
 
@@ -26,8 +26,8 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.geckolib:geckolib-neoforge-26.1.2:5.5.2'
-  interfaceInjectionData 'com.geckolib:geckolib-neoforge-26.1.2:5.5.2'
+  implementation 'com.geckolib:geckolib-neoforge-26.3:5.5.7'
+  interfaceInjectionData 'com.geckolib:geckolib-neoforge-26.3:5.5.7'
 }
 
 
@@ -47,23 +47,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("mezz.jei:jei-26.1.2-common-api:29.6.2.38")
-    compileOnly("mezz.jei:jei-26.1.2-neoforge-api:29.6.2.38")
-    runtimeOnly("mezz.jei:jei-26.1.2-neoforge:29.6.2.38")
-    implementation("maven.modrinth:HBhB8m4j:XSDACr6u")
-}
-
-repositories {
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
-        }
-    }
+    compileOnly("mezz.jei:jei-26.3-common-api:31.15.0.79")
+    compileOnly("mezz.jei:jei-26.3-neoforge-api:31.15.0.79")
+    runtimeOnly("mezz.jei:jei-26.3-neoforge:31.15.0.79")
 }
 

@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#minecraft:is_overworld",
-  "features": "anankor:patch_flux_bush",
-  "step": "vegetal_decoration"
-}

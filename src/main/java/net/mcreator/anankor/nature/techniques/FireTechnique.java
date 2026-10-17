@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -60,11 +59,6 @@ public class FireTechnique implements INatureTechnique {
 				target.igniteForSeconds(3.0f);
 				target.knockback(0.9, -look.x, -look.z);
 			}
-		}
-
-		// 4. VFX-Weaver Cinematic Screen & World Effects
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "thermal_jet"), player.position(), Map.of(), null);
 		}
 	}
 }

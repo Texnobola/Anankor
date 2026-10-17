@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -69,12 +68,6 @@ public class WaterTechnique implements INatureTechnique {
 				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 80, 0));
 				target.knockback(1.4, -look.x, -look.z);
 			}
-		}
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "tidal_surge"), player.position(),
-					Map.of(), null);
 		}
 	}
 }

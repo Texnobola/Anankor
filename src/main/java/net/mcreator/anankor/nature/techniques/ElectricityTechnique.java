@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -66,12 +65,6 @@ public class ElectricityTechnique implements INatureTechnique {
 				target.hurt(level.damageSources().lightningBolt(), 7.0f);
 				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 40, 2)); // Paralyzing shock
 			}
-		}
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "arc_step"), player.position(),
-					Map.of(), null);
 		}
 	}
 }

@@ -61,10 +61,6 @@ public class AnfluxplayertickProcedure {
 								: totalSeconds + "s";
 						player.sendSystemMessage(net.minecraft.network.chat.Component
 								.literal("§4[BURNOUT] Flux channels collapsed! Recovery: §e" + formattedTime), true);
-
-						dev.vfxweaver.api.VFXAPI.sendEffect(player,
-								net.minecraft.resources.Identifier.fromNamespaceAndPath("anankor", "burnout_collapse"),
-								player.position(), java.util.Map.of(), null);
 					}
 				}
 				{

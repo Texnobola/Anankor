@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -52,12 +51,6 @@ public class IceTechnique implements INatureTechnique {
 				target.hurt(level.damageSources().freeze(), 5.0f);
 				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 100, 3)); // Slowness IV
 			}
-		}
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "glacial_anchor"), player.position(),
-					Map.of(), null);
 		}
 	}
 }

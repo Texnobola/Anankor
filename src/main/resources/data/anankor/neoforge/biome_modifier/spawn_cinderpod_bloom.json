@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#minecraft:is_nether",
-  "features": "anankor:patch_cinderpod_bloom",
-  "step": "vegetal_decoration"
-}

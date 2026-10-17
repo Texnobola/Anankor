@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -53,11 +52,6 @@ public class EarthTechnique implements INatureTechnique {
 				target.setDeltaMovement(vel.x * 0.5, 0.75, vel.z * 0.5);
 				target.hurtMarked = true;
 			}
-		}
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "seismic_breaker"), player.position(), Map.of(), null);
 		}
 	}
 }

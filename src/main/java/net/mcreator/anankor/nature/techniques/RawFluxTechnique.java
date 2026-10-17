@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -57,11 +56,6 @@ public class RawFluxTechnique implements INatureTechnique {
 				target.hurt(level.damageSources().mobAttack(executor), 5.5f);
 				target.hurtMarked = true;
 			}
-		}
-
-		// 3. VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "flux_surge"), pos, Map.of(), null);
 		}
 	}
 }

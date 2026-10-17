@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.HitResult;
@@ -81,10 +80,5 @@ public class SpaceTechnique implements INatureTechnique {
 		// Destination sound
 		executor.level().playSound(null, destination.x, destination.y, destination.z,
 				SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS, 0.8f, 1.4f);
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "spatial_fold"), destination, Map.of(), null);
-		}
 	}
 }

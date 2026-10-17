@@ -1,6 +1,5 @@
 package net.mcreator.anankor.nature.techniques;
 
-import dev.vfxweaver.api.VFXAPI;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -59,12 +58,6 @@ public class DarkTechnique implements INatureTechnique {
 				target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 0));
 				target.addEffect(new MobEffectInstance(MobEffects.WITHER, 80, 0));
 			}
-		}
-
-		// VFX-Weaver trigger
-		if (executor instanceof ServerPlayer player) {
-			VFXAPI.sendEffect(player, Identifier.fromNamespaceAndPath("anankor", "abyssal_shroud"), player.position(),
-					Map.of(), null);
 		}
 	}
 }
