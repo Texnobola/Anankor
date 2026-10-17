@@ -1,10 +1,10 @@
-{
+1{
   "mod_elements": [
     {
       "name": "Anfluxplayertick",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "anfluxplayertick",
       "metadata": {
         "dependencies": [
@@ -34,7 +34,7 @@
       "name": "ANTestFluxAbility",
       "type": "procedure",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "an_test_flux_ability",
       "metadata": {
         "dependencies": [

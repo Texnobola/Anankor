@@ -36,16 +36,27 @@ public class AnfluxplayertickProcedure {
 			}
 		} else {
 			if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux <= 0) {
-				if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux >= -20) {
-					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(AnankorModMobEffects.BURNOUT, 1200, 0));
+				double currentFlux = entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux;
+				int burnoutDuration;
+				if (currentFlux >= -20) {
+					burnoutDuration = 1200;
+				} else if (currentFlux >= -1100) {
+					burnoutDuration = (int) (1200 + ((0 - currentFlux) - 20) * 10);
 				} else {
-					if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux >= -1100) {
-						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-							_entity.addEffect(new MobEffectInstance(AnankorModMobEffects.BURNOUT, (int) (1200 + ((0 - entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux) - 20) * 10), 0));
-					} else {
-						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-							_entity.addEffect(new MobEffectInstance(AnankorModMobEffects.BURNOUT, 12000, 0));
+					burnoutDuration = 12000;
+				}
+				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) {
+					_entity.addEffect(new MobEffectInstance(AnankorModMobEffects.BURNOUT, burnoutDuration, 0));
+					if (_entity instanceof net.minecraft.server.level.ServerPlayer player) {
+						player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+								net.minecraft.sounds.SoundEvents.SHIELD_BREAK.value(),
+								net.minecraft.sounds.SoundSource.PLAYERS, 0.9f, 0.7f);
+						int totalSeconds = burnoutDuration / 20;
+						String formattedTime = totalSeconds >= 60
+								? (totalSeconds / 60) + "m " + (totalSeconds % 60) + "s"
+								: totalSeconds + "s";
+						player.sendSystemMessage(net.minecraft.network.chat.Component
+								.literal("§4[BURNOUT] Flux channels collapsed! Recovery: §e" + formattedTime), true);
 					}
 				}
 				{
@@ -55,15 +66,18 @@ public class AnfluxplayertickProcedure {
 					_vars.markSyncDirty();
 				}
 			} else {
-				if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux < entity.getData(AnankorModVariables.PLAYER_VARIABLES).maxflux) {
+				if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux < entity
+						.getData(AnankorModVariables.PLAYER_VARIABLES).maxflux) {
 					{
-						AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
+						AnankorModVariables.PlayerVariables _vars = entity
+								.getData(AnankorModVariables.PLAYER_VARIABLES);
 						_vars.FluxRegenTimer = entity.getData(AnankorModVariables.PLAYER_VARIABLES).FluxRegenTimer + 1;
 						_vars.markSyncDirty();
 					}
 					if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).FluxRegenTimer >= 20) {
 						{
-							AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
+							AnankorModVariables.PlayerVariables _vars = entity
+									.getData(AnankorModVariables.PLAYER_VARIABLES);
 							_vars.flux = entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux + 1;
 							_vars.FluxRegenTimer = 0;
 							_vars.markSyncDirty();
@@ -71,7 +85,8 @@ public class AnfluxplayertickProcedure {
 					}
 				}
 			}
-			if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux >= entity.getData(AnankorModVariables.PLAYER_VARIABLES).maxflux) {
+			if (entity.getData(AnankorModVariables.PLAYER_VARIABLES).flux >= entity
+					.getData(AnankorModVariables.PLAYER_VARIABLES).maxflux) {
 				{
 					AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
 					_vars.flux = entity.getData(AnankorModVariables.PLAYER_VARIABLES).maxflux;
