@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "anankor:block/cinderpod_bloom_stage0"
+  }
+}

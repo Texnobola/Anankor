@@ -1,4 +1,11 @@
 {
-  "key.anankor.testability": "Testability",
-  "effect.anankor.burnout": "Burnout"
+  "key.anankor.testability": "Cast Technique",
+  "key.anankor.cycle_technique": "Cycle Technique",
+  "key.anankor.open_menu": "Cosmological Communion Menu",
+  "effect.anankor.burnout": "Burnout",
+  "block.anankor.flux_bush": "Luminescent Flux Bush",
+  "item.anankor.flux_berry": "Flux Berry",
+  "block.anankor.cinderpod_bloom": "Cinderpod Bloom",
+  "item.anankor.cinderpod_pulp": "Cinderpod Pulp",
+  "itemGroup.anankor": "ANANKOR"
 }

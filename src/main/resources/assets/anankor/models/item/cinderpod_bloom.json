@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "anankor:block/cinderpod_bloom_stage2"
+  }
+}

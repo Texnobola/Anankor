@@ -59,6 +59,7 @@ public class AnankorMod {
 		AnankorModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		AnankorModMobEffects.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
+		net.mcreator.anankor.flora.AnankorFloraRegistry.register(modEventBus);
 		// End of user code block mod init
 	}
 
@@ -67,24 +68,30 @@ public class AnankorMod {
 	private static boolean networkingRegistered = false;
 	private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
 
-	private record NetworkMessage<T extends CustomPacketPayload>(StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+	private record NetworkMessage<T extends CustomPacketPayload>(StreamCodec<? extends FriendlyByteBuf, T> reader,
+			IPayloadHandler<T> handler) {
 	}
 
-	public static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id, StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
+	public static <T extends CustomPacketPayload> void addNetworkMessage(CustomPacketPayload.Type<T> id,
+			StreamCodec<? extends FriendlyByteBuf, T> reader, IPayloadHandler<T> handler) {
 		if (networkingRegistered)
-			throw new IllegalStateException("Cannot register new network messages after networking has been registered");
+			throw new IllegalStateException(
+					"Cannot register new network messages after networking has been registered");
 		MESSAGES.put(id, new NetworkMessage<>(reader, handler));
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
 		final PayloadRegistrar registrar = event.registrar(MODID);
-		MESSAGES.forEach((id, networkMessage) -> registrar.playBidirectional(id, ((NetworkMessage) networkMessage).reader(), ((NetworkMessage) networkMessage).handler(), ((NetworkMessage) networkMessage).handler()));
+		MESSAGES.forEach(
+				(id, networkMessage) -> registrar.playBidirectional(id, ((NetworkMessage) networkMessage).reader(),
+						((NetworkMessage) networkMessage).handler(), ((NetworkMessage) networkMessage).handler()));
 		networkingRegistered = true;
 	}
 
 	private static final Queue<IntObjectPair<Runnable>> workToBeScheduled = new ConcurrentLinkedQueue<>();
-	private static final PriorityQueue<TickTask> workQueue = new PriorityQueue<>(Comparator.comparingInt(TickTask::getTick));
+	private static final PriorityQueue<TickTask> workQueue = new PriorityQueue<>(
+			Comparator.comparingInt(TickTask::getTick));
 
 	public static void queueServerWork(int delay, Runnable action) {
 		if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)
@@ -112,8 +119,10 @@ public class AnankorMod {
 			try {
 				if (minecraft == null || playerHandle == null) {
 					Class<?> minecraftClass = Class.forName("net.minecraft.client.Minecraft");
-					minecraft = MethodHandles.publicLookup().findStatic(minecraftClass, "getInstance", MethodType.methodType(minecraftClass)).invoke();
-					playerHandle = MethodHandles.publicLookup().findGetter(minecraftClass, "player", Class.forName("net.minecraft.client.player.LocalPlayer"));
+					minecraft = MethodHandles.publicLookup()
+							.findStatic(minecraftClass, "getInstance", MethodType.methodType(minecraftClass)).invoke();
+					playerHandle = MethodHandles.publicLookup().findGetter(minecraftClass, "player",
+							Class.forName("net.minecraft.client.player.LocalPlayer"));
 				}
 				return (Player) playerHandle.invoke(minecraft);
 			} catch (Throwable e) {
@@ -126,7 +135,8 @@ public class AnankorMod {
 	}
 
 	public static class CuriosApiHelper {
-		private static final EntityCapability<ResourceHandler, Void> CURIOS_INVENTORY = EntityCapability.createVoid(Identifier.fromNamespaceAndPath("curios", "item_handler"), ResourceHandler.class);
+		private static final EntityCapability<ResourceHandler, Void> CURIOS_INVENTORY = EntityCapability
+				.createVoid(Identifier.fromNamespaceAndPath("curios", "item_handler"), ResourceHandler.class);
 
 		public static ResourceHandler<ItemResource> getCuriosInventory(Player player) {
 			if (ModList.get().isLoaded("curios")) {
@@ -136,7 +146,9 @@ public class AnankorMod {
 		}
 
 		public static boolean isCurioItem(ItemStack itemstack) {
-			return BuiltInRegistries.ITEM.getTags().filter(named -> named.key().location().getNamespace().equals("curios")).anyMatch(named -> itemstack.is(named.key()));
+			return BuiltInRegistries.ITEM.getTags()
+					.filter(named -> named.key().location().getNamespace().equals("curios"))
+					.anyMatch(named -> itemstack.is(named.key()));
 		}
 	}
 }

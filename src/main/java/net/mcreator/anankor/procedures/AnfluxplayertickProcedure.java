@@ -28,6 +28,10 @@ public class AnfluxplayertickProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
+
+		if (entity instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+			net.mcreator.anankor.flora.FluxMeditationHandler.handlePlayerTick(serverPlayer);
+		}
 		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(AnankorModMobEffects.BURNOUT)) {
 			{
 				AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
