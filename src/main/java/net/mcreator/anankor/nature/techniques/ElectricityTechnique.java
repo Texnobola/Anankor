@@ -41,7 +41,7 @@ public class ElectricityTechnique implements INatureTechnique {
 		// Propel rapidly forward
 		Vec3 dashVel = new Vec3(look.x * 2.2, Math.max(0.1, look.y * 1.2), look.z * 2.2);
 		executor.setDeltaMovement(dashVel);
-		executor.hurtMarked = true;
+		executor.syncVelocity = true;
 
 		// Sound
 		executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),

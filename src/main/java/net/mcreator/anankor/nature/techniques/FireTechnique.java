@@ -38,7 +38,7 @@ public class FireTechnique implements INatureTechnique {
 		// 1. Directional velocity propulsion
 		Vec3 currentVelocity = executor.getDeltaMovement();
 		executor.setDeltaMovement(currentVelocity.add(look.x * 1.45, Math.max(0.15, look.y * 0.75 + 0.15), look.z * 1.45));
-		executor.hurtMarked = true;
+		executor.syncVelocity = true;
 
 		// 2. Audio & Visuals
 		executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
@@ -57,7 +57,7 @@ public class FireTechnique implements INatureTechnique {
 			for (LivingEntity target : targets) {
 				target.hurt(level.damageSources().mobAttack(executor), 7.0f);
 				target.igniteForSeconds(3.0f);
-				target.knockback(0.9, -look.x, -look.z);
+				target.knockback(0.9, -look.x, -look.z, level.damageSources().mobAttack(executor), 1.0f);
 			}
 		}
 	}

@@ -44,7 +44,7 @@ public abstract class LivingEntityRendererMixin {
 			Player player = (Player) renderState.getRenderData(AnankorModPlayerAnimationAPI.ClientAttachments.PLAYER);
 			if (player == null)
 				return originalLayers;
-			if (mc.player == player && (mc.screen == null || mc.screen instanceof ChatScreen)) {
+			if (mc.player == player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen)) {
 				CompoundTag playerData = player.getPersistentData();
 				if (playerData.getBooleanOr("FirstPersonAnimation", false)) {
 					playerData.putInt("setNullRender", 1);

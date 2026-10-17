@@ -66,7 +66,7 @@ public class WaterTechnique implements INatureTechnique {
 				target.clearFire();
 				target.hurt(level.damageSources().mobAttack(executor), 6.5f);
 				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 80, 0));
-				target.knockback(1.4, -look.x, -look.z);
+				target.knockback(1.4, -look.x, -look.z, level.damageSources().mobAttack(executor), 1.0f);
 			}
 		}
 	}

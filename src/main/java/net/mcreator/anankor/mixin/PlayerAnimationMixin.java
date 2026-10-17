@@ -51,7 +51,7 @@ public abstract class PlayerAnimationMixin {
 		if (animation == null)
 			return;
 		if (animation.bones.get("left_arm") != null || animation.bones.get("torso") != null || animation.bones.get("right_arm") != null)
-			renderState.attackTime = 0;
+			renderState.swingAnimation = 0;
 		if (animation.bones.get("left_leg") != null || animation.bones.get("right_leg") != null)
 			renderState.isCrouching = false;
 	}
@@ -72,7 +72,7 @@ public abstract class PlayerAnimationMixin {
 		CompoundTag data = player.getPersistentData();
 		String playingAnimation = data.getStringOr("PlayerCurrentAnimation", "");
 		boolean overrideAnimation = data.getBooleanOr("OverrideCurrentAnimation", false);
-		boolean firstPerson = data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.screen == null || mc.screen instanceof ChatScreen);
+		boolean firstPerson = data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen);
 		if (data.getBooleanOr("ResetPlayerAnimation", false)) {
 			data.remove("ResetPlayerAnimation");
 			data.remove("LastTickTime");
@@ -86,7 +86,7 @@ public abstract class PlayerAnimationMixin {
 		if (firstPerson)
 			hideModelParts(model, true);
 		if (overrideAnimation) {
-			firstPerson = data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.screen == null || mc.screen instanceof ChatScreen);
+			firstPerson = data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen);
 			AnankorModPlayerAnimationAPI.active_animations.put(player, null);
 			data.remove("PlayerAnimationProgress");
 			data.remove("LastAnimationProgress");
@@ -168,7 +168,7 @@ public abstract class PlayerAnimationMixin {
 			data.put("PlayedSoundTimes", playedSoundsTag);
 			data.putFloat("LastAnimationProgress", animationProgress);
 		}
-		if (!data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.screen == null || mc.screen instanceof ChatScreen))
+		if (!data.getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen))
 			return;
 		// Apply each bone's transformations
 		for (Map.Entry<String, AnankorModPlayerAnimationAPI.PlayerBone> entry : animation.bones.entrySet()) {

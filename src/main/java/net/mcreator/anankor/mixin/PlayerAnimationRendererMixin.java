@@ -47,7 +47,7 @@ public abstract class PlayerAnimationRendererMixin extends LivingEntityRenderer<
 		if (animation == null)
 			return;
 		AnankorModPlayerAnimationAPI.PlayerBone bone = animation.bones.get("body");
-		boolean firstPerson = player.getPersistentData().getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.screen == null || mc.screen instanceof ChatScreen);
+		boolean firstPerson = player.getPersistentData().getBooleanOr("FirstPersonAnimation", false) && mc.options.getCameraType().isFirstPerson() && player == mc.player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen);
 		if (bone == null && !firstPerson)
 			return;
 		if (bone != null) {
@@ -64,10 +64,10 @@ public abstract class PlayerAnimationRendererMixin extends LivingEntityRenderer<
 			Vec3 rotation = AnankorModPlayerAnimationAPI.PlayerBone.interpolate(bone.rotations, animationProgress, player);
 			if (rotation != null) {
 				if (!firstPerson)
-					poseStack.mulPose(Axis.ZP.rotationDegrees((float) rotation.z));
-				poseStack.mulPose(Axis.YP.rotationDegrees((float) -rotation.y));
+					poseStack.rotateDegrees(Axis.ZP, (float) rotation.z);
+				poseStack.rotateDegrees(Axis.YP, (float) -rotation.y);
 				if (!firstPerson)
-					poseStack.mulPose(Axis.XP.rotationDegrees((float) -rotation.x));
+					poseStack.rotateDegrees(Axis.XP, (float) -rotation.x);
 			}
 			if (position != null) {
 				if (!firstPerson)
@@ -75,9 +75,9 @@ public abstract class PlayerAnimationRendererMixin extends LivingEntityRenderer<
 			}
 		}
 		if (firstPerson && scale_ != 69) {
-			poseStack.mulPose(Axis.YP.rotationDegrees(bodyRot - player.getYRot()));
+			poseStack.rotateDegrees(Axis.YP, bodyRot - player.getYRot());
 			poseStack.translate(0, 1.5f, 0);
-			poseStack.mulPose(Axis.XP.rotationDegrees(-player.getXRot()));
+			poseStack.rotateDegrees(Axis.XP, -player.getXRot());
 			poseStack.translate(0, -1.5f, 0);
 		}
 	}

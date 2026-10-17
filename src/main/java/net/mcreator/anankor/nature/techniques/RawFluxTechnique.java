@@ -54,7 +54,7 @@ public class RawFluxTechnique implements INatureTechnique {
 				Vec3 push = diff.normalize().scale(Math.max(0.4, 1.2 - (distance / radius)));
 				target.setDeltaMovement(target.getDeltaMovement().add(push.x, 0.35, push.z));
 				target.hurt(level.damageSources().mobAttack(executor), 5.5f);
-				target.hurtMarked = true;
+				target.syncVelocity = true;
 			}
 		}
 	}

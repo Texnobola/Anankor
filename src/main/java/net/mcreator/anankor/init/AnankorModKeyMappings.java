@@ -3,7 +3,7 @@
  */
 package net.mcreator.anankor.init;
 
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
@@ -19,7 +19,7 @@ import net.mcreator.anankor.network.TestabilityMessage;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class AnankorModKeyMappings {
-	public static final KeyMapping TESTABILITY = new KeyMapping("key.anankor.testability", GLFW.GLFW_KEY_G, KeyMapping.Category.MISC) {
+	public static final KeyMapping TESTABILITY = new KeyMapping("key.anankor.testability", InputConstants.KEY_G, KeyMapping.Category.MISC) {
 		private boolean isDownOld = false;
 
 		@Override
@@ -42,7 +42,7 @@ public class AnankorModKeyMappings {
 	public static class KeyEventListener {
 		@SubscribeEvent
 		public static void onClientTick(ClientTickEvent.Post event) {
-			if (Minecraft.getInstance().screen == null) {
+			if (Minecraft.getInstance().gui.screen() == null) {
 				TESTABILITY.consumeClick();
 			}
 		}

@@ -155,7 +155,7 @@ public class AnankorFluxHud {
 		Player player = mc.player;
 		// Modded layers are not gated by vanilla's "hide GUI" (F1) flag, so check it
 		// ourselves.
-		if (player == null || mc.options.hideGui || player.isSpectator())
+		if (player == null || (mc.gui != null && mc.gui.hud != null && mc.gui.hud.isHidden()) || player.isSpectator())
 			return;
 
 		AnankorModVariables.PlayerVariables vars = player.getData(AnankorModVariables.PLAYER_VARIABLES);

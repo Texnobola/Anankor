@@ -56,9 +56,9 @@ public abstract class ItemInHandLayerMixin {
 			}
 			Vec3 rotation = AnankorModPlayerAnimationAPI.PlayerBone.interpolate(bone.rotations, animationProgress, player);
 			if (rotation != null) {
-				poseStack.mulPose(Axis.ZP.rotationDegrees((float) rotation.y));
-				poseStack.mulPose(Axis.YP.rotationDegrees((float) -rotation.z));
-				poseStack.mulPose(Axis.XP.rotationDegrees((float) -rotation.x));
+				poseStack.rotateDegrees(Axis.ZP, (float) rotation.y);
+				poseStack.rotateDegrees(Axis.YP, (float) -rotation.z);
+				poseStack.rotateDegrees(Axis.XP, (float) -rotation.x);
 			}
 		}
 	}

@@ -405,7 +405,7 @@ public class AnankorModPlayerAnimationAPI {
 					.replace("query.vertical_speed", fmt.apply((float) player.getDeltaMovement().y)).replace("query.speed", fmt.apply((float) player.getDeltaMovement().length())).replace("query.limb_swing", fmt.apply(player.walkAnimation.position()))
 					.replace("query.limb_swing_amount", fmt.apply(player.walkAnimation.speed())).replace("query.modified_move_speed", fmt.apply(player.walkAnimation.speed())).replace("query.walk_anim_speed", fmt.apply(player.walkAnimation.speed()))
 					.replace("query.modified_distance_moved", fmt.apply(player.walkAnimation.position())).replace("query.hurt_time", fmt.apply((float) player.hurtTime)).replace("query.death_time", fmt.apply((float) player.deathTime))
-					.replace("query.swing_progress", fmt.apply(player.getAttackAnim(1.0f))).replace("query.is_using_item", player.isUsingItem() ? "1.0" : "0.0").replace("query.use_item_interval", fmt.apply((float) player.getUseItemRemainingTicks()))
+					.replace("query.swing_progress", fmt.apply(player.getSwingAnimation(1.0f))).replace("query.is_using_item", player.isUsingItem() ? "1.0" : "0.0").replace("query.use_item_interval", fmt.apply((float) player.getUseItemRemainingTicks()))
 					.replace("query.is_first_person", mc.options.getCameraType().isFirstPerson() ? "1.0" : "0.0")
 					.replace("query.main_hand_item_use_duration", player.isUsingItem() && player.getUsedItemHand() == InteractionHand.MAIN_HAND ? fmt.apply((float) player.getUseItemRemainingTicks()) : "0.0")
 					.replace("query.yaw_speed", fmt.apply(Math.abs(Mth.wrapDegrees(player.getYRot() - player.yRotO)))).replace("query.position_delta_x", fmt.apply((float) player.getDeltaMovement().x))

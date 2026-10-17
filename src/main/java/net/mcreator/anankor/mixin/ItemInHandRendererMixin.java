@@ -11,7 +11,9 @@ import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.ItemInHandRenderer;
+import net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer;
+import net.minecraft.client.renderer.state.level.PlayerRenderState;
+import net.minecraft.client.renderer.state.level.FirstPersonHandsAndItemsRenderState;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.model.player.PlayerModel;
@@ -22,14 +24,14 @@ import net.mcreator.anankor.AnankorModPlayerAnimationAPI;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-@Mixin(ItemInHandRenderer.class)
+@Mixin(FirstPersonHandsAndItemsRenderer.class)
 public abstract class ItemInHandRendererMixin {
 	private String master = null;
 	private Minecraft mc = Minecraft.getInstance();
 	private EntityRenderDispatcher dispatcher = null;
 
-	@Inject(method = "renderHandsWithItems", at = @At("HEAD"), cancellable = true)
-	private void renderHandsWithItems(float f, PoseStack poseStack, SubmitNodeCollector collector, LocalPlayer localPlayer, int i, CallbackInfo ci) {
+	@Inject(method = "submitHandsWithItems", at = @At("HEAD"), cancellable = true)
+	private void submitHandsWithItems(float f, PoseStack poseStack, SubmitNodeCollector collector, PlayerRenderState playerRenderState, FirstPersonHandsAndItemsRenderState handsRenderState, CallbackInfo ci) {
 		if (master == null) {
 			if (!AnankorModPlayerAnimationAPI.animations.isEmpty())
 				master = "anankor";
@@ -38,7 +40,8 @@ public abstract class ItemInHandRendererMixin {
 		}
 		if (!master.equals("anankor"))
 			return;
-		if (localPlayer instanceof Player player && mc.player == player && (mc.screen == null || mc.screen instanceof ChatScreen)) {
+		LocalPlayer player = mc.player;
+		if (player != null && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen)) {
 			if (dispatcher == null)
 				dispatcher = mc.getEntityRenderDispatcher();
 			CompoundTag playerData = player.getPersistentData();

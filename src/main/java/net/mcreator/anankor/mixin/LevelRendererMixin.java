@@ -32,7 +32,7 @@ public abstract class LevelRendererMixin {
 		if (!master.equals("anankor")) {
 			return;
 		}
-		if (camera.entity() instanceof Player player && player.getPersistentData().getBooleanOr("FirstPersonAnimation", false) && mc.player == player && (mc.screen == null || mc.screen instanceof ChatScreen)) {
+		if (camera.entity() instanceof Player player && player.getPersistentData().getBooleanOr("FirstPersonAnimation", false) && mc.player == player && (mc.gui.screen() == null || mc.gui.screen() instanceof ChatScreen)) {
 			((CameraAccessor) camera).setDetached(true);
 		}
 	}

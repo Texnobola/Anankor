@@ -50,7 +50,7 @@ public class EarthTechnique implements INatureTechnique {
 				// Launch violently into air
 				Vec3 vel = target.getDeltaMovement();
 				target.setDeltaMovement(vel.x * 0.5, 0.75, vel.z * 0.5);
-				target.hurtMarked = true;
+				target.syncVelocity = true;
 			}
 		}
 	}

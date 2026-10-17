@@ -70,7 +70,7 @@ public class SpaceTechnique implements INatureTechnique {
 			for (LivingEntity entity : nearby) {
 				Vec3 pull = origin.subtract(entity.position()).normalize().scale(0.5);
 				entity.setDeltaMovement(entity.getDeltaMovement().add(pull));
-				entity.hurtMarked = true;
+				entity.syncVelocity = true;
 			}
 		}
 
