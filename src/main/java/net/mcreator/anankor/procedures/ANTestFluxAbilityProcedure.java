@@ -1,5 +1,6 @@
 package net.mcreator.anankor.procedures;
 
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
@@ -8,8 +9,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.anankor.network.AnankorModVariables;
+import net.mcreator.anankor.nature.techniques.INatureTechnique;
 import net.mcreator.anankor.nature.NatureType;
+import net.mcreator.anankor.nature.NatureAbilityDispatcher;
 import net.mcreator.anankor.init.AnankorModMobEffects;
+
+import java.util.List;
 
 public class ANTestFluxAbilityProcedure {
 	public static void execute(Entity entity) {
@@ -39,14 +44,38 @@ public class ANTestFluxAbilityProcedure {
 			return;
 		}
 
+		NatureType nature = NatureType.fromString(vars.Nature);
+		List<INatureTechnique> techniques = NatureAbilityDispatcher.getTechniques(nature);
+		// Fallback to unaligned Raw Flux if no technique exists for this nature yet
+		if (techniques.isEmpty()) {
+			techniques = NatureAbilityDispatcher.getTechniques(NatureType.NONE);
+		}
+
+		if (techniques.isEmpty()) {
+			if (entity instanceof ServerPlayer player) {
+				player.sendSystemMessage(
+						Component.literal("§7No techniques available for " + nature.getDisplayName() + "."), true);
+			}
+			return;
+		}
+
+		INatureTechnique technique = techniques.get(0);
+		double cost = technique.getCost();
+
 		// 3. Deduct Flux (permits overdraft into negative values to trigger Burnout
 		// scaling)
 		double previousFlux = vars.flux;
-		double cost = 20.0;
 		vars.flux = previousFlux - cost;
 		vars.markSyncDirty();
 
-		NatureType nature = NatureType.fromString(vars.Nature);
+		// 4. Dispatch the technique with target position based on look direction
+		if (entity instanceof LivingEntity living) {
+			Vec3 look = living.getLookAngle();
+			double targetX = living.getX() + look.x * 5.0;
+			double targetY = living.getEyeY() + look.y * 5.0;
+			double targetZ = living.getZ() + look.z * 5.0;
+			NatureAbilityDispatcher.dispatchAbility(nature, 0, living, targetX, targetY, targetZ);
+		}
 
 		if (entity instanceof ServerPlayer player) {
 			if (vars.flux <= 0) {
@@ -54,11 +83,14 @@ public class ANTestFluxAbilityProcedure {
 				player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_BURN,
 						SoundSource.PLAYERS, 0.8f, 0.8f);
 				player.sendSystemMessage(Component.literal(
-						"§eFlux: §c" + (int) vars.flux + " §4[OVERDRAFT IMMINENT] §7(" + nature.getDisplayName() + ")"),
+						"§e" + technique.getName() + ": §c" + (int) vars.flux + " §4[OVERDRAFT IMMINENT] §7("
+								+ nature.getDisplayName() + ")"),
 						true);
 			} else {
 				player.sendSystemMessage(
-						Component.literal("§bFlux: " + (int) vars.flux + " §7(" + nature.getDisplayName() + ")"), true);
+						Component.literal("§b" + technique.getName() + " §7| Flux: §f" + (int) vars.flux + " §7(-"
+								+ (int) cost + ")"),
+						true);
 			}
 		}
 	}
