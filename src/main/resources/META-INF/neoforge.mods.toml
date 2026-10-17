@@ -21,7 +21,7 @@ description="I'm lazy"
 [[dependencies.anankor]]
     modId="neoforge"
     type="required"
-    versionRange="[26.1.2.95,)"
+    versionRange="[26.1.2.109,)"
     ordering="AFTER"
     side="BOTH"
 
