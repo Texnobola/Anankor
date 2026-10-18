@@ -43,10 +43,12 @@ public record PlayPlayerAnimationMessage(int player, String animation, boolean o
 					data.putBoolean("FirstPersonAnimation", false);
 					data.remove("PlayerCurrentAnimation");
 					data.remove("PlayerAnimationProgress");
+					net.mcreator.anankor.client.AnankorPlayerAnimationHandler.stopAnimation(player);
 				} else {
 					data.putString("PlayerCurrentAnimation", message.animation);
 					data.putBoolean("OverrideCurrentAnimation", message.override);
 					data.putBoolean("FirstPersonAnimation", message.firstPerson);
+					net.mcreator.anankor.client.AnankorPlayerAnimationHandler.playAnimation(player, message.animation);
 				}
 			}).exceptionally(e -> {
 				context.connection().disconnect(Component.literal(e.getMessage()));

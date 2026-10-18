@@ -51,6 +51,12 @@ description="I'm lazy"
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.anankor]]
+    modId="player_animation_library"
+    type="optional"
+    versionRange="[1.2.8,)"
+    ordering="NONE"
+    side="BOTH"
 
 
 # Start of user code block dependencies configuration

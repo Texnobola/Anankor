@@ -52,3 +52,20 @@ dependencies {
     runtimeOnly("mezz.jei:jei-26.3-neoforge:31.15.0.79")
 }
 
+repositories {
+  maven {
+    name = "RedlanceMinecraft"
+    url = "https://repo.redlance.org/public"
+  }
+}
+
+dependencies {
+  implementation("com.zigythebird.playeranim:PlayerAnimationLibNeo:${property('pal_version')}") {
+    exclude group: "org.slf4j"
+    exclude group: "it.unimi.dsi"
+    exclude group: "io.netty"
+    exclude group: "com.google.code.gson"
+    exclude group: "org.joml"
+  }
+}
+
