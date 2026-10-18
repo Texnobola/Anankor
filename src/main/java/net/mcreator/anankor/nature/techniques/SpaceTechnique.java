@@ -1,6 +1,6 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.BlockHitResult;
@@ -63,6 +63,10 @@ public class SpaceTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			level.sendParticles(ParticleTypes.PORTAL, origin.x, origin.y + 0.5, origin.z, 25, 0.3, 0.5, 0.3, 0.2);
 			level.sendParticles(ParticleTypes.REVERSE_PORTAL, destination.x, destination.y + 0.5, destination.z, 25, 0.3, 0.5, 0.3, 0.2);
+
+			// === GeckoLib VFX: Spatial implosion at origin & emergence at destination ===
+			VfxSpawner.spawnAt(executor, "space", "shockwave", origin.x, origin.y + 0.1, origin.z, executor.getYRot(), 0, 1.4f, 10);
+			VfxSpawner.spawnAt(executor, "space", "energy_pulse", destination.x, destination.y + 0.5, destination.z, executor.getYRot(), 0, 1.3f, 10);
 
 			// Vacuum effect: pull nearby mobs towards the departure point
 			AABB vacuumBox = new AABB(origin.x - 4, origin.y - 2, origin.z - 4, origin.x + 4, origin.y + 2, origin.z + 4);

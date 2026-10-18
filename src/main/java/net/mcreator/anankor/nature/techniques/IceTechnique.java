@@ -1,19 +1,16 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 
-import java.util.Map;
 import java.util.List;
 
 public class IceTechnique implements INatureTechnique {
@@ -42,6 +39,9 @@ public class IceTechnique implements INatureTechnique {
 			// Snowflake radial burst
 			level.sendParticles(ParticleTypes.SNOWFLAKE, executor.getX(), executor.getY() + 0.3, executor.getZ(),
 					45, 2.5, 0.5, 2.5, 0.08);
+
+			// === GeckoLib VFX: Frost crystallization burst ===
+			VfxSpawner.spawnBurst(executor, "ice", "frost_crystalize", 1.6f, 14);
 
 			AABB frostZone = executor.getBoundingBox().inflate(5.0);
 			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, frostZone,

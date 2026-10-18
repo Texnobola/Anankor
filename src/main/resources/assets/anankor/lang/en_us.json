@@ -9,5 +9,6 @@
   "block.anankor.cinderpod_bloom": "Cinderpod Bloom",
   "item.anankor.cinderpod_bloom": "Cinderpod Bloom",
   "item.anankor.cinderpod_pulp": "Cinderpod Pulp",
-  "itemGroup.anankor": "ANANKOR"
+  "itemGroup.anankor": "ANANKOR",
+  "entity.anankor.anankor_vfx": "Anankor VFX"
 }

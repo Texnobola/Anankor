@@ -1,6 +1,6 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,6 +49,9 @@ public class LightTechnique implements INatureTechnique {
 					35, 1.5, 1.5, 1.5, 0.08);
 			level.sendParticles(ParticleTypes.GLOW, executor.getX(), executor.getY() + 1.0, executor.getZ(),
 					25, 2.0, 1.0, 2.0, 0.05);
+
+			// === GeckoLib VFX: Radiant burst ===
+			VfxSpawner.spawnBurst(executor, "light", "energy_pulse", 2.2f, 14);
 
 			AABB burstArea = executor.getBoundingBox().inflate(6.0);
 			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, burstArea,

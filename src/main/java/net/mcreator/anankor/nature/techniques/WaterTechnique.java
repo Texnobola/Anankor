@@ -1,19 +1,16 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 
-import java.util.Map;
 import java.util.List;
 
 public class WaterTechnique implements INatureTechnique {
@@ -57,6 +54,9 @@ public class WaterTechnique implements INatureTechnique {
 						executor.getEyeY() + spreadY * 0.7, executor.getZ() + spreadZ * 0.7,
 						2, 0.1, 0.1, 0.1, 0.05);
 			}
+
+			// === GeckoLib VFX: Directional water wave ===
+			VfxSpawner.spawnSlash(executor, "water", "wave_forward", 1.4f, 2.0, 12);
 
 			// Cone knockback and drowning push
 			AABB hitBox = executor.getBoundingBox().inflate(3.5).move(look.scale(2.5));

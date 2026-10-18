@@ -1,6 +1,6 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,6 +49,9 @@ public class DarkTechnique implements INatureTechnique {
 					30, 1.2, 0.8, 1.2, 0.05);
 			level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, executor.getX(), executor.getY() + 0.5, executor.getZ(),
 					15, 1.0, 0.5, 1.0, 0.04);
+
+			// === GeckoLib VFX: Devouring void shroud ===
+			VfxSpawner.spawnBurst(executor, "dark", "shroud_expand", 1.8f, 18);
 
 			AABB shroudArea = executor.getBoundingBox().inflate(5.5);
 			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, shroudArea,

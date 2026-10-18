@@ -1,17 +1,14 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.particles.ParticleTypes;
 
-import java.util.Map;
 import java.util.List;
 
 public class EarthTechnique implements INatureTechnique {
@@ -42,6 +39,9 @@ public class EarthTechnique implements INatureTechnique {
 					25, 2.0, 0.1, 2.0, 0.05);
 			level.sendParticles(ParticleTypes.POOF, executor.getX(), executor.getY() + 0.2, executor.getZ(),
 					20, 1.8, 0.2, 1.8, 0.08);
+
+			// === GeckoLib VFX: Ground shockwave ring ===
+			VfxSpawner.spawnBurst(executor, "earth", "shockwave", 2.0f, 12);
 
 			AABB tremorArea = executor.getBoundingBox().inflate(5.5, 2.0, 5.5);
 			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, tremorArea, e -> e != executor && e.isAlive());

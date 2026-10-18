@@ -60,6 +60,7 @@ public class AnankorMod {
 		AnankorModMobEffects.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		net.mcreator.anankor.flora.AnankorFloraRegistry.register(modEventBus);
+		net.mcreator.anankor.vfx.AnankorVfxEntities.register(modEventBus);
 		// End of user code block mod init
 	}
 

@@ -1,17 +1,14 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.particles.ParticleTypes;
 
-import java.util.Map;
 import java.util.List;
 
 public class FireTechnique implements INatureTechnique {
@@ -50,6 +47,9 @@ public class FireTechnique implements INatureTechnique {
 					25, look.x * 0.4, look.y * 0.4, look.z * 0.4, 0.12);
 			level.sendParticles(ParticleTypes.LAVA, executor.getX(), executor.getY() + 0.2, executor.getZ(),
 					5, 0.2, 0.2, 0.2, 0.05);
+
+			// === GeckoLib VFX: Directional fire slash ===
+			VfxSpawner.spawnSlash(executor, "fire", "slash_horizontal", 1.3f, 1.5, 10);
 
 			// 3. Concussive cone damage and ignition
 			AABB targetBox = executor.getBoundingBox().inflate(3.0).move(look.scale(2.0));

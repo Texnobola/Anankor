@@ -1,6 +1,6 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
@@ -56,6 +56,9 @@ public class ElectricityTechnique implements INatureTechnique {
 				double pz = start.z + look.z * progress * 6.0;
 				level.sendParticles(ParticleTypes.ELECTRIC_SPARK, px, py, pz, 4, 0.15, 0.15, 0.15, 0.08);
 			}
+
+			// === GeckoLib VFX: Electric dash trail ===
+			VfxSpawner.spawnTrail(executor, "electricity", "slash_diagonal", 3, 1.8, 1.3f, 8);
 
 			// Strike entities along the trajectory
 			AABB strikeBox = executor.getBoundingBox().inflate(2.5).move(look.scale(3.0));

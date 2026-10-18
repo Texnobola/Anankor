@@ -1,17 +1,14 @@
 package net.mcreator.anankor.nature.techniques;
 
-
+import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.Identifier;
 import net.minecraft.core.particles.ParticleTypes;
 
-import java.util.Map;
 import java.util.List;
 
 public class RawFluxTechnique implements INatureTechnique {
@@ -44,9 +41,14 @@ public class RawFluxTechnique implements INatureTechnique {
 			level.sendParticles(ParticleTypes.ELECTRIC_SPARK, pos.x, pos.y + 0.5, pos.z, 30, 1.2, 0.4, 1.2, 0.25);
 			level.sendParticles(ParticleTypes.SONIC_BOOM, pos.x, pos.y + 0.5, pos.z, 1, 0, 0, 0, 0);
 
+			// === GeckoLib VFX: Radial shockwave burst ===
+			VfxSpawner.spawnBurst(executor, "flux", "shockwave", 1.5f, 12);
+
 			double radius = 4.5;
-			AABB shockwaveBox = new AABB(pos.x - radius, pos.y - 1.5, pos.z - radius, pos.x + radius, pos.y + 2.5, pos.z + radius);
-			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, shockwaveBox, e -> e != executor && e.isAlive());
+			AABB shockwaveBox = new AABB(pos.x - radius, pos.y - 1.5, pos.z - radius, pos.x + radius, pos.y + 2.5,
+					pos.z + radius);
+			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, shockwaveBox,
+					e -> e != executor && e.isAlive());
 
 			for (LivingEntity target : targets) {
 				Vec3 diff = target.position().subtract(pos);
