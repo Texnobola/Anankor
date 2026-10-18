@@ -22,12 +22,22 @@ public class AnankorVfxModel extends DefaultedEntityGeoModel<AnankorVfxEntity> {
     @Override
     public void addAdditionalStateData(AnankorVfxEntity animatable, Object relatedObject, GeoRenderState renderState) {
         super.addAdditionalStateData(animatable, relatedObject, renderState);
-        renderState.addGeckolibData(TEXTURE_VARIANT_TICKET, animatable.getTextureVariant());
+        String variant = animatable.getTextureVariant();
+        if (variant == null || variant.isEmpty()) {
+            variant = "flux";
+        }
+        renderState.addGeckolibData(TEXTURE_VARIANT_TICKET, variant);
     }
 
     @Override
     public Identifier getTextureResource(GeoRenderState renderState) {
-        String variant = renderState.getOrDefaultGeckolibData(TEXTURE_VARIANT_TICKET, "flux");
+        String variant = "flux";
+        if (renderState != null && renderState.hasGeckolibData(TEXTURE_VARIANT_TICKET)) {
+            String v = renderState.getGeckolibData(TEXTURE_VARIANT_TICKET);
+            if (v != null && !v.isEmpty()) {
+                variant = v;
+            }
+        }
         return Identifier.fromNamespaceAndPath(AnankorMod.MODID, "textures/entity/vfx/vfx_" + variant + ".png");
     }
 }
