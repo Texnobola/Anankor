@@ -32,6 +32,12 @@ public class AbyssalShroudClientHandler {
     private static void applyEffect() {
         Minecraft mc = Minecraft.getInstance();
         if (mc.gameRenderer != null) {
+            try {
+                java.lang.reflect.Field failedField = net.minecraft.client.renderer.GameRenderer.class.getDeclaredField("failedPostEffects");
+                failedField.setAccessible(true);
+                ((java.util.List<?>) failedField.get(mc.gameRenderer)).remove(SHROUD_POST_EFFECT);
+            } catch (Throwable ignored) {
+            }
             mc.gameRenderer.setSpectatedEntityPostEffect(SHROUD_POST_EFFECT);
         }
     }
