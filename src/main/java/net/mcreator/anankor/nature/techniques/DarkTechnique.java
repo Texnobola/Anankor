@@ -53,6 +53,11 @@ public class DarkTechnique implements INatureTechnique {
 			// === GeckoLib VFX: Devouring void shroud ===
 			VfxSpawner.spawnBurst(executor, "dark", "shroud_expand", 1.8f, 18);
 
+			// === Post-Effect Shader: Astral Monochrome Wireframe Vision ===
+			if (executor instanceof ServerPlayer serverPlayer) {
+				net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(serverPlayer, new net.mcreator.anankor.network.AbyssalShroudEffectMessage(140));
+			}
+
 			AABB shroudArea = executor.getBoundingBox().inflate(5.5);
 			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, shroudArea,
 					e -> e != executor && e.isAlive());
