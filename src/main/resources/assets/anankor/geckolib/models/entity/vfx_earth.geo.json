@@ -1,0 +1,131 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.vfx_earth",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 8,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "monolith_center",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-3, 0, -3],
+							"size": [6, 24, 6],
+							"pivot": [0, 12, 0],
+							"rotation": [0, 25, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [12, 24]},
+								"east": {"uv": [12, 0], "uv_size": [12, 24]},
+								"south": {"uv": [24, 0], "uv_size": [12, 24]},
+								"west": {"uv": [36, 0], "uv_size": [12, 24]},
+								"up": {"uv": [48, 0], "uv_size": [12, 12]},
+								"down": {"uv": [48, 12], "uv_size": [12, 12]}
+							}
+						}
+					]
+				},
+				{
+					"name": "monolith_left",
+					"parent": "root",
+					"pivot": [-5, 0, 0],
+					"cubes": [
+						{
+							"origin": [-7.5, 0, -2.5],
+							"size": [5, 16, 5],
+							"pivot": [-5, 8, 0],
+							"rotation": [15, -10, -20],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [10, 16]},
+								"east": {"uv": [10, 24], "uv_size": [10, 16]},
+								"south": {"uv": [20, 24], "uv_size": [10, 16]},
+								"west": {"uv": [30, 24], "uv_size": [10, 16]},
+								"up": {"uv": [40, 24], "uv_size": [10, 10]},
+								"down": {"uv": [50, 24], "uv_size": [10, 10]}
+							}
+						}
+					]
+				},
+				{
+					"name": "monolith_right",
+					"parent": "root",
+					"pivot": [5, 0, 0],
+					"cubes": [
+						{
+							"origin": [3, 0, -2],
+							"size": [4, 18, 4],
+							"pivot": [5, 9, 0],
+							"rotation": [-10, 25, 25],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [10, 16]},
+								"east": {"uv": [10, 24], "uv_size": [10, 16]},
+								"south": {"uv": [20, 24], "uv_size": [10, 16]},
+								"west": {"uv": [30, 24], "uv_size": [10, 16]},
+								"up": {"uv": [40, 24], "uv_size": [10, 10]},
+								"down": {"uv": [50, 24], "uv_size": [10, 10]}
+							}
+						}
+					]
+				},
+				{
+					"name": "seismic_ring",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-16, -0.5, -16],
+							"size": [32, 1, 32],
+							"uv": {
+								"north": {"uv": [0, 40], "uv_size": [32, 2]},
+								"east": {"uv": [0, 40], "uv_size": [32, 2]},
+								"south": {"uv": [0, 40], "uv_size": [32, 2]},
+								"west": {"uv": [0, 40], "uv_size": [32, 2]},
+								"up": {"uv": [0, 40], "uv_size": [32, 24]},
+								"down": {"uv": [32, 40], "uv_size": [32, 24]}
+							}
+						}
+					]
+				},
+				{
+					"name": "floating_rock_1",
+					"parent": "root",
+					"pivot": [7, 12, -6],
+					"cubes": [
+						{
+							"origin": [5, 10, -8],
+							"size": [4, 4, 4],
+							"pivot": [7, 12, -6],
+							"rotation": [35, 45, 15],
+							"uv": {"north": {"uv": [48, 0], "uv_size": [8, 8]}, "east": {"uv": [56, 0], "uv_size": [8, 8]}, "south": {"uv": [48, 8], "uv_size": [8, 8]}, "west": {"uv": [56, 8], "uv_size": [8, 8]}, "up": {"uv": [48, 16], "uv_size": [8, 8]}, "down": {"uv": [56, 16], "uv_size": [8, 8]}}
+						}
+					]
+				},
+				{
+					"name": "floating_rock_2",
+					"parent": "root",
+					"pivot": [-8, 10, 6],
+					"cubes": [
+						{
+							"origin": [-10, 8, 4],
+							"size": [4, 4, 4],
+							"pivot": [-8, 10, 6],
+							"rotation": [-25, 60, -40],
+							"uv": {"north": {"uv": [48, 0], "uv_size": [8, 8]}, "east": {"uv": [56, 0], "uv_size": [8, 8]}, "south": {"uv": [48, 8], "uv_size": [8, 8]}, "west": {"uv": [56, 8], "uv_size": [8, 8]}, "up": {"uv": [48, 16], "uv_size": [8, 8]}, "down": {"uv": [56, 16], "uv_size": [8, 8]}}
+						}
+					]
+				}
+			]
+		}
+	]
+}

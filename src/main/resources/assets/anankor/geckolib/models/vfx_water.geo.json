@@ -1,0 +1,145 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.vfx_water",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 8,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "hydro_core",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-3, -3, -3],
+							"size": [6, 6, 6],
+							"pivot": [0, 0, 0],
+							"rotation": [45, 0, 45],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [12, 12]},
+								"east": {"uv": [12, 0], "uv_size": [12, 12]},
+								"south": {"uv": [24, 0], "uv_size": [12, 12]},
+								"west": {"uv": [36, 0], "uv_size": [12, 12]},
+								"up": {"uv": [48, 0], "uv_size": [12, 12]},
+								"down": {"uv": [48, 12], "uv_size": [12, 12]}
+							}
+						}
+					]
+				},
+				{
+					"name": "whirlpool_disc",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-16, -0.5, -16],
+							"size": [32, 1, 32],
+							"uv": {
+								"north": {"uv": [0, 20], "uv_size": [32, 2]},
+								"east": {"uv": [0, 20], "uv_size": [32, 2]},
+								"south": {"uv": [0, 20], "uv_size": [32, 2]},
+								"west": {"uv": [0, 20], "uv_size": [32, 2]},
+								"up": {"uv": [0, 24], "uv_size": [32, 32]},
+								"down": {"uv": [32, 24], "uv_size": [32, 32]}
+							}
+						}
+					]
+				},
+				{
+					"name": "tidal_crest_1",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-12, -1, -1],
+							"size": [24, 6, 2],
+							"pivot": [0, 0, 0],
+							"rotation": [30, 45, -15],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [24, 6]},
+								"east": {"uv": [24, 0], "uv_size": [2, 6]},
+								"south": {"uv": [0, 0], "uv_size": [24, 6]},
+								"west": {"uv": [24, 0], "uv_size": [2, 6]},
+								"up": {"uv": [0, 6], "uv_size": [24, 2]},
+								"down": {"uv": [0, 8], "uv_size": [24, 2]}
+							}
+						}
+					]
+				},
+				{
+					"name": "tidal_crest_2",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-11, -2, -1],
+							"size": [22, 5, 2],
+							"pivot": [0, 0, 0],
+							"rotation": [-25, -60, 20],
+							"uv": {
+								"north": {"uv": [0, 10], "uv_size": [22, 5]},
+								"east": {"uv": [22, 10], "uv_size": [2, 5]},
+								"south": {"uv": [0, 10], "uv_size": [22, 5]},
+								"west": {"uv": [22, 10], "uv_size": [2, 5]},
+								"up": {"uv": [0, 15], "uv_size": [22, 2]},
+								"down": {"uv": [0, 17], "uv_size": [22, 2]}
+							}
+						}
+					]
+				},
+				{
+					"name": "droplet_orbit_1",
+					"parent": "root",
+					"pivot": [6, 5, -6],
+					"cubes": [
+						{
+							"origin": [4.5, 3.5, -7.5],
+							"size": [3, 3, 3],
+							"pivot": [6, 5, -6],
+							"rotation": [45, 45, 0],
+							"uv": {
+								"north": {"uv": [0, 56], "uv_size": [6, 6]},
+								"east": {"uv": [6, 56], "uv_size": [6, 6]},
+								"south": {"uv": [12, 56], "uv_size": [6, 6]},
+								"west": {"uv": [18, 56], "uv_size": [6, 6]},
+								"up": {"uv": [24, 56], "uv_size": [6, 6]},
+								"down": {"uv": [30, 56], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "droplet_orbit_2",
+					"parent": "root",
+					"pivot": [-7, 3, 5],
+					"cubes": [
+						{
+							"origin": [-8.5, 1.5, 3.5],
+							"size": [3, 3, 3],
+							"pivot": [-7, 3, 5],
+							"rotation": [-30, 60, -45],
+							"uv": {
+								"north": {"uv": [0, 56], "uv_size": [6, 6]},
+								"east": {"uv": [6, 56], "uv_size": [6, 6]},
+								"south": {"uv": [12, 56], "uv_size": [6, 6]},
+								"west": {"uv": [18, 56], "uv_size": [6, 6]},
+								"up": {"uv": [24, 56], "uv_size": [6, 6]},
+								"down": {"uv": [30, 56], "uv_size": [6, 6]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

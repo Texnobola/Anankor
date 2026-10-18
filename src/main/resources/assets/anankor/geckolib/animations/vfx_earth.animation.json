@@ -1,0 +1,108 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 1.6,
+			"bones": {
+				"floating_rock_1": {
+					"position": {"vector": ["2.0 * math.cos(query.anim_time * 180)", "1.5 * math.sin(query.anim_time * 240)", "2.0 * math.sin(query.anim_time * 180)"]},
+					"rotation": {"vector": ["query.anim_time * 120", "query.anim_time * 180", 0]}
+				},
+				"floating_rock_2": {
+					"position": {"vector": ["-2.5 * math.sin(query.anim_time * 180)", "-1.5 * math.cos(query.anim_time * 240)", "-2.5 * math.cos(query.anim_time * 180)"]},
+					"rotation": {"vector": ["query.anim_time * -120", "query.anim_time * 180", 0]}
+				}
+			}
+		},
+		"shockwave": {
+			"animation_length": 0.45,
+			"bones": {
+				"root": {
+					"scale": {
+						"0.0": {"vector": [0.2, 0.0, 0.2]},
+						"0.14": {"vector": [1.4, 1.4, 1.4], "easing": "easeOutBack"},
+						"0.32": {"vector": [1.25, 1.25, 1.25]},
+						"0.45": {"vector": [0.0, 0.0, 0.0], "easing": "easeInCubic"}
+					}
+				},
+				"seismic_ring": {
+					"scale": {
+						"0.0": {"vector": [0.1, 1.0, 0.1]},
+						"0.12": {"vector": [1.8, 1.0, 1.8], "easing": "easeOutExpo"},
+						"0.45": {"vector": [0.0, 1.0, 0.0]}
+					}
+				},
+				"monolith_center": {
+					"position": {
+						"0.0": {"vector": [0, -24, 0]},
+						"0.12": {"vector": [0, 2, 0], "easing": "easeOutBack"},
+						"0.22": {"vector": [0, 0, 0]},
+						"0.45": {"vector": [0, 0, 0]}
+					}
+				},
+				"monolith_left": {
+					"position": {
+						"0.0": {"vector": [0, -18, 0]},
+						"0.15": {"vector": [0, 1, 0], "easing": "easeOutBack"},
+						"0.24": {"vector": [0, 0, 0]}
+					}
+				},
+				"monolith_right": {
+					"position": {
+						"0.0": {"vector": [0, -20, 0]},
+						"0.15": {"vector": [0, 1, 0], "easing": "easeOutBack"},
+						"0.24": {"vector": [0, 0, 0]}
+					}
+				}
+			}
+		},
+		"burst": {
+			"animation_length": 0.4,
+			"bones": {
+				"root": {
+					"scale": {
+						"0.0": {"vector": [0.1, 0.1, 0.1]},
+						"0.14": {"vector": [1.8, 1.8, 1.8], "easing": "easeOutExpo"},
+						"0.28": {"vector": [1.4, 1.4, 1.4]},
+						"0.4": {"vector": [0.0, 0.0, 0.0], "easing": "easeInExpo"}
+					}
+				},
+				"floating_rock_1": {
+					"position": {
+						"0.0": {"vector": [0, 0, 0]},
+						"0.16": {"vector": [14, 12, -10], "easing": "easeOutQuad"},
+						"0.4": {"vector": [20, 16, -15]}
+					}
+				},
+				"floating_rock_2": {
+					"position": {
+						"0.0": {"vector": [0, 0, 0]},
+						"0.16": {"vector": [-14, 10, 12], "easing": "easeOutQuad"},
+						"0.4": {"vector": [-20, 14, 18]}
+					}
+				}
+			}
+		},
+		"sustained": {
+			"loop": true,
+			"animation_length": 1.8,
+			"bones": {
+				"seismic_ring": {
+					"rotation": {"vector": [0, "query.anim_time * 90", 0]}
+				},
+				"monolith_center": {
+					"position": {"vector": [0, "1.0 * math.sin(query.anim_time * 180)", 0]}
+				},
+				"floating_rock_1": {
+					"position": {"vector": ["6.0 * math.cos(query.anim_time * 240)", "2.0 * math.sin(query.anim_time * 360)", "6.0 * math.sin(query.anim_time * 240)"]},
+					"rotation": {"vector": ["query.anim_time * 180", "query.anim_time * 240", 0]}
+				},
+				"floating_rock_2": {
+					"position": {"vector": ["-6.5 * math.sin(query.anim_time * 240)", "-2.0 * math.cos(query.anim_time * 360)", "-6.5 * math.cos(query.anim_time * 240)"]},
+					"rotation": {"vector": ["query.anim_time * -180", "query.anim_time * 240", 0]}
+				}
+			}
+		}
+	}
+}
