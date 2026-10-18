@@ -1,0 +1,124 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.vfx_ice",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 8,
+				"visible_bounds_height": 8,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "center_lance",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2.5, 0, -2.5],
+							"size": [5, 26, 5],
+							"pivot": [0, 13, 0],
+							"rotation": [0, 45, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [10, 26]},
+								"east": {"uv": [10, 0], "uv_size": [10, 26]},
+								"south": {"uv": [20, 0], "uv_size": [10, 26]},
+								"west": {"uv": [30, 0], "uv_size": [10, 26]},
+								"up": {"uv": [40, 0], "uv_size": [10, 10]},
+								"down": {"uv": [50, 0], "uv_size": [10, 10]}
+							}
+						}
+					]
+				},
+				{
+					"name": "spike_left",
+					"parent": "root",
+					"pivot": [-4, 0, 0],
+					"cubes": [
+						{
+							"origin": [-5.5, 0, -1.5],
+							"size": [3, 18, 3],
+							"pivot": [-4, 9, 0],
+							"rotation": [15, 30, -25],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [6, 18]},
+								"east": {"uv": [6, 26], "uv_size": [6, 18]},
+								"south": {"uv": [12, 26], "uv_size": [6, 18]},
+								"west": {"uv": [18, 26], "uv_size": [6, 18]},
+								"up": {"uv": [24, 26], "uv_size": [6, 6]},
+								"down": {"uv": [30, 26], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "spike_right",
+					"parent": "root",
+					"pivot": [4, 0, 0],
+					"cubes": [
+						{
+							"origin": [2.5, 0, -1.5],
+							"size": [3, 16, 3],
+							"pivot": [4, 8, 0],
+							"rotation": [-20, -45, 30],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [6, 18]},
+								"east": {"uv": [6, 26], "uv_size": [6, 18]},
+								"south": {"uv": [12, 26], "uv_size": [6, 18]},
+								"west": {"uv": [18, 26], "uv_size": [6, 18]},
+								"up": {"uv": [24, 26], "uv_size": [6, 6]},
+								"down": {"uv": [30, 26], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "snowflake_seal",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-14, -0.5, -14],
+							"size": [28, 1, 28],
+							"uv": {
+								"north": {"uv": [0, 44], "uv_size": [28, 2]},
+								"east": {"uv": [0, 44], "uv_size": [28, 2]},
+								"south": {"uv": [0, 44], "uv_size": [28, 2]},
+								"west": {"uv": [0, 44], "uv_size": [28, 2]},
+								"up": {"uv": [0, 44], "uv_size": [28, 20]},
+								"down": {"uv": [28, 44], "uv_size": [28, 20]}
+							}
+						}
+					]
+				},
+				{
+					"name": "frost_shards",
+					"parent": "root",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{
+							"origin": [7, 8, -6],
+							"size": [2, 6, 2],
+							"pivot": [8, 11, -5],
+							"rotation": [35, 20, 15],
+							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
+						},
+						{
+							"origin": [-8, 6, 5],
+							"size": [2, 6, 2],
+							"pivot": [-7, 9, 6],
+							"rotation": [-25, 45, -30],
+							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -25,7 +25,7 @@ public class AnankorVfxRenderer extends GeoEntityRenderer<AnankorVfxEntity, Enti
 
     @Override
     public RenderType getRenderType(EntityRenderState state, Identifier texture) {
-        return RenderTypes.entityTranslucent(texture);
+        return RenderTypes.entityTranslucentEmissive(texture);
     }
 
     @Override

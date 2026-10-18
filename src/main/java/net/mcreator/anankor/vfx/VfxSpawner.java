@@ -133,4 +133,28 @@ public final class VfxSpawner {
             );
         }
     }
+
+    // ======================== Sustained Aura VFX ========================
+
+    /**
+     * Spawns a sustained living elemental vortex loop around the executor.
+     *
+     * @param executor       The entity enveloped in the effect
+     * @param textureVariant Texture variant (e.g. "dark", "fire", "ice")
+     * @param scale          Visual scale
+     * @param durationTicks  Duration in ticks
+     */
+    public static void spawnSustained(LivingEntity executor, String textureVariant,
+                                      float scale, int durationTicks) {
+        if (executor.level().isClientSide()) return;
+
+        AnankorVfxEntity.spawn(
+                executor.level(),
+                AnankorVfxEntities.ANANKOR_VFX.get(),
+                executor.getX(), executor.getY() + 0.1, executor.getZ(),
+                executor.getYRot(), 0f,
+                "sustained", textureVariant,
+                scale, durationTicks
+        );
+    }
 }
