@@ -6,9 +6,9 @@
 				"identifier": "geometry.vfx_ice",
 				"texture_width": 64,
 				"texture_height": 64,
-				"visible_bounds_width": 8,
-				"visible_bounds_height": 8,
-				"visible_bounds_offset": [0, 1, 0]
+				"visible_bounds_width": 14,
+				"visible_bounds_height": 12,
+				"visible_bounds_offset": [0, 3, 0]
 			},
 			"bones": [
 				{
@@ -114,6 +114,172 @@
 							"size": [2, 6, 2],
 							"pivot": [-7, 9, 6],
 							"rotation": [-25, 45, -30],
+							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
+						}
+					]
+				},
+				{
+					"name": "ground_frost_mandala",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-18, -0.2, -18],
+							"size": [36, 1, 36],
+							"uv": {
+								"north": {"uv": [0, 44], "uv_size": [28, 2]},
+								"east": {"uv": [0, 44], "uv_size": [28, 2]},
+								"south": {"uv": [0, 44], "uv_size": [28, 2]},
+								"west": {"uv": [0, 44], "uv_size": [28, 2]},
+								"up": {"uv": [0, 44], "uv_size": [28, 20]},
+								"down": {"uv": [28, 44], "uv_size": [28, 20]}
+							}
+						}
+					]
+				},
+				{
+					"name": "glacial_monolith",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-4, 0, -4],
+							"size": [8, 30, 8],
+							"pivot": [0, 15, 0],
+							"rotation": [0, 45, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [10, 26]},
+								"east": {"uv": [10, 0], "uv_size": [10, 26]},
+								"south": {"uv": [20, 0], "uv_size": [10, 26]},
+								"west": {"uv": [30, 0], "uv_size": [10, 26]},
+								"up": {"uv": [40, 0], "uv_size": [10, 10]},
+								"down": {"uv": [50, 0], "uv_size": [10, 10]}
+							}
+						},
+						{
+							"origin": [-3, 16, -3],
+							"size": [6, 18, 6],
+							"pivot": [0, 25, 0],
+							"rotation": [12, 30, -10],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [6, 18]},
+								"east": {"uv": [6, 26], "uv_size": [6, 18]},
+								"south": {"uv": [12, 26], "uv_size": [6, 18]},
+								"west": {"uv": [18, 26], "uv_size": [6, 18]},
+								"up": {"uv": [24, 26], "uv_size": [6, 6]},
+								"down": {"uv": [30, 26], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "glacier_spike_north",
+					"parent": "root",
+					"pivot": [0, 0, 8],
+					"cubes": [
+						{
+							"origin": [-2.5, 0, 6],
+							"size": [5, 24, 5],
+							"pivot": [0, 12, 8.5],
+							"rotation": [24, 15, -10],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [10, 24]},
+								"east": {"uv": [10, 0], "uv_size": [10, 24]},
+								"south": {"uv": [20, 0], "uv_size": [10, 24]},
+								"west": {"uv": [30, 0], "uv_size": [10, 24]},
+								"up": {"uv": [40, 0], "uv_size": [10, 10]},
+								"down": {"uv": [50, 0], "uv_size": [10, 10]}
+							}
+						}
+					]
+				},
+				{
+					"name": "glacier_spike_south",
+					"parent": "root",
+					"pivot": [0, 0, -8],
+					"cubes": [
+						{
+							"origin": [-2.5, 0, -11],
+							"size": [5, 22, 5],
+							"pivot": [0, 11, -8.5],
+							"rotation": [-24, -20, 12],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [10, 22]},
+								"east": {"uv": [10, 0], "uv_size": [10, 22]},
+								"south": {"uv": [20, 0], "uv_size": [10, 22]},
+								"west": {"uv": [30, 0], "uv_size": [10, 22]},
+								"up": {"uv": [40, 0], "uv_size": [10, 10]},
+								"down": {"uv": [50, 0], "uv_size": [10, 10]}
+							}
+						}
+					]
+				},
+				{
+					"name": "glacier_spike_east",
+					"parent": "root",
+					"pivot": [8, 0, 0],
+					"cubes": [
+						{
+							"origin": [6, 0, -2.5],
+							"size": [5, 26, 5],
+							"pivot": [8.5, 13, 0],
+							"rotation": [10, -25, -22],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [6, 18]},
+								"east": {"uv": [6, 26], "uv_size": [6, 18]},
+								"south": {"uv": [12, 26], "uv_size": [6, 18]},
+								"west": {"uv": [18, 26], "uv_size": [6, 18]},
+								"up": {"uv": [24, 26], "uv_size": [6, 6]},
+								"down": {"uv": [30, 26], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "glacier_spike_west",
+					"parent": "root",
+					"pivot": [-8, 0, 0],
+					"cubes": [
+						{
+							"origin": [-11, 0, -2.5],
+							"size": [5, 24, 5],
+							"pivot": [-8.5, 12, 0],
+							"rotation": [-12, 30, 24],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [6, 18]},
+								"east": {"uv": [6, 26], "uv_size": [6, 18]},
+								"south": {"uv": [12, 26], "uv_size": [6, 18]},
+								"west": {"uv": [18, 26], "uv_size": [6, 18]},
+								"up": {"uv": [24, 26], "uv_size": [6, 6]},
+								"down": {"uv": [30, 26], "uv_size": [6, 6]}
+							}
+						}
+					]
+				},
+				{
+					"name": "shattered_frost_halo",
+					"parent": "root",
+					"pivot": [0, 16, 0],
+					"cubes": [
+						{
+							"origin": [9, 14, -8],
+							"size": [3, 8, 3],
+							"pivot": [10.5, 18, -6.5],
+							"rotation": [35, 45, 20],
+							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
+						},
+						{
+							"origin": [-10, 12, 7],
+							"size": [3, 8, 3],
+							"pivot": [-8.5, 16, 8.5],
+							"rotation": [-28, 55, -35],
+							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
+						},
+						{
+							"origin": [6, 20, 8],
+							"size": [3, 7, 3],
+							"pivot": [7.5, 23.5, 9.5],
+							"rotation": [40, -30, 25],
 							"uv": {"north": {"uv": [40, 26], "uv_size": [4, 12]}, "east": {"uv": [44, 26], "uv_size": [4, 12]}, "south": {"uv": [48, 26], "uv_size": [4, 12]}, "west": {"uv": [52, 26], "uv_size": [4, 12]}, "up": {"uv": [56, 26], "uv_size": [4, 4]}, "down": {"uv": [60, 26], "uv_size": [4, 4]}}
 						}
 					]
