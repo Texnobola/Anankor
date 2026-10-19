@@ -54,7 +54,7 @@ public class IceTechnique implements INatureTechnique {
 			VfxSpawner.spawnAt(executor, "ice", "ground_slam",
 					executor.getX(), executor.getY() + 0.05, executor.getZ(),
 					executor.getYRot(), 0.0f,
-					1.6f, 22);
+					1.5f, 24);
 
 			// Radial frost crystallization shockwave particles
 			level.sendParticles(ParticleTypes.SNOWFLAKE, executor.getX(), executor.getY() + 0.3, executor.getZ(),

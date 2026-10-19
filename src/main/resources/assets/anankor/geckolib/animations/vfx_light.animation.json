@@ -1,110 +1,635 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"idle": {
-			"loop": true,
-			"animation_length": 1.5,
-			"bones": {
-				"solar_star": {
-					"rotation": {"vector": [0, 0, "query.anim_time * 180"]},
-					"scale": {"vector": ["1.0 + 0.15 * math.sin(query.anim_time * 360)", "1.0 + 0.15 * math.sin(query.anim_time * 360)", 1.0]}
-				},
-				"halo_upper": {
-					"rotation": {"vector": [0, "query.anim_time * 180", 0]},
-					"position": {"vector": [0, "1.5 * math.sin(query.anim_time * 240)", 0]}
-				},
-				"halo_lower": {
-					"rotation": {"vector": [0, "query.anim_time * -180", 0]},
-					"position": {"vector": [0, "-1.5 * math.sin(query.anim_time * 240)", 0]}
-				}
-			}
-		},
-		"energy_pulse": {
-			"animation_length": 0.4,
-			"bones": {
-				"root": {
-					"scale": {
-						"0.0": {"vector": [0.2, 0.0, 0.2]},
-						"0.12": {"vector": [1.6, 1.8, 1.6], "easing": "easeOutExpo"},
-						"0.28": {"vector": [1.4, 1.4, 1.4]},
-						"0.4": {"vector": [0.0, 0.0, 0.0], "easing": "easeInExpo"}
-					}
-				},
-				"prismatic_pillar": {
-					"scale": {
-						"0.0": {"vector": [0.3, 0.0, 0.3]},
-						"0.08": {"vector": [1.8, 1.5, 1.8], "easing": "easeOutExpo"},
-						"0.4": {"vector": [0.0, 0.0, 0.0]}
-					}
-				},
-				"solar_star": {
-					"rotation": {"vector": [0, 0, "query.anim_time * 720"]},
-					"scale": {
-						"0.0": {"vector": [0.2, 0.2, 0.2]},
-						"0.12": {"vector": [2.2, 2.2, 1.0]},
-						"0.4": {"vector": [0.0, 0.0, 0.0]}
-					}
-				},
-				"halo_upper": {
-					"rotation": {"vector": [0, "query.anim_time * 720", 0]},
-					"scale": {
-						"0.0": {"vector": [0.2, 1, 0.2]},
-						"0.15": {"vector": [2.0, 1, 2.0]},
-						"0.4": {"vector": [0.0, 1, 0.0]}
-					}
-				},
-				"halo_lower": {
-					"rotation": {"vector": [0, "query.anim_time * -720", 0]},
-					"scale": {
-						"0.0": {"vector": [0.2, 1, 0.2]},
-						"0.15": {"vector": [2.2, 1, 2.2]},
-						"0.4": {"vector": [0.0, 1, 0.0]}
-					}
-				}
-			}
-		},
-		"burst": {
-			"animation_length": 0.38,
-			"bones": {
-				"root": {
-					"scale": {
-						"0.0": {"vector": [0.1, 0.1, 0.1]},
-						"0.12": {"vector": [1.9, 1.9, 1.9], "easing": "easeOutExpo"},
-						"0.26": {"vector": [1.5, 1.5, 1.5]},
-						"0.38": {"vector": [0.0, 0.0, 0.0], "easing": "easeInExpo"}
-					}
-				},
-				"solar_star": {
-					"rotation": {"vector": [0, 0, "query.anim_time * 1080"]},
-					"scale": {
-						"0.0": {"vector": [0.2, 0.2, 0.2]},
-						"0.15": {"vector": [2.5, 2.5, 1.0]},
-						"0.38": {"vector": [0.0, 0.0, 0.0]}
-					}
-				}
-			}
-		},
-		"sustained": {
-			"loop": true,
-			"animation_length": 1.8,
-			"bones": {
-				"prismatic_pillar": {
-					"rotation": {"vector": [0, "query.anim_time * 180", 0]},
-					"scale": {"vector": ["1.0 + 0.08 * math.sin(query.anim_time * 360)", 1.0, "1.0 + 0.08 * math.sin(query.anim_time * 360)"]}
-				},
-				"solar_star": {
-					"rotation": {"vector": [0, 0, "query.anim_time * 240"]},
-					"scale": {"vector": ["1.0 + 0.2 * math.sin(query.anim_time * 480)", "1.0 + 0.2 * math.sin(query.anim_time * 480)", 1.0]}
-				},
-				"halo_upper": {
-					"rotation": {"vector": [0, "query.anim_time * 360", 0]},
-					"position": {"vector": [0, "2.0 * math.sin(query.anim_time * 240)", 0]}
-				},
-				"halo_lower": {
-					"rotation": {"vector": [0, "query.anim_time * -360", 0]},
-					"position": {"vector": [0, "-2.0 * math.sin(query.anim_time * 240)", 0]}
-				}
-			}
-		}
-	}
+  "format_version": "1.8.0",
+  "animations": {
+    "idle": {
+      "loop": true,
+      "animation_length": 2.0,
+      "bones": {
+        "solar_corona_core": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 120",
+              "query.anim_time * 180",
+              "query.anim_time * 90"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.12 * math.sin(query.anim_time * 240)",
+              "1.0 + 0.12 * math.sin(query.anim_time * 240 + 45)",
+              "1.0 + 0.12 * math.sin(query.anim_time * 240 + 90)"
+            ]
+          }
+        },
+        "sacred_halo_outer": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 90",
+              0
+            ]
+          }
+        },
+        "sacred_halo_inner": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -140",
+              0
+            ]
+          }
+        },
+        "god_ray_cross": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 45"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.15 * math.sin(query.anim_time * 180)",
+              "1.0 + 0.15 * math.sin(query.anim_time * 180)",
+              1.0
+            ]
+          }
+        },
+        "god_ray_diagonal": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "45.0 + query.anim_time * -45"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.15 * math.cos(query.anim_time * 180)",
+              "1.0 + 0.15 * math.cos(query.anim_time * 180)",
+              1.0
+            ]
+          }
+        },
+        "celestial_spark_halo": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 120"
+            ]
+          }
+        },
+        "sacred_halo_middle": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -110",
+              0
+            ]
+          }
+        }
+      }
+    },
+    "corona_burst": {
+      "animation_length": 0.85,
+      "bones": {
+        "root": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0,
+                6,
+                0
+              ],
+              "easing": "easeOutCubic"
+            },
+            "0.55": {
+              "vector": [
+                0,
+                8,
+                0
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0,
+                9,
+                0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.6,
+                1.6,
+                1.6
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.50": {
+              "vector": [
+                1.4,
+                1.4,
+                1.4
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "solar_corona_core": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 360",
+              "query.anim_time * 540",
+              "query.anim_time * 270"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.25": {
+              "vector": [
+                2.4,
+                2.4,
+                2.4
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.55": {
+              "vector": [
+                1.8,
+                1.8,
+                1.8
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "sacred_halo_outer": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 180",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.28": {
+              "vector": [
+                3.2,
+                1.0,
+                3.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.60": {
+              "vector": [
+                3.8,
+                1.0,
+                3.8
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "sacred_halo_inner": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -240",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.20": {
+              "vector": [
+                2.6,
+                1.0,
+                2.6
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.55": {
+              "vector": [
+                3.0,
+                1.0,
+                3.0
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "god_ray_cross": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 90"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                1.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                2.8,
+                2.8,
+                1.0
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.55": {
+              "vector": [
+                3.2,
+                3.2,
+                1.0
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "god_ray_diagonal": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "45.0 + query.anim_time * -90"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                1.0
+              ]
+            },
+            "0.26": {
+              "vector": [
+                2.4,
+                2.4,
+                1.0
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.55": {
+              "vector": [
+                2.8,
+                2.8,
+                1.0
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "celestial_spark_halo": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 240"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.30": {
+              "vector": [
+                2.5,
+                2.5,
+                2.5
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "sacred_halo_middle": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -210",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.24": {
+              "vector": [
+                2.9,
+                1.0,
+                2.9
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.58": {
+              "vector": [
+                3.4,
+                1.0,
+                3.4
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        }
+      }
+    },
+    "energy_pulse": {
+      "animation_length": 0.7,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.20": {
+              "vector": [
+                1.8,
+                1.8,
+                1.8
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.45": {
+              "vector": [
+                1.4,
+                1.4,
+                1.4
+              ]
+            },
+            "0.70": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "solar_corona_core": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.22": {
+              "vector": [
+                2.2,
+                2.2,
+                2.2
+              ]
+            },
+            "0.70": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "sacred_halo_outer": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.25": {
+              "vector": [
+                3.0,
+                1.0,
+                3.0
+              ]
+            },
+            "0.70": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "sacred_halo_middle": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.22": {
+              "vector": [
+                2.8,
+                1.0,
+                2.8
+              ]
+            },
+            "0.70": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "burst": {
+      "animation_length": 0.6,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.18": {
+              "vector": [
+                1.7,
+                1.7,
+                1.7
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.40": {
+              "vector": [
+                1.3,
+                1.3,
+                1.3
+              ]
+            },
+            "0.60": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        }
+      }
+    },
+    "shockwave": {
+      "animation_length": 0.5,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.16": {
+              "vector": [
+                1.6,
+                1.6,
+                1.6
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ]
+            },
+            "0.50": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        }
+      }
+    }
+  }
 }
