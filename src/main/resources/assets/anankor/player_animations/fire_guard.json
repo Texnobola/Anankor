@@ -1,0 +1,135 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "fire_guard": {
+      "animation_length": 0.9,
+      "loop": false,
+      "player_animation_library": {
+        "name": "Fire Guard",
+        "description": "Defensive guard posture summoning the Infernal Bulwark",
+        "author": "Anankor",
+        "applyBendToOtherBones": true
+      },
+      "bones": {
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              0,
+              -2.5,
+              0
+            ],
+            "0.75": [
+              0,
+              -2.5,
+              0
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          },
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              8,
+              0,
+              0
+            ],
+            "0.75": [
+              8,
+              0,
+              0
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "torso": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              12,
+              0,
+              0
+            ],
+            "0.75": [
+              12,
+              0,
+              0
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "right_arm": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              -50,
+              -35,
+              25
+            ],
+            "0.75": [
+              -50,
+              -35,
+              25
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "left_arm": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              -50,
+              35,
+              -25
+            ],
+            "0.75": [
+              -50,
+              35,
+              -25
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

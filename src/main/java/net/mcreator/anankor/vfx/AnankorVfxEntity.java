@@ -62,11 +62,24 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
         builder.define(VFX_SCALE, 1.0f);
     }
 
+    private Entity owner = null;
+    private double offsetY = 0.0;
+
+    public AnankorVfxEntity withOwner(Entity owner, double offsetY) {
+        this.owner = owner;
+        this.offsetY = offsetY;
+        return this;
+    }
+
     // ======================== Tick ========================
 
     @Override
     public void tick() {
         super.tick();
+        if (this.owner != null && this.owner.isAlive()) {
+            this.setPos(this.owner.getX(), this.owner.getY() + this.offsetY, this.owner.getZ());
+            this.setYRot(this.owner.getYRot());
+        }
         // Server-side lifespan management
         if (!this.level().isClientSide() && this.tickCount >= this.maxLifespan) {
             this.discard();

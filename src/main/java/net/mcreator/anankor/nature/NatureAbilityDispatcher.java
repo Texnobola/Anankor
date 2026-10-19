@@ -9,6 +9,7 @@ import java.util.Locale;
 import net.mcreator.anankor.nature.techniques.*;
 import net.mcreator.anankor.network.AnankorModVariables;
 import net.mcreator.anankor.init.AnankorModMobEffects;
+import net.mcreator.anankor.AnankorMod;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -22,6 +23,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.mcreator.anankor.network.PlayPlayerAnimationMessage;
+import net.mcreator.anankor.vfx.VfxSpawner;
 
 public class NatureAbilityDispatcher {
 
@@ -88,8 +92,15 @@ public class NatureAbilityDispatcher {
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 							SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0f, 0.8f);
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.8f, 1.3f);
+							SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.9f, 1.3f);
 					if (executor.level() instanceof ServerLevel sl) {
+						// Trigger PAL Player Animation across network
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "fire_slash", true, true));
+
+						// Spawn GeckoLib 3D crescent slash wave (0.82s forward thrust)
+						VfxSpawner.spawnSlash(executor, "fire_blade", "slash", 1.4f, 1.2, 18);
+
 						for (int i = 0; i < 15; i++) {
 							double dist = 1.0 + i * 0.25;
 							sl.sendParticles(ParticleTypes.FLAME, executor.getX() + look.x * dist,
@@ -116,6 +127,13 @@ public class NatureAbilityDispatcher {
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 							SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1.0f, 0.9f);
 					if (executor.level() instanceof ServerLevel sl) {
+						// Trigger PAL Player Animation across network
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "fire_guard", true, true));
+
+						// Spawn GeckoLib 3D orbiting obsidian-crested flame shields
+						VfxSpawner.spawnAttached(executor, "fire_bulwark", "orbit", 1.0f, 160, 0.2);
+
 						for (int deg = 0; deg < 360; deg += 18) {
 							double rad = Math.toRadians(deg);
 							sl.sendParticles(ParticleTypes.FLAME, executor.getX() + Math.cos(rad) * 2.2,
@@ -133,31 +151,110 @@ public class NatureAbilityDispatcher {
 					}
 				}));
 		fire.add(new FunctionalTechnique("Calamity Nova",
-				"Channels volcanic core flux, unleashing a devastating radial thermal burst.", 45, 100,
+				"Channels volcanic core flux, unleashing a devastating multi-phase radial cataclysm.", 45, 100,
 				TechniqueCategory.EXTENSION, (executor, target) -> {
+					// Phase 1: Awakening & Channeling (0.0s - 2.2s)
+					executor.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 3, false, false, false));
+					executor.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 75, 2, false, false, false));
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.2f, 0.7f);
+							SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.PLAYERS, 1.2f, 0.7f);
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.FIRE_AMBIENT, SoundSource.PLAYERS, 1.5f, 1.0f);
+							SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1.0f, 0.6f);
+
 					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.EXPLOSION_EMITTER, executor.getX(), executor.getY() + 0.8,
-								executor.getZ(), 2, 0.5, 0.5, 0.5, 0);
-						for (int i = 0; i < 60; i++) {
-							double theta = Math.random() * Math.PI * 2;
-							double r = 1.0 + Math.random() * 6.0;
-							sl.sendParticles(ParticleTypes.LAVA, executor.getX() + Math.cos(theta) * r,
-									executor.getY() + 0.5, executor.getZ() + Math.sin(theta) * r, 2, 0.1, 0.3, 0.1,
-									0.05);
-						}
-						AABB area = executor.getBoundingBox().inflate(7.0);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								e.hurt(executor.damageSources().magic(), 14.0f);
-								e.setRemainingFireTicks(160);
-								Vec3 dir = e.position().subtract(executor.position()).normalize();
-								e.setDeltaMovement(dir.x * 1.5, 0.6, dir.z * 1.5);
+						// Trigger PAL Player Animation across network (8.5s cinematic)
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "calamity_nova", true, true));
+
+						// Spawn GeckoLib 3D multi-phase apocalyptic detonation & magma spires (175 ticks / ~8.75s)
+						VfxSpawner.spawnBurst(executor, "fire_nova", "detonate", 1.8f, 175);
+
+						// Initial flux gathering aura
+						sl.sendParticles(ParticleTypes.FLAME, executor.getX(), executor.getY() + 1.0,
+								executor.getZ(), 20, 0.5, 0.5, 0.5, 0.05);
+
+						// Intermediate Buildup pulse 1 (0.8s / 16 ticks)
+						AnankorMod.queueServerWork(16, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s1) {
+								s1.sendParticles(ParticleTypes.FLAME, executor.getX(), executor.getY() + 1.2,
+										executor.getZ(), 25, 0.8, 0.8, 0.8, 0.08);
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.FIRE_AMBIENT, SoundSource.PLAYERS, 1.2f, 1.2f);
 							}
-						}
+						});
+
+						// Intermediate Buildup pulse 2 (1.6s / 32 ticks)
+						AnankorMod.queueServerWork(32, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s2) {
+								s2.sendParticles(ParticleTypes.LAVA, executor.getX(), executor.getY() + 1.5,
+										executor.getZ(), 20, 0.6, 0.6, 0.6, 0.1);
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1.1f, 0.8f);
+							}
+						});
+
+						// Phase 2: Critical Compression & Tension Pause (2.05s / 41 ticks)
+						AnankorMod.queueServerWork(41, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s3) {
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.PLAYERS, 1.2f, 1.5f);
+								s3.sendParticles(ParticleTypes.LARGE_SMOKE, executor.getX(), executor.getY() + 1.5,
+										executor.getZ(), 25, 0.3, 0.3, 0.3, 0.02);
+								s3.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, executor.getX(), executor.getY() + 1.5,
+										executor.getZ(), 15, 0.2, 0.2, 0.2, 0.05);
+							}
+						});
+
+						// Phase 3: Cataclysmic Detonation & Downward Slam (2.28s / 46 ticks)
+						AnankorMod.queueServerWork(46, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s4) {
+								// Apocalyptic explosion audio
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.8f, 0.5f);
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 1.4f, 0.7f);
+								executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+										SoundEvents.DECORATED_POT_BREAK, SoundSource.PLAYERS, 1.5f, 0.6f);
+
+								// Massive radial emitter & volcanic lava outburst
+								s4.sendParticles(ParticleTypes.EXPLOSION_EMITTER, executor.getX(),
+										executor.getY() + 0.5,
+										executor.getZ(), 3, 0.5, 0.5, 0.5, 0);
+
+								for (int i = 0; i < 80; i++) {
+									double theta = Math.random() * Math.PI * 2;
+									double r = 1.0 + Math.random() * 7.5;
+									s4.sendParticles(ParticleTypes.LAVA, executor.getX() + Math.cos(theta) * r,
+											executor.getY() + 0.3, executor.getZ() + Math.sin(theta) * r, 2, 0.1, 0.3,
+											0.1, 0.05);
+								}
+								for (int deg = 0; deg < 360; deg += 15) {
+									double rad = Math.toRadians(deg);
+									s4.sendParticles(ParticleTypes.FLAME, executor.getX() + Math.cos(rad) * 4.5,
+											executor.getY() + 0.2, executor.getZ() + Math.sin(rad) * 4.5, 3, 0.2, 0.2,
+											0.2, 0.08);
+								}
+
+								// Cataclysmic shockwave damage & outward propulsion
+								AABB area = executor.getBoundingBox().inflate(8.5);
+								for (LivingEntity e : s4.getEntitiesOfClass(LivingEntity.class, area)) {
+									if (e != executor) {
+										e.hurt(executor.damageSources().magic(), 18.0f);
+										e.setRemainingFireTicks(200);
+										Vec3 dir = e.position().subtract(executor.position()).normalize();
+										e.setDeltaMovement(dir.x * 1.8, 0.65, dir.z * 1.8);
+									}
+								}
+							}
+						});
+
+						// Phase 4 & 5: Molten Cooling & Tectonic Aftermath (5.5s / 110 ticks)
+						AnankorMod.queueServerWork(110, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s5) {
+								s5.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, executor.getX(),
+										executor.getY() + 0.3, executor.getZ(), 20, 2.5, 0.2, 2.5, 0.02);
+							}
+						});
 					}
 				}));
 		TECHNIQUES_BY_NATURE.put(NatureType.FIRE, fire);

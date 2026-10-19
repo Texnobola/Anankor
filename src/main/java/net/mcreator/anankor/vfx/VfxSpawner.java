@@ -157,4 +157,25 @@ public final class VfxSpawner {
                 scale, durationTicks
         );
     }
+
+    /**
+     * Spawns an attached VFX entity that dynamically moves and turns with the executor.
+     */
+    public static AnankorVfxEntity spawnAttached(LivingEntity executor, String textureVariant,
+                                                 String animation, float scale, int lifespanTicks, double offsetY) {
+        if (executor.level().isClientSide()) return null;
+
+        AnankorVfxEntity vfx = AnankorVfxEntity.spawn(
+                executor.level(),
+                AnankorVfxEntities.ANANKOR_VFX.get(),
+                executor.getX(), executor.getY() + offsetY, executor.getZ(),
+                executor.getYRot(), 0f,
+                animation, textureVariant,
+                scale, lifespanTicks
+        );
+        if (vfx != null) {
+            vfx.withOwner(executor, offsetY);
+        }
+        return vfx;
+    }
 }
