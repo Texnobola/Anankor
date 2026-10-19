@@ -11,6 +11,8 @@ import net.minecraft.core.particles.ParticleTypes;
 
 import java.util.List;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 public class RawFluxTechnique implements INatureTechnique {
 
 	@Override
@@ -26,6 +28,16 @@ public class RawFluxTechnique implements INatureTechnique {
 	@Override
 	public int getCost() {
 		return 20;
+	}
+
+	@Override
+	public int getCooldownTicks() {
+		return 30;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.STRIKE;
 	}
 
 	@Override

@@ -13,6 +13,8 @@ import net.minecraft.core.particles.ParticleTypes;
 
 import java.util.List;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 public class FireTechnique implements INatureTechnique {
 
 	@Override
@@ -31,12 +33,23 @@ public class FireTechnique implements INatureTechnique {
 	}
 
 	@Override
+	public int getCooldownTicks() {
+		return 40;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.MOBILITY;
+	}
+
+	@Override
 	public void execute(LivingEntity executor, Vec3 targetPosition) {
 		Vec3 look = executor.getLookAngle();
 
 		// 1. Directional velocity propulsion
 		Vec3 currentVelocity = executor.getDeltaMovement();
-		executor.setDeltaMovement(currentVelocity.add(look.x * 1.55, Math.max(0.18, look.y * 0.8 + 0.18), look.z * 1.55));
+		executor.setDeltaMovement(
+				currentVelocity.add(look.x * 1.55, Math.max(0.18, look.y * 0.8 + 0.18), look.z * 1.55));
 		executor.syncVelocity = true;
 
 		// 2. Audio & Visuals
@@ -46,7 +59,8 @@ public class FireTechnique implements INatureTechnique {
 				SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 0.9f, 0.95f);
 
 		if (executor.level() instanceof ServerLevel level) {
-			// Trigger PAL Player Animation across network (seen in first-person & by other players)
+			// Trigger PAL Player Animation across network (seen in first-person & by other
+			// players)
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
 					new PlayPlayerAnimationMessage(executor.getId(), "fire_jet", true, true));
 
@@ -81,7 +95,8 @@ public class FireTechnique implements INatureTechnique {
 
 			// 3. Concussive cone damage and ignition
 			AABB targetBox = executor.getBoundingBox().inflate(3.0).move(look.scale(2.0));
-			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, targetBox, e -> e != executor && e.isAlive());
+			List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, targetBox,
+					e -> e != executor && e.isAlive());
 			for (LivingEntity target : targets) {
 				target.hurt(level.damageSources().mobAttack(executor), 7.0f);
 				target.igniteForSeconds(3.0f);
@@ -90,4 +105,3 @@ public class FireTechnique implements INatureTechnique {
 		}
 	}
 }
-

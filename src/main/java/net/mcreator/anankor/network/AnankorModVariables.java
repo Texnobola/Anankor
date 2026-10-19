@@ -77,6 +77,7 @@ public class AnankorModVariables {
 		clone.FluxRegenTimer = original.FluxRegenTimer;
 		clone.Nature = original.Nature;
 		clone.selectedTechnique = original.selectedTechnique;
+		clone.infiniteFlux = original.infiniteFlux;
 		if (!event.isWasDeath()) {
 		}
 		event.getEntity().setData(PLAYER_VARIABLES, clone);
@@ -89,6 +90,7 @@ public class AnankorModVariables {
 		public double FluxRegenTimer = 0;
 		public String Nature = "\"\"";
 		public double selectedTechnique = 0;
+		public boolean infiniteFlux = false;
 
 		@Override
 		public void serialize(ValueOutput output) {
@@ -97,6 +99,7 @@ public class AnankorModVariables {
 			output.putDouble("FluxRegenTimer", FluxRegenTimer);
 			output.putString("Nature", Nature);
 			output.putDouble("selectedTechnique", selectedTechnique);
+			output.putBoolean("infiniteFlux", infiniteFlux);
 		}
 
 		@Override
@@ -106,6 +109,7 @@ public class AnankorModVariables {
 			FluxRegenTimer = input.getDoubleOr("FluxRegenTimer", 0);
 			Nature = input.getStringOr("Nature", "");
 			selectedTechnique = input.getDoubleOr("selectedTechnique", 0);
+			infiniteFlux = input.getBooleanOr("infiniteFlux", false);
 		}
 
 		public void markSyncDirty() {

@@ -13,6 +13,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.List;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 public class EarthTechnique implements INatureTechnique {
 
 	@Override
@@ -28,6 +30,16 @@ public class EarthTechnique implements INatureTechnique {
 	@Override
 	public int getCost() {
 		return 25;
+	}
+
+	@Override
+	public int getCooldownTicks() {
+		return 60;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.STRIKE;
 	}
 
 	@Override

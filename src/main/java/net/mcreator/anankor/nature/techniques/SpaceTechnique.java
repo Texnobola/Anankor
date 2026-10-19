@@ -14,6 +14,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 import java.util.List;
 
 public class SpaceTechnique implements INatureTechnique {
@@ -31,6 +33,16 @@ public class SpaceTechnique implements INatureTechnique {
 	@Override
 	public int getCost() {
 		return 25;
+	}
+
+	@Override
+	public int getCooldownTicks() {
+		return 50;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.MOBILITY;
 	}
 
 	@Override

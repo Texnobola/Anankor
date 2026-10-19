@@ -13,6 +13,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 import java.util.List;
 
 public class LightTechnique implements INatureTechnique {
@@ -30,6 +32,16 @@ public class LightTechnique implements INatureTechnique {
 	@Override
 	public int getCost() {
 		return 22;
+	}
+
+	@Override
+	public int getCooldownTicks() {
+		return 80;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.WARD;
 	}
 
 	@Override

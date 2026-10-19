@@ -13,6 +13,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import net.mcreator.anankor.nature.TechniqueCategory;
+
 import java.util.List;
 
 public class ElectricityTechnique implements INatureTechnique {
@@ -30,6 +32,16 @@ public class ElectricityTechnique implements INatureTechnique {
 	@Override
 	public int getCost() {
 		return 20;
+	}
+
+	@Override
+	public int getCooldownTicks() {
+		return 40;
+	}
+
+	@Override
+	public TechniqueCategory getCategory() {
+		return TechniqueCategory.MOBILITY;
 	}
 
 	@Override
@@ -63,7 +75,8 @@ public class ElectricityTechnique implements INatureTechnique {
 				level.sendParticles(ParticleTypes.PORTAL, px, py, pz, 2, 0.1, 0.1, 0.1, 0.1);
 			}
 
-			// === GeckoLib VFX: Overhauled Anime Jagged Blitz & Railgun Lance dash trail ===
+			// === GeckoLib VFX: Overhauled Anime Jagged Blitz & Railgun Lance dash trail
+			// ===
 			VfxSpawner.spawnTrail(executor, "electricity", "lightning_dash", 3, 2.0, 1.4f, 13);
 
 			// Strike entities along the trajectory

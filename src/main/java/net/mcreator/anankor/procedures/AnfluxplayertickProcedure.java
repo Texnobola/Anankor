@@ -32,6 +32,15 @@ public class AnfluxplayertickProcedure {
 		if (entity instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
 			net.mcreator.anankor.flora.FluxMeditationHandler.handlePlayerTick(serverPlayer);
 		}
+		AnankorModVariables.PlayerVariables vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
+		if (vars.infiniteFlux) {
+			if (vars.flux != vars.maxflux) {
+				vars.flux = vars.maxflux;
+				vars.FluxRegenTimer = 0;
+				vars.markSyncDirty();
+			}
+			return;
+		}
 		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(AnankorModMobEffects.BURNOUT)) {
 			{
 				AnankorModVariables.PlayerVariables _vars = entity.getData(AnankorModVariables.PLAYER_VARIABLES);
