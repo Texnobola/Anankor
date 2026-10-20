@@ -1,5 +1,6 @@
-package net.mcreator.anankor.nature.techniques;
+package net.mcreator.anankor.nature.techniques.ice;
 
+import net.mcreator.anankor.nature.techniques.INatureTechnique;
 import net.mcreator.anankor.network.PlayPlayerAnimationMessage;
 import net.mcreator.anankor.vfx.VfxSpawner;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,11 +14,26 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import net.mcreator.anankor.AnankorMod;
+import net.mcreator.anankor.nature.NatureType;
 import net.mcreator.anankor.nature.TechniqueCategory;
+import net.minecraft.resources.Identifier;
 
 import java.util.List;
 
 public class IceTechnique implements INatureTechnique {
+
+	public static final Identifier ID = Identifier.fromNamespaceAndPath(AnankorMod.MODID, "ice/glacial_anchor");
+
+	@Override
+	public Identifier getId() {
+		return ID;
+	}
+
+	@Override
+	public NatureType getPrimaryNature() {
+		return NatureType.ICE;
+	}
 
 	@Override
 	public String getName() {
@@ -57,8 +73,7 @@ public class IceTechnique implements INatureTechnique {
 				SoundEvents.POWDER_SNOW_STEP, SoundSource.PLAYERS, 1.0f, 0.6f);
 
 		if (executor.level() instanceof ServerLevel level) {
-			// Trigger PAL Player Animation across network (seen in first-person & by other
-			// players)
+			// Trigger PAL Player Animation across network (seen in first-person & by other players)
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
 					new PlayPlayerAnimationMessage(executor.getId(), "ice_slam", true, true));
 

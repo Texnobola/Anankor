@@ -1,5 +1,6 @@
-package net.mcreator.anankor.nature.techniques;
+package net.mcreator.anankor.nature.techniques.fire;
 
+import net.mcreator.anankor.nature.techniques.INatureTechnique;
 import net.mcreator.anankor.vfx.VfxSpawner;
 import net.mcreator.anankor.network.PlayPlayerAnimationMessage;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -13,9 +14,24 @@ import net.minecraft.core.particles.ParticleTypes;
 
 import java.util.List;
 
+import net.mcreator.anankor.AnankorMod;
+import net.mcreator.anankor.nature.NatureType;
 import net.mcreator.anankor.nature.TechniqueCategory;
+import net.minecraft.resources.Identifier;
 
 public class FireTechnique implements INatureTechnique {
+
+	public static final Identifier ID = Identifier.fromNamespaceAndPath(AnankorMod.MODID, "fire/thermal_jet");
+
+	@Override
+	public Identifier getId() {
+		return ID;
+	}
+
+	@Override
+	public NatureType getPrimaryNature() {
+		return NatureType.FIRE;
+	}
 
 	@Override
 	public String getName() {
@@ -59,8 +75,7 @@ public class FireTechnique implements INatureTechnique {
 				SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 0.9f, 0.95f);
 
 		if (executor.level() instanceof ServerLevel level) {
-			// Trigger PAL Player Animation across network (seen in first-person & by other
-			// players)
+			// Trigger PAL Player Animation across network (seen in first-person & by other players)
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
 					new PlayPlayerAnimationMessage(executor.getId(), "fire_jet", true, true));
 
