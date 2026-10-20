@@ -5,6 +5,7 @@ import com.geckolib.animatable.instance.AnimatableInstanceCache;
 import com.geckolib.animatable.manager.AnimatableManager;
 import com.geckolib.animation.AnimationController;
 import com.geckolib.animation.RawAnimation;
+import com.geckolib.animation.object.LoopType;
 import com.geckolib.util.GeckoLibUtil;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.AABB;
 
 /**
  * A lightweight, no-physics, transient entity used purely for rendering
@@ -28,22 +30,41 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
 
     // ----- Synched Data Keys -----
     /** Which animation to play (e.g. "slash_arc", "burst_radial", "wave_expand") */
-    private static final EntityDataAccessor<String> ANIM_KEY =
-            SynchedEntityData.defineId(AnankorVfxEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> ANIM_KEY = SynchedEntityData.defineId(AnankorVfxEntity.class,
+            EntityDataSerializers.STRING);
 
     /** Texture variant name. The model resolves this to a texture path. */
-    private static final EntityDataAccessor<String> TEXTURE_VARIANT =
-            SynchedEntityData.defineId(AnankorVfxEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> TEXTURE_VARIANT = SynchedEntityData.defineId(AnankorVfxEntity.class,
+            EntityDataSerializers.STRING);
 
     /** Uniform scale multiplier for the rendered model */
-    private static final EntityDataAccessor<Float> VFX_SCALE =
-            SynchedEntityData.defineId(AnankorVfxEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> VFX_SCALE = SynchedEntityData.defineId(AnankorVfxEntity.class,
+            EntityDataSerializers.FLOAT);
+
+    /**
+     * Lifespan in ticks; synched to client to discard entity without network
+     * latency
+     */
+    private static final EntityDataAccessor<Integer> LIFESPAN = SynchedEntityData.defineId(AnankorVfxEntity.class,
+            EntityDataSerializers.INT);
+
+    /**
+     * Custom loop type that loops when loop=true in json, or holds on last frame
+     * when loop=false
+     */
+    public static final LoopType VFX_LOOP_OR_HOLD = LoopType.register("vfx_loop_or_hold",
+            (animatable, point, stage, state, controller) -> {
+                if (point.animation().loopType() == LoopType.LOOP) {
+                    controller.setTimelineTime(
+                            stage.startTime() + (controller.getCurrentTimelineTime() - stage.endTime()));
+                    return true;
+                }
+                controller.setTimelineTime(stage.endTime());
+                return true;
+            });
 
     // ----- GeckoLib Cache -----
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-
-    // ----- Lifespan -----
-    private int maxLifespan = 12; // ticks; default ~0.6s
 
     // ======================== Constructors ========================
 
@@ -60,6 +81,7 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
         builder.define(ANIM_KEY, "idle");
         builder.define(TEXTURE_VARIANT, "flux");
         builder.define(VFX_SCALE, 1.0f);
+        builder.define(LIFESPAN, 12);
     }
 
     private Entity owner = null;
@@ -80,8 +102,10 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
             this.setPos(this.owner.getX(), this.owner.getY() + this.offsetY, this.owner.getZ());
             this.setYRot(this.owner.getYRot());
         }
-        // Server-side lifespan management
-        if (!this.level().isClientSide() && this.tickCount >= this.maxLifespan) {
+        // Discard on both client and server when lifespan is reached to prevent stale
+        // frames
+        int lifespan = this.entityData.get(LIFESPAN);
+        if (lifespan > 0 && this.tickCount >= lifespan) {
             this.discard();
         }
     }
@@ -92,13 +116,20 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>("vfx_controller", 0, test -> {
             String animName = this.entityData.get(ANIM_KEY);
-            return test.setAndContinue(RawAnimation.begin().thenPlay(animName));
+            return test.setAndContinue(RawAnimation.begin().then(animName, VFX_LOOP_OR_HOLD));
         }));
     }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    // ======================== Distance & Culling ========================
+
+    @Override
+    public boolean shouldRenderAtSqrDistance(double distance) {
+        return distance < 64.0 * 64.0;
     }
 
     // ======================== Public Setters ========================
@@ -119,7 +150,7 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
     }
 
     public AnankorVfxEntity withLifespan(int ticks) {
-        this.maxLifespan = ticks;
+        this.entityData.set(LIFESPAN, ticks);
         return this;
     }
 
@@ -137,14 +168,20 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
         return this.entityData.get(ANIM_KEY);
     }
 
+    public int getLifespan() {
+        return this.entityData.get(LIFESPAN);
+    }
+
     // ======================== Combat / Damage ========================
 
     @Override
-    public boolean hurtServer(net.minecraft.server.level.ServerLevel level, net.minecraft.world.damagesource.DamageSource source, float amount) {
+    public boolean hurtServer(net.minecraft.server.level.ServerLevel level,
+            net.minecraft.world.damagesource.DamageSource source, float amount) {
         return false; // Visual entity cannot be damaged
     }
 
-    // ======================== Persistence (no-op for transient VFX) ========================
+    // ======================== Persistence (no-op for transient VFX)
+    // ========================
 
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
@@ -159,24 +196,26 @@ public class AnankorVfxEntity extends Entity implements GeoEntity {
     // ======================== Static Spawn Helper ========================
 
     /**
-     * Spawns a VFX entity at a given position with rotation matching the executor's look.
+     * Spawns a VFX entity at a given position with rotation matching the executor's
+     * look.
      * Call from the server side only.
      */
     public static AnankorVfxEntity spawn(Level level, EntityType<AnankorVfxEntity> type,
-                                          double x, double y, double z,
-                                          float yaw, float pitch,
-                                          String animation, String textureVariant,
-                                          float scale, int lifespan) {
-        if (level.isClientSide()) return null;
+            double x, double y, double z,
+            float yaw, float pitch,
+            String animation, String textureVariant,
+            float scale, int lifespan) {
+        if (level.isClientSide())
+            return null;
 
         AnankorVfxEntity vfx = new AnankorVfxEntity(type, level);
         vfx.setPos(x, y, z);
         vfx.setYRot(yaw);
         vfx.setXRot(pitch);
         vfx.withAnimation(animation)
-           .withTextureVariant(textureVariant)
-           .withVfxScale(scale)
-           .withLifespan(lifespan);
+                .withTextureVariant(textureVariant)
+                .withVfxScale(scale)
+                .withLifespan(lifespan);
 
         level.addFreshEntity(vfx);
         return vfx;
