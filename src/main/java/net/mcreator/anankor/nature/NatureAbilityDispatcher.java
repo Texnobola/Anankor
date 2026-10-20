@@ -459,6 +459,12 @@ public class NatureAbilityDispatcher {
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 							SoundEvents.GLASS_PLACE, SoundSource.PLAYERS, 1.2f, 0.8f);
 					if (executor.level() instanceof ServerLevel sl) {
+						// Trigger PAL Player Animation across network
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "ice_barrier", true, true));
+						// GeckoLib 3D Orbiting Aegis VFX attached to caster for full duration (140 ticks = 7s)
+						VfxSpawner.spawnAttached(executor, "ice_barrier", "orbit", 1.1f, 140, 0.2);
+
 						sl.sendParticles(ParticleTypes.ITEM_SNOWBALL, executor.getX(), executor.getY() + 1.0,
 								executor.getZ(), 25, 0.6, 0.6, 0.6, 0.1);
 					}
@@ -471,6 +477,15 @@ public class NatureAbilityDispatcher {
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 							SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.5f, 1.8f);
 					if (executor.level() instanceof ServerLevel sl) {
+						// Trigger PAL Player Animation across network
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "absolute_zero", true, true));
+						// GeckoLib 3D Blooming Glacial Lotus Nova VFX (70 ticks = 3.5s)
+						VfxSpawner.spawnAt(executor, "ice_absolute_zero", "absolute_zero",
+								executor.getX(), executor.getY() + 0.05, executor.getZ(),
+								executor.getYRot(), 0.0f,
+								1.8f, 70);
+
 						sl.sendParticles(ParticleTypes.SNOWFLAKE, executor.getX(), executor.getY() + 1.0,
 								executor.getZ(), 100, 4.0, 1.5, 4.0, 0.1);
 						AABB area = executor.getBoundingBox().inflate(8.0);

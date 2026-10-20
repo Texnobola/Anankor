@@ -63,10 +63,10 @@ public class IceTechnique implements INatureTechnique {
 					new PlayPlayerAnimationMessage(executor.getId(), "ice_slam", true, true));
 
 			// === GeckoLib VFX: Ground Slam Glacial Monolith & Spires ===
-			VfxSpawner.spawnAt(executor, "ice", "ground_slam",
+			VfxSpawner.spawnAt(executor, "ice_anchor", "ground_slam",
 					executor.getX(), executor.getY() + 0.05, executor.getZ(),
 					executor.getYRot(), 0.0f,
-					1.5f, 24);
+					1.5f, 30);
 
 			// Radial frost crystallization shockwave particles
 			level.sendParticles(ParticleTypes.SNOWFLAKE, executor.getX(), executor.getY() + 0.3, executor.getZ(),
