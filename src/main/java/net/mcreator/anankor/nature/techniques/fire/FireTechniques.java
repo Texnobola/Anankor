@@ -56,7 +56,7 @@ public final class FireTechniques {
 				if (executor.level() instanceof ServerLevel sl) {
 					// Trigger PAL Player Animation across network
 					PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-							new PlayPlayerAnimationMessage(executor.getId(), "fire_slash", true, true));
+							new PlayPlayerAnimationMessage(executor.getId(), "fire_slash"));
 
 					// Spawn GeckoLib 3D crescent slash wave (0.82s forward thrust)
 					VfxSpawner.spawnSlash(executor, "fire_blade", "slash", 1.4f, 1.2, 18);
@@ -96,7 +96,7 @@ public final class FireTechniques {
 				if (executor.level() instanceof ServerLevel sl) {
 					// Trigger PAL Player Animation across network
 					PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-							new PlayPlayerAnimationMessage(executor.getId(), "fire_guard", true, true));
+							new PlayPlayerAnimationMessage(executor.getId(), "fire_guard"));
 
 					// Spawn GeckoLib 3D orbiting obsidian-crested flame shields
 					VfxSpawner.spawnAttached(executor, "fire_bulwark", "orbit", 1.0f, 160, 0.2);
@@ -138,7 +138,7 @@ public final class FireTechniques {
 				if (executor.level() instanceof ServerLevel sl) {
 					// Trigger PAL Player Animation across network (8.5s cinematic)
 					PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-							new PlayPlayerAnimationMessage(executor.getId(), "calamity_nova", true, true));
+							new PlayPlayerAnimationMessage(executor.getId(), "calamity_nova"));
 
 					// Spawn GeckoLib 3D multi-phase apocalyptic detonation & magma spires (175 ticks / ~8.75s)
 					VfxSpawner.spawnBurst(executor, "fire_nova", "detonate", 1.8f, 175);

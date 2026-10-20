@@ -63,7 +63,7 @@ public class WaterTechnique implements INatureTechnique {
 			// Trigger PAL Player Animation across network (seen in first-person & by other
 			// players)
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "water_geyser", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "water_geyser"));
 
 			// === GeckoLib VFX: Skyward Geyser Surge ===
 			double spawnX = executor.getX() + look.x * 2.2;

@@ -61,7 +61,7 @@ public class LightTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "solar_corona", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "solar_corona"));
 
 			// Radiant aura particles
 			level.sendParticles(ParticleTypes.END_ROD, executor.getX(), executor.getY() + 1.0, executor.getZ(),

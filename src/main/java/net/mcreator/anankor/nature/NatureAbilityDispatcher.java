@@ -139,7 +139,7 @@ public class NatureAbilityDispatcher {
 					if (executor.level() instanceof ServerLevel sl) {
 						// Trigger PAL Player Animation across network (0.6s streamlined surf glide)
 						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-								new PlayPlayerAnimationMessage(executor.getId(), "water_dash", true, true));
+								new PlayPlayerAnimationMessage(executor.getId(), "water_dash"));
 
 						// Spawn GeckoLib 3D surging wave crest
 						VfxSpawner.spawnAttached(executor, "water_surge", "surge", 1.3f, 14, 0.0);
@@ -161,7 +161,7 @@ public class NatureAbilityDispatcher {
 					if (executor.level() instanceof ServerLevel sl) {
 						// Trigger PAL Player Animation across network (0.6s spear lunge)
 						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-								new PlayPlayerAnimationMessage(executor.getId(), "water_thrust", true, true));
+								new PlayPlayerAnimationMessage(executor.getId(), "water_thrust"));
 
 						// Spawn GeckoLib 3D piercing pressurized water lance (forward thrust along -Z)
 						VfxSpawner.spawnSlash(executor, "water_lance", "pierce", 1.4f, 1.2, 14);
@@ -203,7 +203,7 @@ public class NatureAbilityDispatcher {
 					if (executor.level() instanceof ServerLevel sl) {
 						// Trigger PAL Player Animation across network (5.0s channeling + eruption)
 						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-								new PlayPlayerAnimationMessage(executor.getId(), "water_maelstrom", true, true));
+								new PlayPlayerAnimationMessage(executor.getId(), "water_maelstrom"));
 
 						// Spawn GeckoLib 3D spinning whirlpool & rising geyser pillars (105 ticks /
 						// ~5.25s)

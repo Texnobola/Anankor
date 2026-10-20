@@ -55,7 +55,7 @@ public class EarthTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "earth_smash", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "earth_smash"));
 
 			// === GeckoLib VFX: Tectonic Core Smash crater & megaliths ===
 			VfxSpawner.spawnAt(executor, "earth", "seismic_smash",

@@ -74,7 +74,7 @@ public final class IceTechniques {
 				if (executor.level() instanceof ServerLevel sl) {
 					// Trigger PAL Player Animation across network
 					PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-							new PlayPlayerAnimationMessage(executor.getId(), "ice_barrier", true, true));
+							new PlayPlayerAnimationMessage(executor.getId(), "ice_barrier"));
 					// GeckoLib 3D Orbiting Aegis VFX attached to caster for full duration (140 ticks = 7s)
 					VfxSpawner.spawnAttached(executor, "ice_barrier", "orbit", 1.1f, 140, 0.2);
 
@@ -99,7 +99,7 @@ public final class IceTechniques {
 				if (executor.level() instanceof ServerLevel sl) {
 					// Trigger PAL Player Animation across network
 					PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-							new PlayPlayerAnimationMessage(executor.getId(), "absolute_zero", true, true));
+							new PlayPlayerAnimationMessage(executor.getId(), "absolute_zero"));
 					// GeckoLib 3D Blooming Glacial Lotus Nova VFX (70 ticks = 3.5s)
 					VfxSpawner.spawnAt(executor, "ice_absolute_zero", "absolute_zero",
 							executor.getX(), executor.getY() + 0.05, executor.getZ(),

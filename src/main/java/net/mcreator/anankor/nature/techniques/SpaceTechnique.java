@@ -60,7 +60,7 @@ public class SpaceTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "space_dash", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "space_dash"));
 
 			level.sendParticles(ParticleTypes.PORTAL, origin.x, origin.y + 0.5, origin.z, 30, 0.4, 0.6, 0.4, 0.25);
 			level.sendParticles(ParticleTypes.REVERSE_PORTAL, destination.x, destination.y + 0.5, destination.z, 30,

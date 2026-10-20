@@ -75,7 +75,7 @@ public class IceTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network (seen in first-person & by other players)
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "ice_slam", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "ice_slam"));
 
 			// === GeckoLib VFX: Ground Slam Glacial Monolith & Spires ===
 			VfxSpawner.spawnAt(executor, "ice_anchor", "ground_slam",

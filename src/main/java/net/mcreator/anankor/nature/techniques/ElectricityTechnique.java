@@ -63,7 +63,7 @@ public class ElectricityTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "lightning_surge", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "lightning_surge"));
 
 			// Line of electric sparks & ionized purple plasma trails
 			for (int i = 0; i < 20; i++) {

@@ -63,7 +63,7 @@ public class DarkTechnique implements INatureTechnique {
 		if (executor.level() instanceof ServerLevel level) {
 			// Trigger PAL Player Animation across network
 			PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
-					new PlayPlayerAnimationMessage(executor.getId(), "abyssal_sink", true, true));
+					new PlayPlayerAnimationMessage(executor.getId(), "abyssal_sink"));
 
 			// Shadow smoke and soul particles
 			level.sendParticles(ParticleTypes.SQUID_INK, executor.getX(), executor.getY() + 0.8, executor.getZ(),
