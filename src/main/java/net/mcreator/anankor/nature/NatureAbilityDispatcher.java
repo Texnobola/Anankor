@@ -11,6 +11,8 @@ import java.util.Locale;
 import net.mcreator.anankor.nature.techniques.*;
 import net.mcreator.anankor.nature.techniques.fire.FireTechniques;
 import net.mcreator.anankor.nature.techniques.ice.IceTechniques;
+import net.mcreator.anankor.nature.techniques.earth.EarthTechniques;
+import net.mcreator.anankor.nature.techniques.space.SpaceTechniques;
 import net.mcreator.anankor.network.AnankorModVariables;
 import net.mcreator.anankor.init.AnankorModMobEffects;
 import net.mcreator.anankor.AnankorMod;
@@ -293,113 +295,14 @@ public class NatureAbilityDispatcher {
 		registerNature(NatureType.ICE, IceTechniques.getTechniques());
 
 		// ==========================================
-		// 4. EARTH
+		// 4. EARTH (Migrated to dedicated EarthTechniques module)
 		// ==========================================
-		List<INatureTechnique> earth = new ArrayList<>();
-		earth.add(new FunctionalTechnique("Tectonic Vault",
-				"Slams the ground to vault into the air with heavy stone propulsion.", 18, 40,
-				TechniqueCategory.MOBILITY, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					executor.setDeltaMovement(look.x * 1.4, 0.85, look.z * 1.4);
-					executor.syncVelocity = true;
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.STONE_BREAK, SoundSource.PLAYERS, 1.0f, 0.8f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.POOF, executor.getX(), executor.getY(), executor.getZ(),
-								20, 0.5, 0.2, 0.5, 0.1);
-					}
-				}));
-		earth.add(new EarthTechnique()); // Slot 1: Strike (Seismic Breaker - existing 3D VFX)
-		earth.add(new FunctionalTechnique("Granite Aegis",
-				"Draws tectonic bedrock plates around the caster, granting Absorption and fortitude.", 24, 65,
-				TechniqueCategory.WARD, (executor, target) -> {
-					executor.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.ANVIL_USE, SoundSource.PLAYERS, 0.8f, 1.2f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, executor.getX(), executor.getY() + 0.8,
-								executor.getZ(), 10, 0.5, 0.5, 0.5, 0.05);
-					}
-				}));
-		earth.add(new FunctionalTechnique("Cataclysmic Fissure",
-				"Rips open a deep seismic fault line, blasting rock shards and crushing armor.", 45, 100,
-				TechniqueCategory.EXTENSION, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.2f, 0.5f);
-					if (executor.level() instanceof ServerLevel sl) {
-						for (int i = 1; i <= 8; i++) {
-							double px = executor.getX() + look.x * i;
-							double py = executor.getY();
-							double pz = executor.getZ() + look.z * i;
-							sl.sendParticles(ParticleTypes.EXPLOSION, px, py + 0.5, pz, 1, 0, 0, 0, 0);
-						}
-						AABB fissureBox = executor.getBoundingBox().move(look.scale(4.0)).inflate(2.5, 1.5, 2.5);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, fissureBox)) {
-							if (e != executor) {
-								e.hurt(executor.damageSources().magic(), 15.0f);
-								e.setDeltaMovement(0, 0.7, 0);
-							}
-						}
-					}
-				}));
-		registerNature(NatureType.EARTH, earth);
+		registerNature(NatureType.EARTH, EarthTechniques.getTechniques());
 
 		// ==========================================
-		// 5. SPACE
+		// 5. SPACE (Migrated to dedicated SpaceTechniques module)
 		// ==========================================
-		List<INatureTechnique> space = new ArrayList<>();
-		space.add(new SpaceTechnique()); // Slot 0: Mobility (Spatial Fold - existing 3D VFX)
-		space.add(new FunctionalTechnique("Graviton Collapse",
-				"Collapses local space coordinates at target, pulling entities into a void crush.", 28, 55,
-				TechniqueCategory.STRIKE, (executor, target) -> {
-					executor.level().playSound(null, target.x, target.y, target.z,
-							SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 1.2f, 1.4f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.PORTAL, target.x, target.y + 0.5, target.z, 40, 1.0, 1.0, 1.0,
-								0.2);
-						AABB area = new AABB(target.x - 3.5, target.y - 1.5, target.z - 3.5, target.x + 3.5,
-								target.y + 2.5, target.z + 3.5);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								Vec3 dir = target.subtract(e.position()).normalize().scale(1.2);
-								e.setDeltaMovement(dir.x, 0.3, dir.z);
-								e.hurt(executor.damageSources().magic(), 10.0f);
-							}
-						}
-					}
-				}));
-		space.add(new FunctionalTechnique("Spatial Distortion",
-				"Warps local space, deflecting threats and accelerating the caster's flow.", 24, 70,
-				TechniqueCategory.WARD, (executor, target) -> {
-					executor.addEffect(new MobEffectInstance(MobEffects.SPEED, 140, 1));
-					executor.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 140, 0));
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.9f, 1.6f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.REVERSE_PORTAL, executor.getX(), executor.getY() + 1.0,
-								executor.getZ(), 25, 0.5, 0.8, 0.5, 0.1);
-					}
-				}));
-		space.add(new FunctionalTechnique("Event Horizon",
-				"Anchors a miniature singularity that suspends foes within temporal stasis.", 50, 120,
-				TechniqueCategory.EXTENSION, (executor, target) -> {
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.END_PORTAL_SPAWN, SoundSource.PLAYERS, 1.0f, 1.5f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.PORTAL, executor.getX(), executor.getY() + 1.0, executor.getZ(),
-								80, 4.0, 2.0, 4.0, 0.5);
-						AABB area = executor.getBoundingBox().inflate(7.0);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								e.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
-								e.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 120, 3));
-								e.hurt(executor.damageSources().magic(), 12.0f);
-							}
-						}
-					}
-				}));
-		registerNature(NatureType.SPACE, space);
+		registerNature(NatureType.SPACE, SpaceTechniques.getTechniques());
 
 		// ==========================================
 		// 6. ELECTRICITY

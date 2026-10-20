@@ -1,0 +1,242 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.vfx_space_singularity",
+        "texture_width": 256,
+        "texture_height": 256,
+        "visible_bounds_width": 16,
+        "visible_bounds_height": 12,
+        "visible_bounds_offset": [
+          0,
+          2,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "singularity_center",
+          "parent": "root",
+          "pivot": [
+            0,
+            16,
+            0
+          ]
+        },
+        {
+          "name": "black_hole_core",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            16,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -9,
+                7,
+                -9
+              ],
+              "size": [
+                18,
+                18,
+                18
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "photon_ring",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            16,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -12,
+                15.5,
+                -12
+              ],
+              "size": [
+                24,
+                1,
+                24
+              ],
+              "uv": [
+                56,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "accretion_disc_inner",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            16,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -22,
+                15.7,
+                -22
+              ],
+              "size": [
+                44,
+                0.6,
+                44
+              ],
+              "uv": [
+                106,
+                0
+              ],
+              "rotation": [
+                12,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "accretion_disc_outer",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            16,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -34,
+                15.8,
+                -34
+              ],
+              "size": [
+                68,
+                0.4,
+                68
+              ],
+              "uv": [
+                0,
+                68
+              ],
+              "rotation": [
+                12,
+                30,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "gravitational_lensing_ring",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            16,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -28,
+                15.5,
+                -28
+              ],
+              "size": [
+                56,
+                1,
+                56
+              ],
+              "uv": [
+                0,
+                138
+              ],
+              "rotation": [
+                -35,
+                60,
+                20
+              ]
+            }
+          ]
+        },
+        {
+          "name": "polar_jet_north",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            25,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                25,
+                -3
+              ],
+              "size": [
+                6,
+                32,
+                6
+              ],
+              "uv": [
+                114,
+                68
+              ]
+            }
+          ]
+        },
+        {
+          "name": "polar_jet_south",
+          "parent": "singularity_center",
+          "pivot": [
+            0,
+            7,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                -25,
+                -3
+              ],
+              "size": [
+                6,
+                32,
+                6
+              ],
+              "uv": [
+                114,
+                68
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

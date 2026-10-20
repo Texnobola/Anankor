@@ -1,0 +1,211 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.vfx_space_collapse",
+        "texture_width": 256,
+        "texture_height": 256,
+        "visible_bounds_width": 10,
+        "visible_bounds_height": 10,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "graviton_core",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -5,
+                3,
+                -5
+              ],
+              "size": [
+                10,
+                10,
+                10
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "inner_accretion_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -12,
+                7.5,
+                -12
+              ],
+              "size": [
+                24,
+                1,
+                24
+              ],
+              "uv": [
+                40,
+                0
+              ],
+              "rotation": [
+                15,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "outer_accretion_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -18,
+                7.8,
+                -18
+              ],
+              "size": [
+                36,
+                0.4,
+                36
+              ],
+              "uv": [
+                90,
+                0
+              ],
+              "rotation": [
+                -25,
+                45,
+                10
+              ]
+            }
+          ]
+        },
+        {
+          "name": "warp_prism_1",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                0,
+                -14
+              ],
+              "size": [
+                4,
+                16,
+                28
+              ],
+              "uv": [
+                0,
+                40
+              ],
+              "rotation": [
+                0,
+                45,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "warp_prism_2",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -14,
+                0,
+                -2
+              ],
+              "size": [
+                28,
+                16,
+                4
+              ],
+              "uv": [
+                0,
+                40
+              ],
+              "rotation": [
+                0,
+                -45,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "vacuum_shock_halo",
+          "parent": "root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -24,
+                7.9,
+                -24
+              ],
+              "size": [
+                48,
+                0.2,
+                48
+              ],
+              "uv": [
+                0,
+                88
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

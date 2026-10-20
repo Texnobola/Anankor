@@ -1,0 +1,59 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "orbit": {
+      "animation_length": 3.5,
+      "loop": true,
+      "bones": {
+        "ground_rune_seal": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 25",
+              0
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.03 * math.sin(query.anim_time * 160)",
+              1.0,
+              "1.0 + 0.03 * math.sin(query.anim_time * 160)"
+            ]
+          }
+        },
+        "orbit_anchor": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 105",
+              0
+            ]
+          },
+          "position": {
+            "vector": [
+              0,
+              "math.sin(query.anim_time * 150) * 1.5",
+              0
+            ]
+          }
+        },
+        "crystal_ring": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -130",
+              0
+            ]
+          },
+          "position": {
+            "vector": [
+              0,
+              "math.cos(query.anim_time * 180) * 2.0",
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

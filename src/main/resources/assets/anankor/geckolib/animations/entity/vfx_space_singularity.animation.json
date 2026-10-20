@@ -1,0 +1,95 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "singularity": {
+      "animation_length": 3.0,
+      "loop": true,
+      "bones": {
+        "black_hole_core": {
+          "scale": {
+            "vector": [
+              "1.0 + 0.04 * math.sin(query.anim_time * 180)",
+              "1.0 + 0.04 * math.sin(query.anim_time * 180)",
+              "1.0 + 0.04 * math.sin(query.anim_time * 180)"
+            ]
+          },
+          "rotation": {
+            "vector": [
+              "query.anim_time * 40",
+              "query.anim_time * 80",
+              0
+            ]
+          }
+        },
+        "photon_ring": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -200",
+              0
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.06 * math.sin(query.anim_time * 240)",
+              1.0,
+              "1.0 + 0.06 * math.sin(query.anim_time * 240)"
+            ]
+          }
+        },
+        "accretion_disc_inner": {
+          "rotation": {
+            "vector": [
+              12,
+              "query.anim_time * 240",
+              0
+            ]
+          }
+        },
+        "accretion_disc_outer": {
+          "rotation": {
+            "vector": [
+              12,
+              "query.anim_time * 150",
+              0
+            ]
+          }
+        },
+        "gravitational_lensing_ring": {
+          "rotation": {
+            "vector": [
+              -35,
+              "query.anim_time * -100",
+              20
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.05 * math.sin(query.anim_time * 160)",
+              1.0,
+              "1.0 + 0.05 * math.sin(query.anim_time * 160)"
+            ]
+          }
+        },
+        "polar_jet_north": {
+          "scale": {
+            "vector": [
+              "1.0 + 0.1 * math.sin(query.anim_time * 260)",
+              "1.0 + 0.2 * math.sin(query.anim_time * 300)",
+              "1.0 + 0.1 * math.sin(query.anim_time * 260)"
+            ]
+          }
+        },
+        "polar_jet_south": {
+          "scale": {
+            "vector": [
+              "1.0 + 0.1 * math.sin(query.anim_time * 260)",
+              "1.0 + 0.2 * math.sin(query.anim_time * 300)",
+              "1.0 + 0.1 * math.sin(query.anim_time * 260)"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

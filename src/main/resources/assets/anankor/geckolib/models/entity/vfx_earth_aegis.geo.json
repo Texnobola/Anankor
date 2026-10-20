@@ -1,0 +1,395 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.vfx_earth_aegis",
+        "texture_width": 256,
+        "texture_height": 256,
+        "visible_bounds_width": 10,
+        "visible_bounds_height": 8,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ground_rune_seal",
+          "parent": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -18,
+                0.05,
+                -18
+              ],
+              "size": [
+                36,
+                0.2,
+                36
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            },
+            {
+              "origin": [
+                -14,
+                0.08,
+                -14
+              ],
+              "size": [
+                28,
+                0.2,
+                28
+              ],
+              "uv": [
+                74,
+                0
+              ],
+              "rotation": [
+                0,
+                45,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "orbit_anchor",
+          "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ]
+        },
+        {
+          "name": "granite_shield_north",
+          "parent": "orbit_anchor",
+          "pivot": [
+            0,
+            12,
+            19
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                2,
+                18
+              ],
+              "size": [
+                14,
+                20,
+                3
+              ],
+              "uv": [
+                0,
+                38
+              ]
+            },
+            {
+              "origin": [
+                -5,
+                6,
+                21
+              ],
+              "size": [
+                10,
+                12,
+                2
+              ],
+              "uv": [
+                36,
+                38
+              ]
+            }
+          ]
+        },
+        {
+          "name": "granite_shield_south",
+          "parent": "orbit_anchor",
+          "pivot": [
+            0,
+            12,
+            -19
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                2,
+                -21
+              ],
+              "size": [
+                14,
+                20,
+                3
+              ],
+              "uv": [
+                0,
+                38
+              ]
+            },
+            {
+              "origin": [
+                -5,
+                6,
+                -23
+              ],
+              "size": [
+                10,
+                12,
+                2
+              ],
+              "uv": [
+                36,
+                38
+              ]
+            }
+          ]
+        },
+        {
+          "name": "granite_shield_east",
+          "parent": "orbit_anchor",
+          "pivot": [
+            19,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                18,
+                2,
+                -7
+              ],
+              "size": [
+                3,
+                20,
+                14
+              ],
+              "uv": [
+                62,
+                38
+              ]
+            },
+            {
+              "origin": [
+                21,
+                6,
+                -5
+              ],
+              "size": [
+                2,
+                12,
+                10
+              ],
+              "uv": [
+                98,
+                38
+              ]
+            }
+          ]
+        },
+        {
+          "name": "granite_shield_west",
+          "parent": "orbit_anchor",
+          "pivot": [
+            -19,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -21,
+                2,
+                -7
+              ],
+              "size": [
+                3,
+                20,
+                14
+              ],
+              "uv": [
+                62,
+                38
+              ]
+            },
+            {
+              "origin": [
+                -23,
+                6,
+                -5
+              ],
+              "size": [
+                2,
+                12,
+                10
+              ],
+              "uv": [
+                98,
+                38
+              ]
+            }
+          ]
+        },
+        {
+          "name": "crystal_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            16,
+            0
+          ]
+        },
+        {
+          "name": "crystal_ne",
+          "parent": "crystal_ring",
+          "pivot": [
+            14,
+            16,
+            14
+          ],
+          "cubes": [
+            {
+              "origin": [
+                12,
+                12,
+                12
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                130,
+                38
+              ],
+              "rotation": [
+                15,
+                45,
+                15
+              ]
+            }
+          ]
+        },
+        {
+          "name": "crystal_nw",
+          "parent": "crystal_ring",
+          "pivot": [
+            -14,
+            16,
+            14
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                12,
+                12
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                130,
+                38
+              ],
+              "rotation": [
+                15,
+                -45,
+                -15
+              ]
+            }
+          ]
+        },
+        {
+          "name": "crystal_se",
+          "parent": "crystal_ring",
+          "pivot": [
+            14,
+            16,
+            -14
+          ],
+          "cubes": [
+            {
+              "origin": [
+                12,
+                12,
+                -16
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                130,
+                38
+              ],
+              "rotation": [
+                -15,
+                45,
+                15
+              ]
+            }
+          ]
+        },
+        {
+          "name": "crystal_sw",
+          "parent": "crystal_ring",
+          "pivot": [
+            -14,
+            16,
+            -14
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                12,
+                -16
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                130,
+                38
+              ],
+              "rotation": [
+                -15,
+                -45,
+                -15
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

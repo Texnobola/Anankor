@@ -1,0 +1,257 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.vfx_space_distortion",
+        "texture_width": 256,
+        "texture_height": 256,
+        "visible_bounds_width": 10,
+        "visible_bounds_height": 8,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "equatorial_warp_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -18,
+                11.5,
+                -18
+              ],
+              "size": [
+                36,
+                1,
+                36
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "polar_warp_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                11.5,
+                -16
+              ],
+              "size": [
+                32,
+                1,
+                32
+              ],
+              "uv": [
+                74,
+                0
+              ],
+              "rotation": [
+                90,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "diagonal_warp_ring",
+          "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -14,
+                11.5,
+                -14
+              ],
+              "size": [
+                28,
+                1,
+                28
+              ],
+              "uv": [
+                0,
+                38
+              ],
+              "rotation": [
+                45,
+                0,
+                45
+              ]
+            }
+          ]
+        },
+        {
+          "name": "astral_facets",
+          "parent": "root",
+          "pivot": [
+            0,
+            12,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -18,
+                10,
+                -2
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                25,
+                45,
+                10
+              ]
+            },
+            {
+              "origin": [
+                14,
+                10,
+                -2
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                -25,
+                45,
+                -10
+              ]
+            },
+            {
+              "origin": [
+                -2,
+                10,
+                -18
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                10,
+                -45,
+                25
+              ]
+            },
+            {
+              "origin": [
+                -2,
+                10,
+                14
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                -10,
+                -45,
+                -25
+              ]
+            },
+            {
+              "origin": [
+                -2,
+                24,
+                -2
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                45,
+                10,
+                30
+              ]
+            },
+            {
+              "origin": [
+                -2,
+                -2,
+                -2
+              ],
+              "size": [
+                4,
+                4,
+                4
+              ],
+              "uv": [
+                60,
+                38
+              ],
+              "rotation": [
+                -45,
+                -10,
+                -30
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

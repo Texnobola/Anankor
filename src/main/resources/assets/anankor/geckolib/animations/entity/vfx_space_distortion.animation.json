@@ -1,0 +1,68 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "orbit": {
+      "animation_length": 4.0,
+      "loop": true,
+      "bones": {
+        "equatorial_warp_ring": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 90",
+              0
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.04 * math.sin(query.anim_time * 180)",
+              1.0,
+              "1.0 + 0.04 * math.sin(query.anim_time * 180)"
+            ]
+          }
+        },
+        "polar_warp_ring": {
+          "rotation": {
+            "vector": [
+              90,
+              "query.anim_time * -110",
+              0
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.04 * math.cos(query.anim_time * 180)",
+              1.0,
+              "1.0 + 0.04 * math.cos(query.anim_time * 180)"
+            ]
+          }
+        },
+        "diagonal_warp_ring": {
+          "rotation": {
+            "vector": [
+              45,
+              "query.anim_time * 130",
+              45
+            ]
+          }
+        },
+        "astral_facets": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 45",
+              "query.anim_time * -70",
+              "query.anim_time * 30"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 150)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 150)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 150)"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
