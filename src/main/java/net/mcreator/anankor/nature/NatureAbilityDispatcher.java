@@ -23,6 +23,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.mcreator.anankor.network.PlayPlayerAnimationMessage;
 import net.mcreator.anankor.vfx.VfxSpawner;
@@ -166,7 +173,8 @@ public class NatureAbilityDispatcher {
 						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
 								new PlayPlayerAnimationMessage(executor.getId(), "calamity_nova", true, true));
 
-						// Spawn GeckoLib 3D multi-phase apocalyptic detonation & magma spires (175 ticks / ~8.75s)
+						// Spawn GeckoLib 3D multi-phase apocalyptic detonation & magma spires (175
+						// ticks / ~8.75s)
 						VfxSpawner.spawnBurst(executor, "fire_nova", "detonate", 1.8f, 175);
 
 						// Initial flux gathering aura
@@ -272,10 +280,21 @@ public class NatureAbilityDispatcher {
 							executor.getDeltaMovement().add(look.x * 1.8, Math.max(0.12, look.y * 0.9), look.z * 1.8));
 					executor.syncVelocity = true;
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.GENERIC_SPLASH, SoundSource.PLAYERS, 1.0f, 1.3f);
+							SoundEvents.GENERIC_SPLASH, SoundSource.PLAYERS, 1.2f, 1.2f);
+					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+							SoundEvents.PLAYER_SPLASH_HIGH_SPEED, SoundSource.PLAYERS, 1.0f, 1.4f);
 					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.SPLASH, executor.getX(), executor.getY() + 0.5, executor.getZ(),
-								30, 0.6, 0.4, 0.6, 0.2);
+						// Trigger PAL Player Animation across network (0.6s streamlined surf glide)
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "water_dash", true, true));
+
+						// Spawn GeckoLib 3D surging wave crest
+						VfxSpawner.spawnAttached(executor, "water_surge", "surge", 1.3f, 14, 0.0);
+
+						sl.sendParticles(ParticleTypes.SPLASH, executor.getX(), executor.getY() + 0.3, executor.getZ(),
+								35, 0.7, 0.3, 0.7, 0.2);
+						sl.sendParticles(ParticleTypes.BUBBLE, executor.getX(), executor.getY() + 0.4, executor.getZ(),
+								20, 0.5, 0.3, 0.5, 0.1);
 					}
 				}));
 		water.add(new FunctionalTechnique("Aqua Lance",
@@ -283,48 +302,134 @@ public class NatureAbilityDispatcher {
 				TechniqueCategory.STRIKE, (executor, target) -> {
 					Vec3 look = executor.getLookAngle();
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.GENERIC_SWIM, SoundSource.PLAYERS, 1.2f, 1.5f);
+							SoundEvents.GENERIC_SWIM, SoundSource.PLAYERS, 1.2f, 1.4f);
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.TRIDENT_THROW.value(), SoundSource.PLAYERS, 0.9f, 1.4f);
+							SoundEvents.TRIDENT_THROW.value(), SoundSource.PLAYERS, 1.0f, 1.5f);
 					if (executor.level() instanceof ServerLevel sl) {
+						// Trigger PAL Player Animation across network (0.6s spear lunge)
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "water_thrust", true, true));
+
+						// Spawn GeckoLib 3D piercing pressurized water lance (forward thrust along -Z)
+						VfxSpawner.spawnSlash(executor, "water_lance", "pierce", 1.4f, 1.2, 14);
+
 						for (int i = 0; i < 20; i++) {
 							double dist = 1.0 + i * 0.35;
 							sl.sendParticles(ParticleTypes.DRIPPING_WATER, executor.getX() + look.x * dist,
-									executor.getEyeY() + look.y * dist, executor.getZ() + look.z * dist, 5, 0.1, 0.1,
+									executor.getEyeY() + look.y * dist, executor.getZ() + look.z * dist, 4, 0.1, 0.1,
 									0.1, 0.05);
+							sl.sendParticles(ParticleTypes.SPLASH, executor.getX() + look.x * dist,
+									executor.getEyeY() + look.y * dist, executor.getZ() + look.z * dist, 2, 0.1, 0.1,
+									0.1, 0.08);
 						}
 						AABB beamBox = executor.getBoundingBox().move(look.scale(3.5)).inflate(2.2);
 						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, beamBox)) {
 							if (e != executor) {
-								e.hurt(executor.damageSources().magic(), 9.0f);
-								e.setDeltaMovement(e.getDeltaMovement().add(look.x * 1.1, 0.4, look.z * 1.1));
+								e.hurt(executor.damageSources().magic(), 10.0f);
+								e.clearFire();
+								e.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
+								e.setDeltaMovement(e.getDeltaMovement().add(look.x * 1.2, 0.4, look.z * 1.2));
 							}
 						}
 					}
 				}));
 		water.add(new WaterTechnique()); // Slot 2: Ward (Torrential Geyser - existing 3D VFX)
 		water.add(new FunctionalTechnique("Abyssal Maelstrom",
-				"Manifests a spinning vortex pulling entities into the hydraulic center.", 45, 100,
+				"Manifests a spinning vortex pulling entities into the hydraulic center before erupting a geyser.", 45,
+				100,
 				TechniqueCategory.EXTENSION, (executor, target) -> {
+					Vec3 center = executor.position().add(executor.getLookAngle().scale(3.2));
+					executor.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 2, false, false, false));
+					executor.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 70, 2, false, false, false));
+
 					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.TRIDENT_RIPTIDE_3.value(), SoundSource.PLAYERS, 1.2f, 0.7f);
+							SoundEvents.CONDUIT_ACTIVATE, SoundSource.PLAYERS, 1.2f, 1.1f);
+					executor.level().playSound(null, center.x, center.y, center.z,
+							SoundEvents.TRIDENT_RIPTIDE_3.value(), SoundSource.PLAYERS, 1.2f, 0.8f);
+
 					if (executor.level() instanceof ServerLevel sl) {
-						Vec3 center = executor.position().add(executor.getLookAngle().scale(3.0));
+						// Trigger PAL Player Animation across network (5.0s channeling + eruption)
+						PacketDistributor.sendToPlayersTrackingEntityAndSelf(executor,
+								new PlayPlayerAnimationMessage(executor.getId(), "water_maelstrom", true, true));
+
+						// Spawn GeckoLib 3D spinning whirlpool & rising geyser pillars (105 ticks /
+						// ~5.25s)
+						VfxSpawner.spawnAt(executor, "water_maelstrom", "vortex",
+								center.x, center.y + 0.1, center.z,
+								executor.getYRot(), 0.0f,
+								1.8f, 105);
+
+						// Phase 1: Swirling vortex currents (0.0s - 1.8s)
 						for (int deg = 0; deg < 720; deg += 30) {
 							double rad = Math.toRadians(deg);
-							double r = (deg / 720.0) * 5.0;
-							sl.sendParticles(ParticleTypes.SPLASH, center.x + Math.cos(rad) * r, center.y + 0.4,
-									center.z + Math.sin(rad) * r, 3, 0.1, 0.2, 0.1, 0.05);
+							double r = (deg / 720.0) * 4.8;
+							sl.sendParticles(ParticleTypes.SPLASH, center.x + Math.cos(rad) * r, center.y + 0.3,
+									center.z + Math.sin(rad) * r, 3, 0.1, 0.15, 0.1, 0.05);
 						}
-						AABB area = new AABB(center.x - 5.5, center.y - 2.0, center.z - 5.5, center.x + 5.5,
-								center.y + 3.0, center.z + 5.5);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								Vec3 pull = center.subtract(e.position()).normalize().scale(0.8);
-								e.setDeltaMovement(pull.x, 0.3, pull.z);
-								e.hurt(executor.damageSources().magic(), 11.0f);
+
+						// Phase 2: Accelerated vortex suction pulses (1.0s and 2.0s / 20 & 40 ticks)
+						AnankorMod.queueServerWork(20, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s1) {
+								s1.playSound(null, center.x, center.y, center.z,
+										SoundEvents.PLAYER_SPLASH_HIGH_SPEED, SoundSource.PLAYERS, 1.2f, 0.9f);
+								AABB area = new AABB(center.x - 6.0, center.y - 2.0, center.z - 6.0,
+										center.x + 6.0, center.y + 3.0, center.z + 6.0);
+								for (LivingEntity e : s1.getEntitiesOfClass(LivingEntity.class, area)) {
+									if (e != executor) {
+										Vec3 pull = center.subtract(e.position()).normalize().scale(0.85);
+										e.setDeltaMovement(pull.x, 0.2, pull.z);
+										e.hurt(executor.damageSources().magic(), 4.0f);
+									}
+								}
 							}
-						}
+						});
+
+						AnankorMod.queueServerWork(40, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s2) {
+								s2.playSound(null, center.x, center.y, center.z,
+										SoundEvents.GENERIC_SPLASH, SoundSource.PLAYERS, 1.3f, 1.3f);
+								AABB area = new AABB(center.x - 6.0, center.y - 2.0, center.z - 6.0,
+										center.x + 6.0, center.y + 3.0, center.z + 6.0);
+								for (LivingEntity e : s2.getEntitiesOfClass(LivingEntity.class, area)) {
+									if (e != executor) {
+										Vec3 pull = center.subtract(e.position()).normalize().scale(1.1);
+										e.setDeltaMovement(pull.x, 0.25, pull.z);
+										e.hurt(executor.damageSources().magic(), 4.0f);
+										e.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 80, 2));
+									}
+								}
+							}
+						});
+
+						// Phase 3: Cataclysmic Hydraulic Geyser Eruption (3.2s / 64 ticks)
+						AnankorMod.queueServerWork(64, () -> {
+							if (executor.isAlive() && executor.level() instanceof ServerLevel s3) {
+								s3.playSound(null, center.x, center.y, center.z,
+										SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.5f, 1.4f);
+								s3.playSound(null, center.x, center.y, center.z,
+										SoundEvents.CONDUIT_DEACTIVATE, SoundSource.PLAYERS, 1.4f, 0.8f);
+
+								// Massive geyser particle pillar & splash burst
+								for (int i = 0; i < 60; i++) {
+									double h = (i / 60.0) * 7.0;
+									s3.sendParticles(ParticleTypes.SPLASH, center.x, center.y + h, center.z,
+											8, 0.8, 0.4, 0.8, 0.25);
+									s3.sendParticles(ParticleTypes.BUBBLE, center.x, center.y + h, center.z,
+											5, 0.6, 0.3, 0.6, 0.15);
+								}
+
+								AABB area = new AABB(center.x - 6.5, center.y - 2.0, center.z - 6.5,
+										center.x + 6.5, center.y + 4.0, center.z + 6.5);
+								for (LivingEntity e : s3.getEntitiesOfClass(LivingEntity.class, area)) {
+									if (e != executor) {
+										e.hurt(executor.damageSources().magic(), 14.0f);
+										e.clearFire();
+										// Cataclysmic skyward launch
+										e.setDeltaMovement(0.0, 1.4, 0.0);
+									}
+								}
+							}
+						});
 					}
 				}));
 		TECHNIQUES_BY_NATURE.put(NatureType.WATER, water);
@@ -554,14 +659,14 @@ public class NatureAbilityDispatcher {
 		light.add(new FunctionalTechnique("Photon Blink",
 				"Dissolves into pure photons, instantly reappearing forward in line of sight.", 18, 35,
 				TechniqueCategory.MOBILITY, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					double blinkDist = 6.0;
-					Vec3 dest = executor.position().add(look.scale(blinkDist));
+					Vec3 dest = findSafeTeleportDestination(executor, 6.0);
 					executor.teleportTo(dest.x, dest.y, dest.z);
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+					executor.resetFallDistance();
+					executor.setDeltaMovement(0, 0, 0);
+					executor.level().playSound(null, dest.x, dest.y, dest.z,
 							SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.2f, 1.6f);
 					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.END_ROD, executor.getX(), executor.getY() + 1.0, executor.getZ(),
+						sl.sendParticles(ParticleTypes.END_ROD, dest.x, dest.y + 1.0, dest.z,
 								20, 0.4, 0.8, 0.4, 0.05);
 					}
 				}));
@@ -619,15 +724,15 @@ public class NatureAbilityDispatcher {
 		List<INatureTechnique> dark = new ArrayList<>();
 		dark.add(new FunctionalTechnique("Shadow Step", "Melts into shadows, slipping seamlessly behind line of sight.",
 				18, 35, TechniqueCategory.MOBILITY, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					double dist = 6.5;
-					Vec3 dest = executor.position().add(look.scale(dist));
+					Vec3 dest = findSafeTeleportDestination(executor, 6.5);
 					executor.teleportTo(dest.x, dest.y, dest.z);
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
+					executor.resetFallDistance();
+					executor.setDeltaMovement(0, 0, 0);
+					executor.level().playSound(null, dest.x, dest.y, dest.z,
 							SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.9f, 0.6f);
 					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.SQUID_INK, executor.getX(), executor.getY() + 0.8,
-								executor.getZ(), 25, 0.5, 0.5, 0.5, 0.05);
+						sl.sendParticles(ParticleTypes.SQUID_INK, dest.x, dest.y + 0.8,
+								dest.z, 25, 0.5, 0.5, 0.5, 0.05);
 					}
 				}));
 		dark.add(new FunctionalTechnique("Void Tendrils",
@@ -796,5 +901,86 @@ public class NatureAbilityDispatcher {
 		if (technique != null) {
 			technique.execute(executor, new Vec3(targetX, targetY, targetZ));
 		}
+	}
+
+	public static Vec3 findSafeTeleportDestination(LivingEntity executor, double distance) {
+		Level level = executor.level();
+		Vec3 eyePos = executor.getEyePosition();
+		Vec3 look = executor.getLookAngle();
+
+		// 1. Raycast from eye position along look vector
+		Vec3 traceEnd = eyePos.add(look.scale(distance));
+		BlockHitResult hit = level.clip(new ClipContext(
+				eyePos, traceEnd,
+				ClipContext.Block.COLLIDER,
+				ClipContext.Fluid.NONE,
+				executor));
+
+		Vec3 dest;
+		if (hit.getType() == HitResult.Type.BLOCK) {
+			Direction hitFace = hit.getDirection();
+			if (hitFace == Direction.UP) {
+				BlockPos hitPos = hit.getBlockPos();
+				VoxelShape shape = level.getBlockState(hitPos).getCollisionShape(level, hitPos);
+				double surfaceY = hitPos.getY() + (shape.isEmpty() ? 1.0 : shape.max(Direction.Axis.Y));
+				dest = new Vec3(hit.getLocation().x, surfaceY, hit.getLocation().z);
+			} else if (hitFace == Direction.DOWN) {
+				dest = new Vec3(hit.getLocation().x, hit.getBlockPos().getY() - executor.getBbHeight() - 0.1,
+						hit.getLocation().z);
+			} else {
+				Vec3 normal = new Vec3(hitFace.getStepX(), hitFace.getStepY(), hitFace.getStepZ());
+				dest = hit.getLocation().add(normal.scale(0.6));
+				if (dest.y < executor.getY()) {
+					dest = new Vec3(dest.x, executor.getY(), dest.z);
+				}
+			}
+		} else {
+			double targetX = executor.getX() + look.x * distance;
+			double targetZ = executor.getZ() + look.z * distance;
+			double targetY = executor.getY() + look.y * distance;
+
+			// If looking slightly downward while standing on ground, keep at least current
+			// foot level
+			if (executor.onGround() && look.y < 0) {
+				targetY = executor.getY();
+			}
+			dest = new Vec3(targetX, targetY, targetZ);
+		}
+
+		// 2. Collision avoidance and floor snapping:
+		BlockPos feetPos = BlockPos.containing(dest.x, dest.y, dest.z);
+		for (int up = 0; up <= 3; up++) {
+			BlockPos checkFeet = feetPos.above(up);
+			AABB testBox = executor.getBoundingBox().move(dest.x - executor.getX(),
+					(double) checkFeet.getY() - executor.getY(), dest.z - executor.getZ());
+			if (level.noCollision(executor, testBox)) {
+				BlockPos groundCheck = checkFeet.below();
+				VoxelShape groundShape = level.getBlockState(groundCheck).getCollisionShape(level, groundCheck);
+				if (!groundShape.isEmpty()) {
+					double groundTop = groundCheck.getY() + groundShape.max(Direction.Axis.Y);
+					return new Vec3(dest.x, Math.max((double) checkFeet.getY(), groundTop), dest.z);
+				}
+				return new Vec3(dest.x, checkFeet.getY(), dest.z);
+			}
+		}
+
+		// 3. Fallback for onGround entities: search down 1-3 blocks so they don't hover
+		// in air if ground slopes down
+		if (executor.onGround()) {
+			for (int down = 1; down <= 3; down++) {
+				BlockPos checkGround = feetPos.below(down);
+				VoxelShape shape = level.getBlockState(checkGround).getCollisionShape(level, checkGround);
+				if (!shape.isEmpty()) {
+					double groundTop = checkGround.getY() + shape.max(Direction.Axis.Y);
+					AABB testBox = executor.getBoundingBox().move(dest.x - executor.getX(), groundTop - executor.getY(),
+							dest.z - executor.getZ());
+					if (level.noCollision(executor, testBox)) {
+						return new Vec3(dest.x, groundTop, dest.z);
+					}
+				}
+			}
+		}
+
+		return dest;
 	}
 }

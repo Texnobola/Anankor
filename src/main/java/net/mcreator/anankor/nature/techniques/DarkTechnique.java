@@ -89,7 +89,7 @@ public class DarkTechnique implements INatureTechnique {
 					e -> e != executor && e.isAlive());
 			for (LivingEntity target : targets) {
 				target.hurt(level.damageSources().wither(), 5.5f);
-				target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 0));
+				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 100, 1));
 				target.addEffect(new MobEffectInstance(MobEffects.WITHER, 80, 0));
 			}
 		}

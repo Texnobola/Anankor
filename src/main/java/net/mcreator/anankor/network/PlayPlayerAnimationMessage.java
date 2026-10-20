@@ -17,14 +17,18 @@ import net.minecraft.nbt.CompoundTag;
 import net.mcreator.anankor.AnankorMod;
 
 @EventBusSubscriber
-public record PlayPlayerAnimationMessage(int player, String animation, boolean override, boolean firstPerson) implements CustomPacketPayload {
-	public static final Type<PlayPlayerAnimationMessage> TYPE = new Type<>(Identifier.fromNamespaceAndPath(AnankorMod.MODID, "play_player_animation"));
-	public static final StreamCodec<RegistryFriendlyByteBuf, PlayPlayerAnimationMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, PlayPlayerAnimationMessage message) -> {
-		buffer.writeInt(message.player);
-		buffer.writeUtf(message.animation);
-		buffer.writeBoolean(message.override);
-		buffer.writeBoolean(message.firstPerson);
-	}, (RegistryFriendlyByteBuf buffer) -> new PlayPlayerAnimationMessage(buffer.readInt(), buffer.readUtf(), buffer.readBoolean(), buffer.readBoolean()));
+public record PlayPlayerAnimationMessage(int player, String animation, boolean override, boolean firstPerson)
+		implements CustomPacketPayload {
+	public static final Type<PlayPlayerAnimationMessage> TYPE = new Type<>(
+			Identifier.fromNamespaceAndPath(AnankorMod.MODID, "play_player_animation"));
+	public static final StreamCodec<RegistryFriendlyByteBuf, PlayPlayerAnimationMessage> STREAM_CODEC = StreamCodec
+			.of((RegistryFriendlyByteBuf buffer, PlayPlayerAnimationMessage message) -> {
+				buffer.writeInt(message.player);
+				buffer.writeUtf(message.animation);
+				buffer.writeBoolean(message.override);
+				buffer.writeBoolean(message.firstPerson);
+			}, (RegistryFriendlyByteBuf buffer) -> new PlayPlayerAnimationMessage(buffer.readInt(), buffer.readUtf(),
+					buffer.readBoolean(), buffer.readBoolean()));
 
 	@Override
 	public Type<PlayPlayerAnimationMessage> type() {
@@ -43,12 +47,17 @@ public record PlayPlayerAnimationMessage(int player, String animation, boolean o
 					data.putBoolean("FirstPersonAnimation", false);
 					data.remove("PlayerCurrentAnimation");
 					data.remove("PlayerAnimationProgress");
-					net.mcreator.anankor.client.AnankorPlayerAnimationHandler.stopAnimation(player);
+					if (net.neoforged.fml.ModList.get().isLoaded("player_animation_library")) {
+						net.mcreator.anankor.client.AnankorPlayerAnimationHandler.stopAnimation(player);
+					}
 				} else {
 					data.putString("PlayerCurrentAnimation", message.animation);
 					data.putBoolean("OverrideCurrentAnimation", message.override);
 					data.putBoolean("FirstPersonAnimation", message.firstPerson);
-					net.mcreator.anankor.client.AnankorPlayerAnimationHandler.playAnimation(player, message.animation);
+					if (net.neoforged.fml.ModList.get().isLoaded("player_animation_library")) {
+						net.mcreator.anankor.client.AnankorPlayerAnimationHandler.playAnimation(player,
+								message.animation);
+					}
 				}
 			}).exceptionally(e -> {
 				context.connection().disconnect(Component.literal(e.getMessage()));
@@ -59,6 +68,7 @@ public record PlayPlayerAnimationMessage(int player, String animation, boolean o
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		AnankorMod.addNetworkMessage(PlayPlayerAnimationMessage.TYPE, PlayPlayerAnimationMessage.STREAM_CODEC, PlayPlayerAnimationMessage::handleData);
+		AnankorMod.addNetworkMessage(PlayPlayerAnimationMessage.TYPE, PlayPlayerAnimationMessage.STREAM_CODEC,
+				PlayPlayerAnimationMessage::handleData);
 	}
 }

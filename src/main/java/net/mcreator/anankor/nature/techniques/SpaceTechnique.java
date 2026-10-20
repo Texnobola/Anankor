@@ -48,24 +48,8 @@ public class SpaceTechnique implements INatureTechnique {
 	@Override
 	public void execute(LivingEntity executor, Vec3 targetPosition) {
 		Vec3 origin = executor.position();
-		Vec3 look = executor.getLookAngle();
-		double blinkDistance = 7.5;
-
-		// Raycast for safe destination
-		Vec3 targetTrace = origin.add(look.scale(blinkDistance));
-		BlockHitResult hit = executor.level().clip(new ClipContext(
-				executor.getEyePosition(),
-				targetTrace,
-				ClipContext.Block.COLLIDER,
-				ClipContext.Fluid.NONE,
-				executor));
-
-		Vec3 destination;
-		if (hit.getType() == HitResult.Type.BLOCK) {
-			destination = hit.getLocation().subtract(look.scale(0.6));
-		} else {
-			destination = targetTrace;
-		}
+		Vec3 destination = net.mcreator.anankor.nature.NatureAbilityDispatcher.findSafeTeleportDestination(executor,
+				7.5);
 
 		// Sounds & audio feedback
 		executor.level().playSound(null, origin.x, origin.y, origin.z,
@@ -103,6 +87,8 @@ public class SpaceTechnique implements INatureTechnique {
 
 		// Teleport the entity
 		executor.teleportTo(destination.x, destination.y, destination.z);
+		executor.resetFallDistance();
+		executor.setDeltaMovement(0, 0, 0);
 
 		// Destination sound
 		executor.level().playSound(null, destination.x, destination.y, destination.z,

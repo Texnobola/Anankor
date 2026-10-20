@@ -61,6 +61,11 @@ public class AnankorMod {
 		// Start of user code block mod init
 		net.mcreator.anankor.flora.AnankorFloraRegistry.register(modEventBus);
 		net.mcreator.anankor.vfx.AnankorVfxEntities.register(modEventBus);
+		if (FMLEnvironment.getDist().isClient()) {
+			if (ModList.get().isLoaded("player_animation_library")) {
+				net.mcreator.anankor.client.AnankorPlayerAnimationHandler.register(modEventBus);
+			}
+		}
 		// End of user code block mod init
 	}
 

@@ -21,7 +21,7 @@ public class WaterTechnique implements INatureTechnique {
 
 	@Override
 	public String getName() {
-		return "Tidal Surge";
+		return "Torrential Geyser";
 	}
 
 	@Override

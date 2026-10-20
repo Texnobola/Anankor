@@ -1,0 +1,118 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "pierce": {
+      "animation_length": 0.6,
+      "bones": {
+        "root": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.1": [
+              0,
+              0,
+              -32
+            ],
+            "0.28": [
+              0,
+              0,
+              -72
+            ],
+            "0.6": [
+              0,
+              0,
+              -108
+            ]
+          },
+          "scale": {
+            "0.0": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "0.06": [
+              1.4,
+              1.4,
+              1.4
+            ],
+            "0.3": [
+              1.5,
+              1.5,
+              1.5
+            ],
+            "0.6": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "lance_core": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 1080"
+            ]
+          }
+        },
+        "pressure_rings": {
+          "scale": {
+            "0.0": [
+              0.1,
+              0.1,
+              0.1
+            ],
+            "0.15": [
+              1.4,
+              1.4,
+              1.4
+            ],
+            "0.4": [
+              1.8,
+              1.8,
+              1.8
+            ],
+            "0.6": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * -720"
+            ]
+          }
+        }
+      }
+    },
+    "idle": {
+      "loop": true,
+      "animation_length": 1.0,
+      "bones": {
+        "lance_core": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "query.anim_time * 360"
+            ]
+          },
+          "position": {
+            "vector": [
+              0,
+              "0.4 * math.sin(query.anim_time * 360)",
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

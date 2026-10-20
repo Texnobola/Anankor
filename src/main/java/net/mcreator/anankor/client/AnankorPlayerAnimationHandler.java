@@ -19,8 +19,11 @@ import com.zigythebird.playeranimcore.api.firstPerson.FirstPersonMode;
  * Client-side lifecycle handler and animation trigger manager for
  * ZigyTheBird's PlayerAnimationLibrary (PAL).
  */
-@EventBusSubscriber(modid = AnankorMod.MODID, value = Dist.CLIENT)
 public class AnankorPlayerAnimationHandler {
+
+    public static void register(net.neoforged.bus.api.IEventBus modEventBus) {
+        modEventBus.addListener(AnankorPlayerAnimationHandler::onClientSetup);
+    }
 
     /**
      * The primary animation layer for Anankor techniques and player abilities.
@@ -32,7 +35,6 @@ public class AnankorPlayerAnimationHandler {
      * Registers the player animation controller layer with priority 1500 during
      * client setup, configuring first person mode and hand visibility.
      */
-    @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             PlayerAnimationFactory.ANIMATION_DATA_FACTORY.registerFactory(
