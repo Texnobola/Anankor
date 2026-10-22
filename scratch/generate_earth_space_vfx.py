@@ -402,7 +402,7 @@ def make_earth_fissure():
                 "texture_height": 256,
                 "visible_bounds_width": 14,
                 "visible_bounds_height": 8,
-                "visible_bounds_offset": [0, 2, 4]
+                "visible_bounds_offset": [0, 2, -4]
             },
             "bones": [
                 {
@@ -414,52 +414,52 @@ def make_earth_fissure():
                     "parent": "root",
                     "pivot": [0, 0, 0],
                     "cubes": [
-                        {"origin": [-8, 0.05, 10], "size": [16, 0.2, 100], "uv": [0, 0]}
+                        {"origin": [-8, 0.05, -110], "size": [16, 0.2, 100], "uv": [0, 0]}
                     ]
                 },
                 {
                     "name": "spike_tier_1",
                     "parent": "root",
-                    "pivot": [0, 0, 20],
+                    "pivot": [0, 0, -20],
                     "cubes": [
-                        {"origin": [-4, 0, 16], "size": [4, 12, 6], "uv": [36, 0], "rotation": [8, -12, 6]},
-                        {"origin": [1, 0, 18], "size": [4, 10, 5], "uv": [36, 0], "rotation": [6, 15, -8]}
+                        {"origin": [-4, 0, -22], "size": [4, 12, 6], "uv": [36, 0], "rotation": [-8, -12, 6]},
+                        {"origin": [1, 0, -23], "size": [4, 10, 5], "uv": [36, 0], "rotation": [-6, 15, -8]}
                     ]
                 },
                 {
                     "name": "spike_tier_2",
                     "parent": "root",
-                    "pivot": [0, 0, 40],
+                    "pivot": [0, 0, -40],
                     "cubes": [
-                        {"origin": [-6, 0, 36], "size": [5, 18, 7], "uv": [58, 0], "rotation": [10, -10, 8]},
-                        {"origin": [2, 0, 38], "size": [5, 16, 6], "uv": [58, 0], "rotation": [8, 14, -10]}
+                        {"origin": [-6, 0, -43], "size": [5, 18, 7], "uv": [58, 0], "rotation": [-10, -10, 8]},
+                        {"origin": [2, 0, -44], "size": [5, 16, 6], "uv": [58, 0], "rotation": [-8, 14, -10]}
                     ]
                 },
                 {
                     "name": "spike_tier_3",
                     "parent": "root",
-                    "pivot": [0, 0, 62],
+                    "pivot": [0, 0, -62],
                     "cubes": [
-                        {"origin": [-7, 0, 58], "size": [6, 24, 8], "uv": [84, 0], "rotation": [12, -8, 10]},
-                        {"origin": [3, 0, 60], "size": [6, 22, 7], "uv": [84, 0], "rotation": [10, 12, -12]}
+                        {"origin": [-7, 0, -66], "size": [6, 24, 8], "uv": [84, 0], "rotation": [-12, -8, 10]},
+                        {"origin": [3, 0, -67], "size": [6, 22, 7], "uv": [84, 0], "rotation": [-10, 12, -12]}
                     ]
                 },
                 {
                     "name": "spike_tier_4",
                     "parent": "root",
-                    "pivot": [0, 0, 86],
+                    "pivot": [0, 0, -86],
                     "cubes": [
-                        {"origin": [-9, 0, 80], "size": [7, 30, 10], "uv": [114, 0], "rotation": [14, -6, 12]},
-                        {"origin": [4, 0, 84], "size": [7, 28, 9], "uv": [114, 0], "rotation": [12, 10, -14]}
+                        {"origin": [-9, 0, -90], "size": [7, 30, 10], "uv": [114, 0], "rotation": [-14, -6, 12]},
+                        {"origin": [4, 0, -93], "size": [7, 28, 9], "uv": [114, 0], "rotation": [-12, 10, -14]}
                     ]
                 },
                 {
                     "name": "spike_tier_5",
                     "parent": "root",
-                    "pivot": [0, 0, 110],
+                    "pivot": [0, 0, -110],
                     "cubes": [
-                        {"origin": [-10, 0, 104], "size": [9, 36, 12], "uv": [150, 0], "rotation": [15, -5, 14]},
-                        {"origin": [3, 0, 106], "size": [9, 34, 11], "uv": [150, 0], "rotation": [14, 8, -15]}
+                        {"origin": [-10, 0, -116], "size": [9, 36, 12], "uv": [150, 0], "rotation": [-15, -5, 14]},
+                        {"origin": [3, 0, -117], "size": [9, 34, 11], "uv": [150, 0], "rotation": [-14, 8, -15]}
                     ]
                 }
             ]
