@@ -52,11 +52,11 @@ public final class SpaceTechniques {
 				executor.level().playSound(null, target.x, target.y, target.z,
 						SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 1.0f, 1.8f);
 				if (executor.level() instanceof ServerLevel sl) {
-					// Spawn GeckoLib 3D Graviton Collapse Singularity (20 ticks = 1.0s)
-					VfxSpawner.spawnAt(executor, "space_collapse", "collapse",
+					// Spawn GeckoLib 3D Graviton Collapse Singularity (44 ticks = 2.2s)
+					VfxSpawner.spawnAt(executor, "space_graviton_collapse", "collapse",
 							target.x, target.y + 0.3, target.z,
 							0f, 0f,
-							1.5f, 20);
+							1.5f, 44);
 
 					sl.sendParticles(ParticleTypes.PORTAL, target.x, target.y + 0.5, target.z, 40, 1.0, 1.0, 1.0, 0.2);
 					sl.sendParticles(ParticleTypes.REVERSE_PORTAL, target.x, target.y + 0.5, target.z, 25, 0.8, 0.8,
@@ -114,7 +114,7 @@ public final class SpaceTechniques {
 						SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.PLAYERS, 1.0f, 0.7f);
 				if (executor.level() instanceof ServerLevel sl) {
 					// Spawn GeckoLib 3D Cosmic Black Hole & Accretion Singularity (120 ticks = 6s)
-					VfxSpawner.spawnAt(executor, "space_singularity", "singularity",
+					VfxSpawner.spawnAt(executor, "space_event_horizon", "singularity",
 							center.x, center.y + 0.1, center.z,
 							0f, 0f,
 							1.8f, 120);
