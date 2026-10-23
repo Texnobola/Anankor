@@ -1,0 +1,205 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "blink": {
+      "animation_length": 0.45,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.10": {
+              "vector": [
+                1.6,
+                1.6,
+                1.6
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.25": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "core_star": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 720",
+              "query.anim_time * 1080",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.12": {
+              "vector": [
+                2.2,
+                2.2,
+                2.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInExpo"
+            }
+          }
+        },
+        "prismatic_ring_outer": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 360",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                1.0,
+                0.2
+              ]
+            },
+            "0.15": {
+              "vector": [
+                2.6,
+                1.0,
+                2.6
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "prismatic_ring_inner": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -480",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                1.0,
+                0.2
+              ]
+            },
+            "0.12": {
+              "vector": [
+                2.2,
+                1.0,
+                2.2
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "warp_streak_vertical": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.1,
+                0.2
+              ]
+            },
+            "0.08": {
+              "vector": [
+                1.5,
+                2.4,
+                1.5
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "celestial_sparks": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 540",
+              "query.anim_time * 360"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.15": {
+              "vector": [
+                2.0,
+                2.0,
+                2.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,6 +13,8 @@ import net.mcreator.anankor.nature.techniques.fire.FireTechniques;
 import net.mcreator.anankor.nature.techniques.ice.IceTechniques;
 import net.mcreator.anankor.nature.techniques.earth.EarthTechniques;
 import net.mcreator.anankor.nature.techniques.space.SpaceTechniques;
+import net.mcreator.anankor.nature.techniques.light.LightTechniques;
+import net.mcreator.anankor.nature.techniques.dark.DarkTechniques;
 import net.mcreator.anankor.network.AnankorModVariables;
 import net.mcreator.anankor.init.AnankorModMobEffects;
 import net.mcreator.anankor.AnankorMod;
@@ -363,135 +365,14 @@ public class NatureAbilityDispatcher {
 		registerNature(NatureType.ELECTRICITY, electricity);
 
 		// ==========================================
-		// 7. LIGHT
+		// 7. LIGHT (Migrated to dedicated LightTechniques module)
 		// ==========================================
-		List<INatureTechnique> light = new ArrayList<>();
-		light.add(new FunctionalTechnique("Photon Blink",
-				"Dissolves into pure photons, instantly reappearing forward in line of sight.", 18, 35,
-				TechniqueCategory.MOBILITY, (executor, target) -> {
-					Vec3 dest = findSafeTeleportDestination(executor, 6.0);
-					executor.teleportTo(dest.x, dest.y, dest.z);
-					executor.resetFallDistance();
-					executor.setDeltaMovement(0, 0, 0);
-					executor.level().playSound(null, dest.x, dest.y, dest.z,
-							SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.2f, 1.6f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.END_ROD, dest.x, dest.y + 1.0, dest.z,
-								20, 0.4, 0.8, 0.4, 0.05);
-					}
-				}));
-		light.add(new FunctionalTechnique("Prismatic Ray",
-				"Channels a high-luminescence solar ray that pierces enemies and sears undead.", 25, 50,
-				TechniqueCategory.STRIKE, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 1.0f, 1.8f);
-					if (executor.level() instanceof ServerLevel sl) {
-						for (int i = 0; i < 22; i++) {
-							double dist = 1.0 + i * 0.35;
-							sl.sendParticles(ParticleTypes.END_ROD, executor.getX() + look.x * dist,
-									executor.getEyeY() + look.y * dist, executor.getZ() + look.z * dist, 2, 0.05, 0.05,
-									0.05, 0.02);
-						}
-						AABB rayBox = executor.getBoundingBox().move(look.scale(3.5)).inflate(2.0);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, rayBox)) {
-							if (e != executor) {
-								float dmg = e.isInvertedHealAndHarm() ? 16.0f : 9.0f;
-								e.hurt(executor.damageSources().magic(), dmg);
-								e.setRemainingFireTicks(60);
-							}
-						}
-					}
-				}));
-		light.add(new LightTechnique()); // Slot 2: Ward (Luminescent Burst / Solar Corona - existing 3D VFX)
-		light.add(new FunctionalTechnique("Dawn of Anankeia",
-				"Calls down radiant celestial dawn, restoring vigor to allies and purifying darkness.", 45, 120,
-				TechniqueCategory.EXTENSION, (executor, target) -> {
-					executor.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 160, 1));
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 1.2f, 1.2f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.END_ROD, executor.getX(), executor.getY() + 1.0, executor.getZ(),
-								60, 4.0, 2.0, 4.0, 0.1);
-						AABB area = executor.getBoundingBox().inflate(8.0);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								if (e.isInvertedHealAndHarm()) {
-									e.hurt(executor.damageSources().magic(), 18.0f);
-									e.setRemainingFireTicks(120);
-								} else {
-									e.hurt(executor.damageSources().magic(), 8.0f);
-								}
-							}
-						}
-					}
-				}));
-		registerNature(NatureType.LIGHT, light);
+		registerNature(NatureType.LIGHT, LightTechniques.getTechniques());
 
 		// ==========================================
-		// 8. DARK
+		// 8. DARK (Migrated to dedicated DarkTechniques module)
 		// ==========================================
-		List<INatureTechnique> dark = new ArrayList<>();
-		dark.add(new FunctionalTechnique("Shadow Step", "Melts into shadows, slipping seamlessly behind line of sight.",
-				18, 35, TechniqueCategory.MOBILITY, (executor, target) -> {
-					Vec3 dest = findSafeTeleportDestination(executor, 6.5);
-					executor.teleportTo(dest.x, dest.y, dest.z);
-					executor.resetFallDistance();
-					executor.setDeltaMovement(0, 0, 0);
-					executor.level().playSound(null, dest.x, dest.y, dest.z,
-							SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.9f, 0.6f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.SQUID_INK, dest.x, dest.y + 0.8,
-								dest.z, 25, 0.5, 0.5, 0.5, 0.05);
-					}
-				}));
-		dark.add(new FunctionalTechnique("Void Tendrils",
-				"Commands dark abyssal tendrils to pierce from the ground, afflicting targets with Wither.", 24, 50,
-				TechniqueCategory.STRIKE, (executor, target) -> {
-					Vec3 look = executor.getLookAngle();
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.WITHER_SHOOT, SoundSource.PLAYERS, 0.8f, 0.9f);
-					if (executor.level() instanceof ServerLevel sl) {
-						for (int i = 0; i < 18; i++) {
-							double dist = 1.0 + i * 0.35;
-							sl.sendParticles(ParticleTypes.SOUL, executor.getX() + look.x * dist,
-									executor.getEyeY() + look.y * dist, executor.getZ() + look.z * dist, 3, 0.1, 0.1,
-									0.1, 0.02);
-						}
-						AABB hitBox = executor.getBoundingBox().move(look.scale(3.0)).inflate(2.0);
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, hitBox)) {
-							if (e != executor) {
-								e.hurt(executor.damageSources().wither(), 9.0f);
-								e.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 1));
-								e.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 80, 1));
-							}
-						}
-					}
-				}));
-		dark.add(new DarkTechnique()); // Slot 2: Ward (Abyssal Shroud - existing 3D VFX)
-		dark.add(new FunctionalTechnique("Eclipse Singularity",
-				"Manifests a dark void domain that leeches vital essence from all trapped foes.", 50, 120,
-				TechniqueCategory.EXTENSION, (executor, target) -> {
-					executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
-							SoundEvents.WITHER_DEATH, SoundSource.PLAYERS, 0.9f, 0.7f);
-					if (executor.level() instanceof ServerLevel sl) {
-						sl.sendParticles(ParticleTypes.LARGE_SMOKE, executor.getX(), executor.getY() + 1.0,
-								executor.getZ(), 50, 3.5, 1.5, 3.5, 0.05);
-						AABB area = executor.getBoundingBox().inflate(7.0);
-						float totalHeal = 0;
-						for (LivingEntity e : executor.level().getEntitiesOfClass(LivingEntity.class, area)) {
-							if (e != executor) {
-								e.hurt(executor.damageSources().wither(), 12.0f);
-								e.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80, 0));
-								totalHeal += 3.0f;
-							}
-						}
-						if (totalHeal > 0) {
-							executor.heal(Math.min(totalHeal, 10.0f));
-						}
-					}
-				}));
-		registerNature(NatureType.DARK, dark);
+		registerNature(NatureType.DARK, DarkTechniques.getTechniques());
 	}
 
 	public static List<INatureTechnique> getTechniques(NatureType nature) {

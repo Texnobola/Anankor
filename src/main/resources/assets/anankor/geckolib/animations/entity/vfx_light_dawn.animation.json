@@ -1,0 +1,385 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "dawn": {
+      "animation_length": 3.0,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.25": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutExpo"
+            },
+            "2.50": {
+              "vector": [
+                1.1,
+                1.1,
+                1.1
+              ]
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "heavenly_pillar": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                40,
+                0
+              ]
+            },
+            "0.30": {
+              "vector": [
+                0,
+                0,
+                0
+              ],
+              "easing": "easeOutBounce"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                1.0,
+                0.2
+              ]
+            },
+            "0.30": {
+              "vector": [
+                1.4,
+                1.0,
+                1.4
+              ],
+              "easing": "easeOutExpo"
+            },
+            "2.50": {
+              "vector": [
+                1.2,
+                1.0,
+                1.2
+              ]
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "pillar_sheath": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 90",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                1.0,
+                0.2
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.0,
+                1.2
+              ]
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "sun_mandala_outer": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 35",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.40": {
+              "vector": [
+                1.3,
+                1.0,
+                1.3
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "sun_mandala_inner": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * -60",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.30": {
+              "vector": [
+                1.3,
+                1.0,
+                1.3
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "blessing_spire_north": {
+          "position": {
+            "vector": [
+              0,
+              "1.5 * math.sin(query.anim_time * 180)",
+              0
+            ]
+          },
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 120",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "blessing_spire_south": {
+          "position": {
+            "vector": [
+              0,
+              "1.5 * math.sin(query.anim_time * 180 + 90)",
+              0
+            ]
+          },
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 120",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "blessing_spire_east": {
+          "position": {
+            "vector": [
+              0,
+              "1.5 * math.sin(query.anim_time * 180 + 180)",
+              0
+            ]
+          },
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 120",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "blessing_spire_west": {
+          "position": {
+            "vector": [
+              0,
+              "1.5 * math.sin(query.anim_time * 180 + 270)",
+              0
+            ]
+          },
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 120",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutBack"
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "dawn_font_core": {
+          "rotation": {
+            "vector": [
+              0,
+              "query.anim_time * 180",
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.25": {
+              "vector": [
+                1.4,
+                1.4,
+                1.4
+              ]
+            },
+            "3.00": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "strike": {
+      "animation_length": 0.85,
+      "bones": {
+        "root": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.10": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ],
+              "easing": "easeOutExpo"
+            },
+            "0.60": {
+              "vector": [
+                1.1,
+                1.1,
+                1.1
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fissure_ground": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                1.0,
+                0.1
+              ]
+            },
+            "0.10": {
+              "vector": [
+                1.4,
+                1.0,
+                1.4
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "tendril_spear_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                -16,
+                0
+              ]
+            },
+            "0.10": {
+              "vector": [
+                0,
+                0,
+                0
+              ],
+              "easing": "easeOutBack"
+            }
+          },
+          "rotation": {
+            "vector": [
+              "-12.0 + 8.0 * math.sin(query.anim_time * 480)",
+              0,
+              0
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.10": {
+              "vector": [
+                1.3,
+                1.3,
+                1.3
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "tendril_spear_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                -20,
+                0
+              ]
+            },
+            "0.15": {
+              "vector": [
+                0,
+                0,
+                0
+              ],
+              "easing": "easeOutBack"
+            }
+          },
+          "rotation": {
+            "vector": [
+              "-15.0 + 10.0 * math.cos(query.anim_time * 480)",
+              0,
+              8
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.15": {
+              "vector": [
+                1.3,
+                1.3,
+                1.3
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "tendril_spear_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                -24,
+                0
+              ]
+            },
+            "0.20": {
+              "vector": [
+                0,
+                0,
+                0
+              ],
+              "easing": "easeOutBack"
+            }
+          },
+          "rotation": {
+            "vector": [
+              "-18.0 + 12.0 * math.sin(query.anim_time * 480)",
+              0,
+              -8
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.20": {
+              "vector": [
+                1.3,
+                1.3,
+                1.3
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "tendril_spear_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                -22,
+                0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0,
+                0,
+                0
+              ],
+              "easing": "easeOutBack"
+            }
+          },
+          "rotation": {
+            "vector": [
+              "-20.0 + 10.0 * math.cos(query.anim_time * 480)",
+              0,
+              5
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.2,
+                0.2,
+                0.2
+              ]
+            },
+            "0.25": {
+              "vector": [
+                1.3,
+                1.3,
+                1.3
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "shroud_barb_left": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "25.0 + 15.0 * math.sin(query.anim_time * 360)"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.18": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "shroud_barb_right": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              "-25.0 - 15.0 * math.cos(query.anim_time * 360)"
+            ]
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.1,
+                0.1,
+                0.1
+              ]
+            },
+            "0.18": {
+              "vector": [
+                1.2,
+                1.2,
+                1.2
+              ]
+            },
+            "0.85": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
