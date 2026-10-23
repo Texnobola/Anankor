@@ -53,11 +53,11 @@ public final class EarthTechniques {
 				executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 						SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.7f, 1.2f);
 				if (executor.level() instanceof ServerLevel sl) {
-					// Spawn GeckoLib 3D erupting basalt monolith & rubble (16 ticks = 0.8s)
+					// Spawn GeckoLib 3D erupting basalt monolith & rubble (48 ticks = 2.4s)
 					VfxSpawner.spawnAt(executor, "earth_vault", "vault",
 							executor.getX(), executor.getY() + 0.05, executor.getZ(),
 							executor.getYRot(), 0.0f,
-							1.4f, 16);
+							1.4f, 48);
 
 					sl.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, executor.getX(), executor.getY() + 0.2,
 							executor.getZ(), 20, 0.5, 0.2, 0.5, 0.08);
@@ -107,11 +107,11 @@ public final class EarthTechniques {
 				executor.level().playSound(null, executor.getX(), executor.getY(), executor.getZ(),
 						SoundEvents.STONE_BREAK, SoundSource.PLAYERS, 1.3f, 0.6f);
 				if (executor.level() instanceof ServerLevel sl) {
-					// Spawn GeckoLib 3D directional seismic fault rupture (28 ticks = 1.4s)
+					// Spawn GeckoLib 3D directional seismic fault rupture (56 ticks = 2.8s)
 					VfxSpawner.spawnAt(executor, "earth_fissure", "fissure",
 							executor.getX(), executor.getY() + 0.05, executor.getZ(),
 							executor.getYRot(), 0.0f,
-							1.3f, 28);
+							1.3f, 56);
 
 					for (int i = 1; i <= 8; i++) {
 						double px = executor.getX() + look.x * i;

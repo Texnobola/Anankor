@@ -59,7 +59,8 @@ public final class SpaceTechniques {
 							1.5f, 20);
 
 					sl.sendParticles(ParticleTypes.PORTAL, target.x, target.y + 0.5, target.z, 40, 1.0, 1.0, 1.0, 0.2);
-					sl.sendParticles(ParticleTypes.REVERSE_PORTAL, target.x, target.y + 0.5, target.z, 25, 0.8, 0.8, 0.8, 0.15);
+					sl.sendParticles(ParticleTypes.REVERSE_PORTAL, target.x, target.y + 0.5, target.z, 25, 0.8, 0.8,
+							0.8, 0.15);
 
 					AABB area = new AABB(target.x - 3.5, target.y - 1.5, target.z - 3.5, target.x + 3.5,
 							target.y + 2.5, target.z + 3.5);
@@ -149,5 +150,6 @@ public final class SpaceTechniques {
 		return TECHNIQUES;
 	}
 
-	private SpaceTechniques() {}
+	private SpaceTechniques() {
+	}
 }

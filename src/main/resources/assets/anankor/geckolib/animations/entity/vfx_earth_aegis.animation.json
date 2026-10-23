@@ -1,56 +1,4741 @@
 {
   "format_version": "1.8.0",
   "animations": {
+    "raise": {
+      "animation_length": 1.55,
+      "loop": false,
+      "bones": {
+        "ground_fracture": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.12,
+                1.0,
+                0.12
+              ]
+            },
+            "0.1": {
+              "vector": [
+                1.28,
+                1.0,
+                1.28
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.28": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.16": {
+              "vector": [
+                0.0,
+                15.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.42": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "orbit_anchor": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -20.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                3.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                5.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "tectonic_plate_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.2": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.42": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                -4.5,
+                0.0,
+                7.5
+              ]
+            },
+            "0.25": {
+              "vector": [
+                2.4,
+                0.0,
+                -5.5
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.5": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.218": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.438": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                6.0,
+                0.0,
+                -6.0
+              ]
+            },
+            "0.268": {
+              "vector": [
+                -3.2,
+                0.0,
+                4.4
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.498": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.238": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.518": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.23600000000000002": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.45599999999999996": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                -3.0,
+                0.0,
+                -9.0
+              ]
+            },
+            "0.286": {
+              "vector": [
+                1.6,
+                0.0,
+                6.6
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.516": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.256": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.536": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.254": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.474": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                7.5,
+                0.0,
+                4.5
+              ]
+            },
+            "0.304": {
+              "vector": [
+                -4.0,
+                0.0,
+                -3.3
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.534": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.274": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.554": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.272": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.492": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                -6.0,
+                0.0,
+                3.0
+              ]
+            },
+            "0.322": {
+              "vector": [
+                3.2,
+                0.0,
+                -2.2
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5519999999999999": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.292": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.572": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.29000000000000004": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.51": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                4.5,
+                0.0,
+                9.0
+              ]
+            },
+            "0.33999999999999997": {
+              "vector": [
+                -2.4,
+                0.0,
+                -6.6
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.57": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.31": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.59": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.308": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.528": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                -7.5,
+                0.0,
+                -4.5
+              ]
+            },
+            "0.358": {
+              "vector": [
+                4.0,
+                0.0,
+                3.3
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.588": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.32799999999999996": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.608": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tectonic_plate_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -7.0,
+                0.0
+              ]
+            },
+            "0.326": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.546": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                3.0,
+                0.0,
+                6.0
+              ]
+            },
+            "0.376": {
+              "vector": [
+                -1.6,
+                0.0,
+                -4.4
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.606": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.65,
+                0.35,
+                0.7
+              ]
+            },
+            "0.346": {
+              "vector": [
+                1.12,
+                1.08,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.626": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "crystal_ring": {
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                12.0,
+                0.0
+              ]
+            },
+            "0.3": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.6": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.5,
+                0.2,
+                0.5
+              ]
+            },
+            "0.3": {
+              "vector": [
+                1.1,
+                1.2,
+                1.1
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.55": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                -12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                -12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                -12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_crystal_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -6.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                1.25,
+                1.2,
+                1.25
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.48": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.24": {
+              "vector": [
+                0.0,
+                0.0,
+                -12.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "airborne_debris_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                -4.0,
+                6.0,
+                -3.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                -5.8,
+                7.5,
+                -4.35
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                -7.2,
+                -2.0,
+                -5.4
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                -7.2,
+                -4.0,
+                -5.4
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                -40.0,
+                70.0,
+                -85.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                50.0,
+                100.0,
+                -125.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                6.0,
+                8.0,
+                4.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                8.7,
+                9.5,
+                5.8
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                10.8,
+                -2.0,
+                7.2
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                10.8,
+                -4.0,
+                7.2
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                -13.0,
+                108.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                102.0,
+                160.0,
+                0.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                -8.0,
+                10.0,
+                5.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                -11.6,
+                11.5,
+                7.25
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                -14.4,
+                -2.0,
+                9.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                -14.4,
+                -4.0,
+                9.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                14.0,
+                146.0,
+                85.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                154.0,
+                220.0,
+                125.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                4.0,
+                12.0,
+                -6.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                5.8,
+                13.5,
+                -8.7
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                7.2,
+                -2.0,
+                -10.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                7.2,
+                -4.0,
+                -10.8
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                41.0,
+                184.0,
+                -85.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                206.0,
+                280.0,
+                -125.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                -6.0,
+                6.0,
+                3.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                -8.7,
+                7.5,
+                4.35
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                -10.8,
+                -2.0,
+                5.4
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                -10.8,
+                -4.0,
+                5.4
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                68.0,
+                222.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                258.0,
+                340.0,
+                0.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                8.0,
+                8.0,
+                4.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                11.6,
+                9.5,
+                5.8
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                14.4,
+                -2.0,
+                7.2
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                14.4,
+                -4.0,
+                7.2
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                95.0,
+                260.0,
+                85.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                310.0,
+                400.0,
+                125.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                -4.0,
+                10.0,
+                -5.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                -5.8,
+                11.5,
+                -7.25
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                -7.2,
+                -2.0,
+                -9.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                -7.2,
+                -4.0,
+                -9.0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                122.0,
+                298.0,
+                -85.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                362.0,
+                460.0,
+                -125.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -10.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                6.0,
+                12.0,
+                6.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                8.7,
+                13.5,
+                8.7
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.22": {
+              "vector": [
+                10.8,
+                -2.0,
+                10.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                10.8,
+                -4.0,
+                10.8
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.62": {
+              "vector": [
+                149.0,
+                336.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.55": {
+              "vector": [
+                414.0,
+                520.0,
+                0.0
+              ]
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.17": {
+              "vector": [
+                1.15,
+                1.1,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.6": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "1.25": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.55": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_splinter_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -4.0,
+                0.0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.52": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.26": {
+              "vector": [
+                0.0,
+                0.0,
+                8.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_splinter_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -4.0,
+                0.0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.52": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.26": {
+              "vector": [
+                0.0,
+                0.0,
+                -8.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_splinter_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -4.0,
+                0.0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.52": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.26": {
+              "vector": [
+                0.0,
+                0.0,
+                8.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        },
+        "fault_splinter_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                -4.0,
+                0.0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeOutBack"
+            },
+            "0.52": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.26": {
+              "vector": [
+                0.0,
+                0.0,
+                -8.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.5": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            }
+          }
+        }
+      }
+    },
     "orbit": {
       "animation_length": 3.5,
       "loop": true,
       "bones": {
-        "ground_rune_seal": {
+        "ground_fracture": {
           "rotation": {
             "vector": [
-              0,
-              "query.anim_time * 25",
-              0
+              "0",
+              "query.anim_time * 4",
+              "0"
             ]
           },
           "scale": {
             "vector": [
-              "1.0 + 0.03 * math.sin(query.anim_time * 160)",
-              1.0,
-              "1.0 + 0.03 * math.sin(query.anim_time * 160)"
+              "1.0 + 0.015 * math.sin(query.anim_time * 180)",
+              "1.0",
+              "1.0 + 0.015 * math.sin(query.anim_time * 180)"
             ]
           }
         },
         "orbit_anchor": {
           "rotation": {
             "vector": [
-              0,
-              "query.anim_time * 105",
-              0
+              "0",
+              "query.anim_time * 16",
+              "0"
             ]
           },
           "position": {
             "vector": [
-              0,
-              "math.sin(query.anim_time * 150) * 1.5",
-              0
+              "0",
+              "0.45 * math.sin(query.anim_time * 180)",
+              "0"
             ]
           }
         },
         "crystal_ring": {
           "rotation": {
             "vector": [
-              0,
-              "query.anim_time * -130",
-              0
+              "0",
+              "query.anim_time * -42",
+              "0"
             ]
           },
           "position": {
             "vector": [
-              0,
-              "math.cos(query.anim_time * 180) * 2.0",
-              0
+              "0",
+              "0.45 * math.sin(query.anim_time * 180 + 90)",
+              "0"
             ]
+          }
+        },
+        "tectonic_plate_0": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 0)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 0)"
+            ]
+          }
+        },
+        "fault_crystal_0": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 0)",
+              "query.anim_time * 27",
+              "4 * math.sin(query.anim_time * 80 + 0)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 0)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 0)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 0)"
+            ]
+          }
+        },
+        "airborne_debris_0": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 12",
+              "query.anim_time * 18",
+              "query.anim_time * 9"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 0)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_1": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 45)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 37)"
+            ]
+          }
+        },
+        "fault_crystal_1": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 41)",
+              "query.anim_time * -22",
+              "4 * math.sin(query.anim_time * 80 + 29)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 35)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 35)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 35)"
+            ]
+          }
+        },
+        "airborne_debris_1": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 14",
+              "query.anim_time * 21",
+              "query.anim_time * 10"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 45)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_2": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 90)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 74)"
+            ]
+          }
+        },
+        "fault_crystal_2": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 82)",
+              "query.anim_time * 27",
+              "4 * math.sin(query.anim_time * 80 + 58)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 70)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 70)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 70)"
+            ]
+          }
+        },
+        "airborne_debris_2": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 16",
+              "query.anim_time * 24",
+              "query.anim_time * 11"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 90)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_3": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 135)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 111)"
+            ]
+          }
+        },
+        "fault_crystal_3": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 123)",
+              "query.anim_time * -22",
+              "4 * math.sin(query.anim_time * 80 + 87)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 105)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 105)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 105)"
+            ]
+          }
+        },
+        "airborne_debris_3": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 18",
+              "query.anim_time * 27",
+              "query.anim_time * 12"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 135)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_4": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 180)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 148)"
+            ]
+          }
+        },
+        "fault_crystal_4": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 164)",
+              "query.anim_time * 27",
+              "4 * math.sin(query.anim_time * 80 + 116)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 140)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 140)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 140)"
+            ]
+          }
+        },
+        "airborne_debris_4": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 20",
+              "query.anim_time * 30",
+              "query.anim_time * 13"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 180)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_5": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 225)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 185)"
+            ]
+          }
+        },
+        "fault_crystal_5": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 205)",
+              "query.anim_time * -22",
+              "4 * math.sin(query.anim_time * 80 + 145)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 175)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 175)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 175)"
+            ]
+          }
+        },
+        "airborne_debris_5": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 22",
+              "query.anim_time * 33",
+              "query.anim_time * 14"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 225)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_6": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 270)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 222)"
+            ]
+          }
+        },
+        "fault_crystal_6": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 246)",
+              "query.anim_time * 27",
+              "4 * math.sin(query.anim_time * 80 + 174)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 210)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 210)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 210)"
+            ]
+          }
+        },
+        "airborne_debris_6": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 24",
+              "query.anim_time * 36",
+              "query.anim_time * 15"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 270)",
+              "0"
+            ]
+          }
+        },
+        "tectonic_plate_7": {
+          "rotation": {
+            "vector": [
+              "1.2 * math.sin(query.anim_time * 70 + 315)",
+              "0",
+              "1.7 * math.sin(query.anim_time * 65 + 259)"
+            ]
+          }
+        },
+        "fault_crystal_7": {
+          "rotation": {
+            "vector": [
+              "2 * math.sin(query.anim_time * 100 + 287)",
+              "query.anim_time * -22",
+              "4 * math.sin(query.anim_time * 80 + 203)"
+            ]
+          },
+          "scale": {
+            "vector": [
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 245)",
+              "1.0 + 0.06 * math.sin(query.anim_time * 220 + 245)",
+              "1.0 + 0.08 * math.sin(query.anim_time * 220 + 245)"
+            ]
+          }
+        },
+        "airborne_debris_7": {
+          "rotation": {
+            "vector": [
+              "query.anim_time * 26",
+              "query.anim_time * 39",
+              "query.anim_time * 16"
+            ]
+          },
+          "position": {
+            "vector": [
+              "0",
+              "0.6 * math.sin(query.anim_time * 180 + 315)",
+              "0"
+            ]
+          }
+        }
+      }
+    },
+    "collapse": {
+      "animation_length": 1.1,
+      "loop": false,
+      "bones": {
+        "ground_fracture": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                1.12,
+                1.0,
+                1.12
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.6": {
+              "vector": [
+                0.62,
+                1.0,
+                0.62
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                1.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.35": {
+              "vector": [
+                0.0,
+                9.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                24.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "orbit_anchor": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                2.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.72": {
+              "vector": [
+                0.0,
+                -14.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -32.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.72": {
+              "vector": [
+                0.82,
+                0.82,
+                0.82
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.02,
+                0.02,
+                0.02
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "crystal_ring": {
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.35": {
+              "vector": [
+                1.1,
+                0.9,
+                1.1
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.78": {
+              "vector": [
+                0.4,
+                0.6,
+                0.4
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                -7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                -22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                -7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                -22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                -7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                -22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                -7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                -22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "tectonic_plate_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.22": {
+              "vector": [
+                0.0,
+                1.5,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "0.62": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -22.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.38": {
+              "vector": [
+                0.0,
+                0.0,
+                7.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                22.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.6": {
+              "vector": [
+                0.8,
+                0.8,
+                0.8
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_crystal_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.36": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -15.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.4": {
+              "vector": [
+                1.15,
+                1.15,
+                1.15
+              ],
+              "easing": "easeOutBack"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_4": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_5": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_6": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "airborne_debris_7": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.25": {
+              "vector": [
+                0.0,
+                3.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -18.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          },
+          "scale": {
+            "0.0": {
+              "vector": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "0.45": {
+              "vector": [
+                0.85,
+                0.85,
+                0.85
+              ],
+              "easing": "easeInQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_splinter_0": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.3": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_splinter_1": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.3": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_splinter_2": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.3": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
+          }
+        },
+        "fault_splinter_3": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "0.3": {
+              "vector": [
+                0.0,
+                2.0,
+                0.0
+              ],
+              "easing": "easeOutQuad"
+            },
+            "1.1": {
+              "vector": [
+                0.0,
+                -8.0,
+                0.0
+              ],
+              "easing": "easeInQuad"
+            }
           }
         }
       }
